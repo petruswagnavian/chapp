@@ -1,8 +1,9 @@
-import {StyleSheet, Text, View, Button, Dimensions} from 'react-native'
-import React, {useState} from 'react'
-import MapView, {PROVIDER_GOOGLE} from "react-native-maps"
+import {StyleSheet, Text, View, Button, Dimensions} from 'react-native';
+import React, {useState} from 'react';
+import MapView, {PROVIDER_GOOGLE} from "react-native-maps";
 import {Link} from "expo-router";
-import mapThemes from './mapThemes'
+import mapThemes from './mapThemes';
+import HomeButton from '@/components/HomeButton';
 
 const Mapper = () => {
     const [currentTheme, setCurrentTheme] = useState(mapThemes.apostolic)
@@ -26,6 +27,7 @@ const Mapper = () => {
             <View style={styles.greatWrapper}>
                 <Button title="Great Church" onPress={() => setCurrentTheme(mapThemes.great)} />
             </View>
+            <HomeButton />
         </View>
     )
 }
@@ -41,14 +43,14 @@ const styles = StyleSheet.create({
     },
     apostolicWrapper: {
         position: 'absolute',
-        bottom: 40,
+        top: 20,
         left: 20,
         right: 20,
         zIndex: 1,
     },
     greatWrapper: {
         position: 'absolute',
-        top: 40,
+        top: 60,
         left: 20,
         right: 20,
         zIndex: 1,
