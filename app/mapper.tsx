@@ -1,12 +1,25 @@
-import {StyleSheet, Text, View, Button, Dimensions} from 'react-native';
+import {StyleSheet, Text, View, Dimensions} from 'react-native';
 import React, {useState} from 'react';
 import MapView, {PROVIDER_GOOGLE} from "react-native-maps";
 import {Link} from "expo-router";
-import mapThemes from './mapThemes';
+import mapThemes from '@/constants/mapThemes';
 import HomeButton from '@/components/HomeButton';
+import AgeSelector, {Age} from '@/components/AgeSelector';
+
+const list_of_ages: Age[] =[
+    {id: 'apostolic_age', label: 'Apostolic Age', startYear: 33, endYear: 179},
+    {id: 'great_age', label: 'Great Church', startYear: 180, endYear: 324}
+]
 
 const Mapper = () => {
-    const [currentTheme, setCurrentTheme] = useState(mapThemes.apostolic)
+    const [selectedAge, setSelectedAge] = useState<Age>(list_of_ages[0])
+    const [currentYear, setCurrentYear] = useState<number>(selectedAge.startYear)
+    const [currentTheme, setCurrentTheme] = useState(mapThemes[list_of_ages[0].id]);
+    const handleSelectAge = (age: Age) => {
+        setSelectedAge(age);
+        setCurrentYear(age.startYear);
+        setCurrentTheme(mapThemes[age.id]);
+    }
     return (
         <View style={styles.container}>
             <MapView
@@ -20,14 +33,12 @@ const Mapper = () => {
                     longitudeDelta: 30,
                 }}
             />
-
-            <View style={styles.apostolicWrapper}>
-                <Button title="Apostolic" onPress={() => setCurrentTheme(mapThemes.apostolic)} />
-            </View>
-            <View style={styles.greatWrapper}>
-                <Button title="Great Church" onPress={() => setCurrentTheme(mapThemes.great)} />
-            </View>
             <HomeButton />
+            <AgeSelector
+                ages={list_of_ages}
+                selectedAgeId={selectedAge.id}
+                onSelectAge={handleSelectAge}
+            />
         </View>
     )
 }
@@ -41,19 +52,4 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
     },
-    apostolicWrapper: {
-        position: 'absolute',
-        top: 20,
-        left: 20,
-        right: 20,
-        zIndex: 1,
-    },
-    greatWrapper: {
-        position: 'absolute',
-        top: 60,
-        left: 20,
-        right: 20,
-        zIndex: 1,
-    }
-
 })

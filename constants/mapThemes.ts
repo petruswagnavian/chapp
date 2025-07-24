@@ -36,7 +36,7 @@ const baseMapStyle = [
     }
 ]
 
-const apostolicTheme = [
+const apostolicAgeTheme = [
     ...baseMapStyle,
     {
         "featureType": "water",
@@ -45,7 +45,7 @@ const apostolicTheme = [
     }
 ]
 
-const greatTheme = [
+const greatAgeTheme = [
     ...baseMapStyle,
     {
         "featureType": "water",
@@ -55,8 +55,8 @@ const greatTheme = [
 ]
 
 const mapThemes = {
-    apostolic: apostolicTheme,
-    great: greatTheme,
+    apostolic_age: apostolicAgeTheme,
+    great_age: greatAgeTheme,
 }
 
 export default mapThemes

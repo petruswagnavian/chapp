@@ -8,7 +8,7 @@ interface Props {
     style?: ViewStyle;
     iconSize?: number;
     iconColor?: string;
-};
+}
 
 const HomeButton =
     ({onPress, style, iconSize = 28, iconColor = 'white'}: Props)=> {
