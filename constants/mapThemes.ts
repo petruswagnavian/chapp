@@ -41,22 +41,93 @@ const apostolicAgeTheme = [
     {
         "featureType": "water",
         "elementType": "geometry",
-        "stylers": [{"color": "#6c32d8"}]
+        "stylers": [{"color": "#eaeab5"}]
     }
 ]
-
 const greatAgeTheme = [
     ...baseMapStyle,
     {
         "featureType": "water",
         "elementType": "geometry",
-        "stylers": [{"color": "#37b029"}]
+        "stylers": [{"color": "#98e81e"}]
+    }
+]
+const niceneAgeTheme = [
+    ...baseMapStyle,
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [{"color": "#f2d12c"}]
+    }
+]
+const chalcedonAgeTheme = [
+    ...baseMapStyle,
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [{"color": "#f28f2c"}]
+    }
+]
+const eastWestAgeTheme = [
+    ...baseMapStyle,
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [{"color": "#b561f0"}]
+    }
+]
+const highMiddleAgeTheme = [
+    ...baseMapStyle,
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [{"color": "#aa9eb2"}]
+    }
+]
+const lateMiddleAgeTheme = [
+    ...baseMapStyle,
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [{"color": "#844d4d"}]
+    }
+]
+const reformationAgeTheme =[
+    ...baseMapStyle,
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [{"color": "#cc4848"}]
+    }
+]
+const westphalianAgeTheme = [
+    ...baseMapStyle,
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [{"color": "#be6507"}]
+    }
+]
+const modernAgeTheme =[
+    ...baseMapStyle,
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [{"color": "#b5e4ea"}]
     }
 ]
 
 const mapThemes = {
     apostolic_age: apostolicAgeTheme,
     great_age: greatAgeTheme,
+    nicene_age: niceneAgeTheme,
+    chalcedon_age: chalcedonAgeTheme,
+    eastWest_age: eastWestAgeTheme,
+    highMiddle_age: highMiddleAgeTheme,
+    lateMiddle_age: lateMiddleAgeTheme,
+    reformation_age: reformationAgeTheme,
+    westphalian_age: westphalianAgeTheme,
+    modern_age: modernAgeTheme
 }
 
 export default mapThemes
