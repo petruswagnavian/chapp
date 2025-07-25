@@ -44,9 +44,9 @@ const styles = StyleSheet.create({
     container: {
         position: 'absolute',
         right: 0,
-        top: screenHeight / 10,
+        top: screenHeight / 5,
         bottom: screenHeight / 10,
-        width: screenWidth / 5.5,
+        width: screenWidth / 5,
         backgroundColor: '#ddd',
     },
     scrollContainer: {

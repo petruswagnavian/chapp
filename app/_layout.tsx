@@ -1,19 +1,14 @@
 import { Stack } from "expo-router";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useEffect} from "react";
-import { StatusBar, Platform } from "react-native";
-import * as NavigationBar from "expo-navigation-bar";
+import { StatusBar } from "react-native";
+import * as SystemUI from "expo-system-ui";
 import './globals.css';
 
 export default function RootLayout() {
     useEffect(() => {
-        if (Platform.OS === 'android') {
-            (async () => {
-                await StatusBar.setHidden(true);
-                await NavigationBar.setBehaviorAsync("overlay-swipe");
-                await NavigationBar.setVisibilityAsync("hidden");
-            })();
-        }
+        SystemUI.setBackgroundColorAsync("transparent");
+        StatusBar.setHidden(true);
     }, []);
     return (
       <SafeAreaProvider>
