@@ -17,7 +17,8 @@ interface Props {
     onSelectAge: (age: Age) => void;
 }
 
-const AgeSelector = ({ages, selectedAgeId, onSelectAge }: Props) => {
+const AgeSelector =
+    ({ages, selectedAgeId, onSelectAge }: Props) => {
     return (
         <View style={styles.container}>
             <ScrollView contentContainerStyle={styles.scrollContainer}>

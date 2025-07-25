@@ -6,6 +6,7 @@ import mapThemes from '@/constants/mapThemes';
 import HomeButton from '@/components/HomeButton';
 import AgeSelector, {Age} from '@/components/AgeSelector';
 import YearDisplay from '@/components/YearDisplay';
+import YearSlider from '@/components/YearSlider';
 
 const list_of_ages: Age[] = [
     {id: 'apostolic_age', label: 'APOSTOLIC CHURCH', startYear: 33, endYear: 179},
@@ -54,6 +55,12 @@ const Mapper = () => {
                 ages={list_of_ages}
                 selectedAgeId={selectedAge.id}
                 onSelectAge={handleSelectAge}
+            />
+            <YearSlider
+                startYear={selectedAge.startYear}
+                endYear={selectedAge.endYear}
+                currentYear={currentYear}
+                onYearChange={(year) => setCurrentYear(year)}
             />
         </View>
     )

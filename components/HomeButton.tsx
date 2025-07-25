@@ -3,8 +3,6 @@ import { TouchableOpacity, StyleSheet, ViewStyle, Dimensions} from 'react-native
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from 'expo-router';
 
-const screenWidth = Dimensions.get('window').width;
-
 interface Props {
     onPress?: () => void;
     style?: ViewStyle;
@@ -35,7 +33,7 @@ const styles = StyleSheet.create({
     button: {
         position: 'absolute',
         bottom: 20,
-        left: screenWidth / 10,
+        left: 20,
         backgroundColor: '#333',
         padding: 10,
         borderRadius: 30,
