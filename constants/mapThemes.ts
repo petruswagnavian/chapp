@@ -7,7 +7,7 @@ const baseMapStyle = [
     {
         featureType: "landscape",
         elementType: "labels",
-        stylers: [{visibility: "off"}],
+        stylers: [{visibility: "on"}],
     },
     {
         featureType: "landscape.man_made",
@@ -41,7 +41,12 @@ const apostolicAgeTheme = [
     {
         "featureType": "water",
         "elementType": "geometry",
-        "stylers": [{"color": "#eaeab5"}]
+        "stylers": [{"color": "#a0c8cf"}]
+    },
+    {
+        "featureType": "landscape.natural",
+        "elementType": "geometry.fill",
+        "stylers": [{"color": "#f1e6c6"}]
     }
 ]
 const greatAgeTheme = [
