@@ -30,17 +30,29 @@
     <script>
         let currentLayer = null;
         let currentTooltips = [];
+        let polityFeatures = [];
+        let debounceTimer = null;
         const map = L.map('map', {
             zoomControl: false,
-            attributionControl: false
-        }).setView([20, 0], 2);
+            attributionControl: false,
+            minZoom: 2,
+            maxZoom: 7,
+            inertia: true,
+            inertiaDeceleration: 1000, //default 3000, lower is less glide
+            inertiaMaxSpeed: 1000 //lower stops sooner
+        })
 
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/' +
             'Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-            attribution: '&copy; Carto',
-            subdomains: 'abcd',
-            maxZoom: 18,
+            attribution:
+                'Tiles © Esri — Source: Esri, HERE, Garmin, NGA, USGS, NPS'
         }).addTo(map);
+
+        map.setView([40, 20], 3) //[lat, lng, zoomlevel] //starts at zoom = 4
+        map.setMaxBounds([
+            [-85, -180], //SW corner
+            [85, 180], //NE corner
+        ])
 
         function getPolityStyle(feature) {
             const c = feature.properties.Color
@@ -49,31 +61,58 @@
                 weight: 0.5,
                 fillColor: c,
                 fillOpacity: 0.3,
-                interactive: false
+                interactive: true
             }
         }
 
         function onEachPolity(feature, layer) {
             const name = feature.properties.DisplayName;
             const area = feature.properties.Area;
-            const size_threshold = 200000
 
-            if (area >= size_threshold) {
-                const fontSize = Math.min(0.5, Math.sqrt(area) / 5);
-                const tooltip = L.tooltip({
-                    permanent: true,
-                    direction: 'center',
-                    className: 'polity-label',
-                    opacity: 1
-                })
-                    .setContent(`<div style="font-size:${fontSize}">${name}</div>`)
-                    .setLatLng(layer.getBounds().getCenter());
+            layer.bindPopup(`<b>${name}</b>`);
+            polityFeatures.push({
+                feature,
+                layer,
+                tooltip: null
+            })
+        }
+        function updateLabelsForZoom() {
+            const zoom = map.getZoom();
+            currentTooltips.forEach(t => map.removeLayer(t));
+            currentTooltips = [];
+            polityFeatures.forEach(({feature, layer}) => {
+                const name = feature.properties.DisplayName;
+                const area = feature.properties.Area;
 
-                tooltip.addTo(map);
-                currentTooltips.push(tooltip);
-            } else {
-                layer.bindPopup(`<b>${name}</b`);
-            }
+                let zoomThreshold = 10;
+
+                if (area > 500000) {
+                    zoomThreshold = 3;
+                }
+                else if (area > 400000) {
+                    zoomThreshold = 4;
+                }
+                else if (area > 300000) {
+                    zoomThreshold = 5;
+                }
+                else {
+                    zoomThreshold = 6;
+                }
+
+                if (zoom >= zoomThreshold) {
+                    const fontSize = 3;
+                    const tooltip = L.tooltip({
+                        permanent: true,
+                        direction: 'center',
+                        className: 'polity-label',
+                        opacity: 1
+                    })
+                        .setContent(`<div style="font-size:${fontSize}">${name}</div>`)
+                        .setLatLng(layer.getBounds().getCenter());
+                    tooltip.addTo(map);
+                    currentTooltips.push(tooltip);
+                }
+            })
         }
         function handleMessage(event) {
             try {
@@ -88,18 +127,21 @@
                     }
                     currentTooltips.forEach(t => map.removeLayer(t));
                     currentTooltips = [];
+                    polityFeatures = [];
+
                     currentLayer = L.geoJSON(message.geojson, {
                         style: getPolityStyle,
                         onEachFeature: onEachPolity
                     }).addTo(map)
 
-                    const bounds = currentLayer.getBounds();
+                    /*const bounds = currentLayer.getBounds();
                     if (bounds.isValid()) {
                         map.fitBounds(bounds);
                         console.log("fit map to new bounds")
                     } else {
                         console.warn("no valid bounds in geojson features")
-                    }
+                    }*/
+                    updateLabelsForZoom();
                 }
             } catch (e) {
                 console.error("invalid message or json: ", e)
@@ -107,6 +149,7 @@
         }
         document.addEventListener('message', handleMessage);
         window.addEventListener('message', handleMessage);
+        map.on('zoomend', updateLabelsForZoom);
     </script>
 </body>
 </html>
