@@ -1,9 +1,7 @@
 import {StyleSheet, Text, View, Dimensions} from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
-/*import MapView, {PROVIDER_GOOGLE} from "react-native-maps";*/
 import {WebView} from 'react-native-webview';
 import {Link} from "expo-router";
-import mapThemes from '@/constants/mapThemes';
 import HomeButton from '@/components/HomeButton';
 import AgeSelector, {Age} from '@/components/AgeSelector';
 import YearDisplay from '@/components/YearDisplay';
@@ -82,15 +80,8 @@ const Mapper = () => {
     const handleSelectAge = (age: Age) => {
         setSelectedAge(age);
         setCurrentYear(age.startYear);
-        /*setCurrentTheme(mapThemes[age.id]);*/
     }
-    /*const initialRegion = {
-        latitude: 40,
-        longitude: 20,
-        latitudeDelta: 30,
-        longitudeDelta: 30
-    }*/
-    /*const [region, setRegion] = useState(initialRegion);*/
+
     const geojsonCache = useRef<Map<number, any>>(new Map()); //cache remembers all fetched years until app is closed
     const [snappedYear, setSnappedYear] = useState<number | null>(null);
     const [yearData, setYearData] = useState<any>(null);
@@ -118,9 +109,6 @@ const Mapper = () => {
             const message = { type: 'UPDATE_YEAR', year: snappedYear, geojson: yearData };
             webviewRef.current.postMessage(JSON.stringify(message));
         }
-            /*webviewRef.current.injectJavaScript(
-                `window.postMessage(${JSON.stringify(message)}, "*");true;`
-            );*/
     }, [yearData, snappedYear]);
     const webviewRef = useRef<WebView>(null);
     return (
@@ -135,18 +123,6 @@ const Mapper = () => {
                 allowFileAccess
                 allowUniversalAccessFromFileURLs
             />
-            {/*
-            <MapView
-                provider={PROVIDER_GOOGLE}
-                style={styles.map}
-                customMapStyle={currentTheme}
-                rotateEnabled={false}
-                pitchEnabled={false}
-                maxZoomLevel={7}
-                region={region}
-                onRegionChangeComplete={setRegion}
-            />
-            */}
             <HomeButton />
             <YearDisplay year={currentYear} />
             <AgeSelector
