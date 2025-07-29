@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
         html, body, #map {height: 100%; margin: 0; padding: 0;}
+        /*
         .polity-label {
             font-weight: bold;
             color: #111;
@@ -15,6 +16,7 @@
             border: none !important;
             box-shadow: none !important;
         }
+        */
         .leaflet-tooltip {
             background: transparent;
             border: none;
@@ -31,7 +33,6 @@
         let currentLayer = null;
         let currentTooltips = [];
         let polityFeatures = [];
-        let debounceTimer = null;
         const map = L.map('map', {
             zoomControl: false,
             attributionControl: false,
@@ -67,8 +68,6 @@
 
         function onEachPolity(feature, layer) {
             const name = feature.properties.DisplayName;
-            const area = feature.properties.Area;
-
             layer.bindPopup(`<b>${name}</b>`);
             polityFeatures.push({
                 feature,
@@ -80,6 +79,7 @@
             const zoom = map.getZoom();
             currentTooltips.forEach(t => map.removeLayer(t));
             currentTooltips = [];
+            /*
             polityFeatures.forEach(({feature, layer}) => {
                 const name = feature.properties.DisplayName;
                 const area = feature.properties.Area;
@@ -112,39 +112,26 @@
                     tooltip.addTo(map);
                     currentTooltips.push(tooltip);
                 }
-            })
+            })*/
         }
         function handleMessage(event) {
-            try {
-                const message = JSON.parse(event.data);
-                console.log("received message: ", message);
-                if (message.type === 'UPDATE_YEAR') {
-                    const features = message.geojson.features;
-                    console.log(`geojson contains ${features.length} features for year ${message.year}`)
-                    if (currentLayer) {
-                        map.removeLayer(currentLayer)
-                        console.log("removed previous map layer")
-                    }
-                    currentTooltips.forEach(t => map.removeLayer(t));
-                    currentTooltips = [];
-                    polityFeatures = [];
-
-                    currentLayer = L.geoJSON(message.geojson, {
-                        style: getPolityStyle,
-                        onEachFeature: onEachPolity
-                    }).addTo(map)
-
-                    /*const bounds = currentLayer.getBounds();
-                    if (bounds.isValid()) {
-                        map.fitBounds(bounds);
-                        console.log("fit map to new bounds")
-                    } else {
-                        console.warn("no valid bounds in geojson features")
-                    }*/
-                    updateLabelsForZoom();
+            const message = JSON.parse(event.data);
+            console.log("received message: ", message);
+            if (message.type === 'UPDATE_YEAR') {
+                if (currentLayer) {
+                    map.removeLayer(currentLayer)
+                    console.log("removed previous map layer")
                 }
-            } catch (e) {
-                console.error("invalid message or json: ", e)
+                currentTooltips.forEach(t => map.removeLayer(t));
+                currentTooltips = [];
+                polityFeatures = [];
+
+                currentLayer = L.geoJSON(message.geojson, {
+                    style: getPolityStyle,
+                    onEachFeature: onEachPolity
+                }).addTo(map)
+
+                updateLabelsForZoom();
             }
         }
         document.addEventListener('message', handleMessage);
