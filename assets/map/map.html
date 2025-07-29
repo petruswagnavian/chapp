@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Leaflet Historical Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        html, body, #map {height: 100%; margin: 0; padding: 0;}
+        .polity-label {
+            font-weight: bold;
+            color: #111;
+            text-shadow: 1px 1px 2px white;
+            pointer-events: none;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        .leaflet-tooltip {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            pointer-events: none;
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        let currentLayer = null;
+        let currentTooltips = [];
+        const map = L.map('map', {
+            zoomControl: false,
+            attributionControl: false
+        }).setView([20, 0], 2);
+
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/' +
+            'Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+            attribution: '&copy; Carto',
+            subdomains: 'abcd',
+            maxZoom: 18,
+        }).addTo(map);
+
+        function getPolityStyle(feature) {
+            const c = feature.properties.Color
+            return {
+                color: c,
+                weight: 0.5,
+                fillColor: c,
+                fillOpacity: 0.3,
+                interactive: false
+            }
+        }
+
+        function onEachPolity(feature, layer) {
+            const name = feature.properties.DisplayName;
+            const area = feature.properties.Area;
+            const size_threshold = 200000
+
+            if (area >= size_threshold) {
+                const fontSize = Math.min(0.5, Math.sqrt(area) / 5);
+                const tooltip = L.tooltip({
+                    permanent: true,
+                    direction: 'center',
+                    className: 'polity-label',
+                    opacity: 1
+                })
+                    .setContent(`<div style="font-size:${fontSize}">${name}</div>`)
+                    .setLatLng(layer.getBounds().getCenter());
+
+                tooltip.addTo(map);
+                currentTooltips.push(tooltip);
+            } else {
+                layer.bindPopup(`<b>${name}</b`);
+            }
+        }
+        function handleMessage(event) {
+            try {
+                const message = JSON.parse(event.data);
+                console.log("received message: ", message);
+                if (message.type === 'UPDATE_YEAR') {
+                    const features = message.geojson.features;
+                    console.log(`geojson contains ${features.length} features for year ${message.year}`)
+                    if (currentLayer) {
+                        map.removeLayer(currentLayer)
+                        console.log("removed previous map layer")
+                    }
+                    currentTooltips.forEach(t => map.removeLayer(t));
+                    currentTooltips = [];
+                    currentLayer = L.geoJSON(message.geojson, {
+                        style: getPolityStyle,
+                        onEachFeature: onEachPolity
+                    }).addTo(map)
+
+                    const bounds = currentLayer.getBounds();
+                    if (bounds.isValid()) {
+                        map.fitBounds(bounds);
+                        console.log("fit map to new bounds")
+                    } else {
+                        console.warn("no valid bounds in geojson features")
+                    }
+                }
+            } catch (e) {
+                console.error("invalid message or json: ", e)
+            }
+        }
+
+        document.addEventListener('message', handleMessage);
+        window.addEventListener('message', handleMessage);
+    </script>
+</body>
+</html>
