@@ -6,6 +6,7 @@ import HomeButton from '@/components/HomeButton';
 import AgeSelector, {Age} from '@/components/AgeSelector';
 import YearDisplay from '@/components/YearDisplay';
 import YearSlider from '@/components/YearSlider';
+import gestureHandlerButtonWeb from "react-native-gesture-handler/src/components/GestureHandlerButton.web";
 
 const list_of_ages: Age[] = [
     {id: 'apostolic_age', label: 'APOSTOLIC CHURCH', startYear: 33, endYear: 179},
@@ -85,6 +86,13 @@ const Mapper = () => {
     const geojsonCache = useRef<Map<number, any>>(new Map()); //cache remembers all fetched years until app is closed
     const [snappedYear, setSnappedYear] = useState<number | null>(null);
     const [yearData, setYearData] = useState<any>(null);
+
+    const [webviewLoaded, setWebviewLoaded] = useState(false);
+    const webviewRef = useRef<WebView>(null);
+    const handleLoadEnd = () => {
+        console.log('[RN] Webview loaded');
+        setWebviewLoaded(true);
+    }
     useEffect(() => {
         const newSnappedYear = findLatestMappableYear(currentYear);
         if (newSnappedYear != null && newSnappedYear !== snappedYear) {
@@ -105,23 +113,26 @@ const Mapper = () => {
         }
     }, [currentYear])
     useEffect(() => {
-        if (yearData && webviewRef.current && snappedYear != null) {
-            const message = { type: 'UPDATE_YEAR', year: snappedYear, geojson: yearData };
-            webviewRef.current.postMessage(JSON.stringify(message));
+        if (webviewLoaded && yearData && snappedYear != null) {
+            console.log('[RN] posting UPDATE_YEAR', snappedYear);
+            webviewRef.current?.postMessage(
+                JSON.stringify({ type: 'UPDATE_YEAR', year: snappedYear, geojson: yearData })
+            );
         }
-    }, [yearData, snappedYear]);
-    const webviewRef = useRef<WebView>(null);
+    }, [webviewLoaded, yearData, snappedYear]);
+
     return (
         <View style={styles.container}>
             <WebView
                 ref={webviewRef}
                 originWhitelist={['*']}
                 source={require('@/assets/map/map.html')}
-                style={styles.map}
+                onLoadEnd={handleLoadEnd}
                 javaScriptEnabled
                 domStorageEnabled
                 allowFileAccess
                 allowUniversalAccessFromFileURLs
+                style={styles.map}
             />
             <HomeButton />
             <YearDisplay year={currentYear} />

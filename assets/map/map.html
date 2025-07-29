@@ -75,12 +75,7 @@
                 layer.bindPopup(`<b>${name}</b`);
             }
         }
-        window.isLeafletReady = false;
-        document.addEventListener('DOMContentLoaded', () => {
-            window.isLeafletReady = true;
-        });
         function handleMessage(event) {
-            if (!window.isLeafletReady) return;
             try {
                 const message = JSON.parse(event.data);
                 console.log("received message: ", message);
