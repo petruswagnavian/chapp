@@ -77,7 +77,7 @@ const fetchGeojson = async (year: number) => {
 const Mapper = () => {
     const [selectedAge, setSelectedAge] = useState<Age>(list_of_ages[0])
     const [currentYear, setCurrentYear] = useState<number>(selectedAge.startYear)
-    /*const [currentTheme, setCurrentTheme] = useState(mapThemes[list_of_ages[0].id]);*/
+    /*const [currentTheme, setCurrentTheme] = useState(colors[list_of_ages[0].id]);*/
     const handleSelectAge = (age: Age) => {
         setSelectedAge(age);
         setCurrentYear(age.startYear);
