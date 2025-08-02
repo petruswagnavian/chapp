@@ -21,7 +21,10 @@ const AgeSelector =
     ({ages, selectedAgeId, onSelectAge }: Props) => {
     return (
         <View style={styles.container}>
-            <ScrollView contentContainerStyle={styles.scrollContainer}>
+            <ScrollView
+                persistentScrollbar={true}
+                contentContainerStyle={styles.scrollContainer}
+            >
                 {ages.map((age) => {
                     const isSelected = age.id === selectedAgeId;
                     return (
@@ -46,7 +49,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: 0,
         top: screenHeight / 5,
-        bottom: screenHeight / 10,
+        bottom: 60,
         width: screenWidth / 5,
         backgroundColor: '#ddd',
     },

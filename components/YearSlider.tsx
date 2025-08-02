@@ -24,7 +24,7 @@ const YearSlider =
                 value={currentYear}
                 onValueChange={onYearChange}
                 minimumTrackTintColor={colors.dark[100]}
-                maximumTrackTintColor={colors.dark[200]}
+                maximumTrackTintColor={colors.dark[300]}
                 thumbTintColor={colors.dark[100]}
             />
         </View>
@@ -34,16 +34,16 @@ const YearSlider =
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
-        bottom: 30,
-        left: screenWidth / 5,
+        bottom: 20,
+        left: screenWidth / 10,
         right: screenWidth / 5,
-        alignItems: 'center'
+        alignItems: 'center',
+        zIndex: 2
     },
     slider: {
         width: '50%',
-        height: '120%',
-        transform: [{scaleY: 2}, {scaleX: 2}],
-        backgroundColor: '#00000080'
+        height: '100%',
+        transform: [{scaleY: 2}, {scaleX: 2}]
     }
 })
 

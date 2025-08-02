@@ -6,7 +6,10 @@ import HomeButton from '@/components/HomeButton';
 import AgeSelector, {Age} from '@/components/AgeSelector';
 import YearDisplay from '@/components/YearDisplay';
 import YearSlider from '@/components/YearSlider';
-import gestureHandlerButtonWeb from "react-native-gesture-handler/src/components/GestureHandlerButton.web";
+import colors from '@/constants/colors';
+
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
 const list_of_ages: Age[] = [
     {id: 'apostolic_age', label: 'APOSTOLIC CHURCH', startYear: 33, endYear: 179},
@@ -147,6 +150,7 @@ const Mapper = () => {
                 currentYear={currentYear}
                 onYearChange={(year) => setCurrentYear(year)}
             />
+            <View style={styles.bottomBar}/>
         </View>
     )
 }
@@ -157,7 +161,19 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     map: {
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        width: screenWidth,
+        height: screenHeight,
     },
+    bottomBar: {
+        position: 'absolute',
+        bottom: 0,
+        left: screenWidth / 10,
+        right: screenWidth / 5,
+        height: 60,
+        backgroundColor: colors.primary,
+        borderTopWidth: 3,
+        borderLeftWidth: 3,
+        borderRightWidth: 3,
+        zIndex: 1
+    }
 })
