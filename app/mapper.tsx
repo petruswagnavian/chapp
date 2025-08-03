@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View, Dimensions} from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
 import {WebView} from 'react-native-webview';
-import {Link} from "expo-router";
+import {Link, router} from "expo-router";
 import {list_of_ages, mappable_years} from "@/constants/ages_years";
 import colors from '@/constants/colors';
 import HomeButton from '@/components/HomeButton';
@@ -49,6 +49,17 @@ const Mapper = () => {
         setCurrentYear(age.startYear);
     }
 
+    const visiblePersons = [
+        {
+            pid: "augustine_of_hippo",
+            lat: 40,
+            lon: 20,
+            imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/ea/Saint_Augustine_by_Philippe_de_Champaigne.jpg',
+            fromYear: 354,
+            toYear: 430
+        }
+    ].filter(p => currentYear >= p.fromYear && currentYear <= p.toYear);
+
     const geojsonCache = useRef<Map<number, any>>(new Map()); //cache remembers all fetched years until app is closed
     const [snappedYear, setSnappedYear] = useState<number | null>(null);
     const [yearData, setYearData] = useState<any>(null);
@@ -86,6 +97,17 @@ const Mapper = () => {
             );
         }
     }, [webviewLoaded, yearData, snappedYear]);
+    useEffect(() => {
+        if (webviewLoaded && webviewRef.current) {
+            console.log('[RN] posting UPDATE_PERSONS');
+            webviewRef.current.postMessage(
+                JSON.stringify({
+                    type: 'UPDATE_PERSONS',
+                    persons: visiblePersons
+                })
+            )
+        }
+    }, [webviewLoaded, currentYear])
 
     return (
         <View style={styles.container}>
@@ -93,11 +115,20 @@ const Mapper = () => {
                 ref={webviewRef}
                 originWhitelist={['*']}
                 source={require('@/assets/map/map.html')}
+                onMessage={(event) => {
+                    const message = event.nativeEvent.data;
+                    if (message.startsWith('open_person:')) {
+                        const pid = message.replace
+                        ('open_person:', '');
+                        router.push(`/person/${pid}`);
+                    }
+                }}
                 onLoadEnd={handleLoadEnd}
-                javaScriptEnabled
-                domStorageEnabled
-                allowFileAccess
-                allowUniversalAccessFromFileURLs
+                javaScriptEnabled={true}
+                domStorageEnabled={true}
+                allowFileAccess={true}
+                allowUniversalAccessFromFileURLs={true}
+                allowFileAccessFromFileURLs={true}
                 style={styles.map}
             />
             <HomeButton />

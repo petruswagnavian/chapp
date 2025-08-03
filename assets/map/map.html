@@ -33,6 +33,7 @@
         let currentLayer = null;
         let currentTooltips = [];
         let polityFeatures = [];
+        let personMarkers = [];
         const map = L.map('map', {
             zoomControl: false,
             attributionControl: false,
@@ -55,6 +56,24 @@
             [-85, -180], //SW corner
             [85, 180], //NE corner
         ])
+
+        function clearPersonMarkers() {
+            personMarkers.forEach(m => map.removeLayer(m));
+            personMarkers = [];
+        }
+        function addPersonMarker(pid, lat, lon, imageUrl) {
+            const icon = L.divIcon({
+                html: '<div style="font-size: 32px;">📍</div>',
+                className: '',
+                iconSize: [40, 40],
+                iconAnchor: [20, 20],
+                popupAnchor: [0, -20]
+            })
+            const marker = L.marker([lat, lon], {icon}).on('click', () => {
+                window.ReactNativeWebView?.postMessage(`open_person:${pid}`)
+            }).addTo(map);
+            personMarkers.push(marker);
+        }
 
         function getPolityStyle(feature) {
             const c = feature.properties.Color
@@ -136,7 +155,15 @@
 
                 //updateLabelsForZoom();
             }
+
+            if (message.type === 'UPDATE_PERSONS') {
+                clearPersonMarkers();
+                (message.persons || []).forEach((p) => {
+                    addPersonMarker(p.pid, p.lat, p.lon, p.imageUrl)
+                })
+            }
         }
+
         document.addEventListener('message', handleMessage);
         window.addEventListener('message', handleMessage);
         //map.on('zoomend', updateLabelsForZoom);
