@@ -63,7 +63,15 @@
         }
         function addPersonMarker(pid, lat, lon, imageUrl) {
             const icon = L.divIcon({
-                html: '<div style="font-size: 32px;">📍</div>',
+                html: `
+                    <img src="${imageUrl}" style="
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 30px;
+                    border: 2px solid white;
+                    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+                    "/>
+                `,
                 className: '',
                 iconSize: [40, 40],
                 iconAnchor: [20, 20],

@@ -2,7 +2,8 @@ import {StyleSheet, Text, View, Dimensions} from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
 import {WebView} from 'react-native-webview';
 import {Link, router} from "expo-router";
-import {list_of_ages, mappable_years} from "@/constants/ages_years";
+import {list_of_ages, mappable_years} from '@/constants/ages_years';
+import {all_persons} from '@/constants/persons_data';
 import colors from '@/constants/colors';
 import HomeButton from '@/components/HomeButton';
 import AgeSelector, {Age} from '@/components/AgeSelector';
@@ -49,16 +50,8 @@ const Mapper = () => {
         setCurrentYear(age.startYear);
     }
 
-    const visiblePersons = [
-        {
-            pid: "augustine_of_hippo",
-            lat: 40,
-            lon: 20,
-            imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/ea/Saint_Augustine_by_Philippe_de_Champaigne.jpg',
-            fromYear: 354,
-            toYear: 430
-        }
-    ].filter(p => currentYear >= p.fromYear && currentYear <= p.toYear);
+    const visiblePersons =
+        all_persons.filter(p => currentYear >= p.fromYear && currentYear <= p.toYear);
 
     const geojsonCache = useRef<Map<number, any>>(new Map()); //cache remembers all fetched years until app is closed
     const [snappedYear, setSnappedYear] = useState<number | null>(null);
