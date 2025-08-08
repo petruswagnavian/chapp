@@ -4,8 +4,28 @@
     <meta charset="utf-8" />
     <title>Leaflet Historical Map</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
         html, body, #map {height: 100%; margin: 0; padding: 0;}
+        .polity-popup .leaflet-popup-content {
+            font-family: 'Georgia', serif;
+            color: #000;
+            text-align: center;
+            font-size: 12px;
+        }
+        .polity-popup .leaflet-popup-content-wrapper {
+            background-color: #FAE17D;
+            border-radius: 8px;
+            border: none;
+            box-shadow: 0 0 0 2px black, 0 0 8px rgba(0,0,0,0.3);
+            max-width: 200px;
+        }
+
+        .polity-popup .leaflet-popup-tip {
+            background: #FAE17D;
+            border: none;
+            box-shadow: 0 0 0 2px black;
+        }
         /*
         .polity-label {
             font-weight: bold;
@@ -16,15 +36,15 @@
             border: none !important;
             box-shadow: none !important;
         }
-        */
+
         .leaflet-tooltip {
             background: transparent;
             border: none;
             box-shadow: none;
             pointer-events: none;
         }
+        */
     </style>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
     <div id="map"></div>
@@ -38,16 +58,22 @@
             zoomControl: false,
             attributionControl: false,
             minZoom: 2,
-            maxZoom: 7,
+            maxZoom: 8,
+            doubleClickZoom: false,
             inertia: false,
-            inertiaDeceleration: 100, //default 3000, lower is less glide
-            inertiaMaxSpeed: 100 //lower stops sooner
+            //inertiaDeceleration: 100, //default 3000, lower is less glide
+            //inertiaMaxSpeed: 100, //lower stops sooner
+            unloadInvisibleTiles: false,
+            updateWhenIdle: false,
+            updateWhenZooming: true,
+            preferCanvas: true,
         })
 
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}', {
             keepBuffer: 4,
             unloadInvisibleTiles: false,
             updateWhenIdle: false,
+            updateWhenZooming: true,
             attribution: 'Tiles © Esri — Source: National Geographic, Esri, Garmin, HERE, UNEP-WCMC, USGS, NASA, ESA'
         }).addTo(map);
 
@@ -96,7 +122,10 @@
 
         function onEachPolity(feature, layer) {
             const name = feature.properties.DisplayName;
-            layer.bindPopup(`<b>${name}</b>`);
+            layer.bindPopup(`<b>${name}</b>`, {
+                className: 'polity-popup',
+                closeButton: false
+            });
             polityFeatures.push({
                 feature,
                 layer,
@@ -158,7 +187,8 @@
                 currentLayer = L.geoJSON(message.geojson, {
                     style: getPolityStyle,
                     onEachFeature: onEachPolity,
-                    renderer: L.canvas()
+                    renderer: L.canvas({ padding: 0.5 }),
+                    noClip: true
                 }).addTo(map)
 
                 //updateLabelsForZoom();

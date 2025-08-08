@@ -44,7 +44,7 @@ export const all_persons: Person[] = [
         pid: "augustine_of_hippo",
         lat: 36.90,
         lon: 7.75,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/ea/Saint_Augustine_by_Philippe_de_Champaigne.jpg',
+        imageUrl: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/saint-augustine-of-hippo-philippe-de-champaigne-war-is-hell-store.jpg',
         fromYear: 354,
         toYear: 430
     }
