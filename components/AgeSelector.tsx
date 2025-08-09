@@ -70,13 +70,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#333'
     },
     buttonText: {
-        fontSize: 15,
+        fontSize: 18,
+        fontFamily: 'ArnoPro-Regular',
         textAlign: 'center',
-        color: "#000"
+        color: "#000",
+        maxWidth: 150
     },
     selectedText: {
         color: '#fff',
-        fontWeight: 'bold',
+        fontFamily: 'ArnoPro-Bold',
     }
 })
 

@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useRef} from 'react';
 import {View, Dimensions, StyleSheet} from 'react-native';
 import Slider from '@react-native-community/slider';
 import colors from '@/constants/colors';
@@ -48,9 +48,9 @@ const YearSlider =
                 value={currentYear}
                 onValueChange={handleValueChange}
                 onSlidingComplete={handleSliding}
-                minimumTrackTintColor={colors.dark[100]}
-                maximumTrackTintColor={colors.dark[300]}
-                thumbTintColor={colors.dark[100]}
+                minimumTrackTintColor={colors.purp[200]}
+                maximumTrackTintColor={colors.purp[300]}
+                thumbTintColor={colors.purp[200]}
             />
         </View>
     )
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     slider: {
         width: '50%',
         height: '100%',
-        transform: [{scaleY: 2}, {scaleX: 2}]
+        transform: [{scaleY: 2}, {scaleX: 2}],
     }
 })
 

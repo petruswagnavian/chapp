@@ -1,6 +1,7 @@
 const colors = {
-    primary: '#D1C4A7',
-    secondary: '#CFA906',
+    primary: '#F5CE47',
+    secondary: '#6C5DE8',
+    tertiary: '#5B7EFC',
     light: {
         100: '#FAE17D',
         200: '#FCDB4E',
@@ -10,6 +11,11 @@ const colors = {
         100: '#D4A300',
         200: '#CC9D00',
         300: '#9E8200'
+    },
+    purp: {
+        100: '#AB8BFF',
+        200: '#935BFC',
+        300: '#7053E6',
     },
     antique_pink: {
         100: '#d2959b',

@@ -154,10 +154,12 @@ const styles = StyleSheet.create({
     },
     bottomBar: {
         position: 'absolute',
-        bottom: 0,
+        bottom: -10,
         left: screenWidth / 10,
         right: screenWidth / 5,
-        height: 60,
+        height: 70,
+        borderRadius: 8,
+
         backgroundColor: colors.primary,
         borderTopWidth: 3,
         borderLeftWidth: 3,
