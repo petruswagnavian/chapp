@@ -54,6 +54,7 @@
         let currentTooltips = [];
         let polityFeatures = [];
         let personMarkers = [];
+        const canvasRenderer = L.canvas({padding: 0.25})
         const map = L.map('map', {
             zoomControl: false,
             attributionControl: false,
@@ -77,15 +78,26 @@
             attribution: 'Tiles © Esri — Source: National Geographic, Esri, Garmin, HERE, UNEP-WCMC, USGS, NASA, ESA'
         }).addTo(map);
 
-        map.setView([40, 20], 3) //[lat, lng, zoomlevel] //starts at zoom = 4
+        map.setView([40, 20], 3) //[lat, lng, zoomlevel] //starts at zoom = 3
         map.setMaxBounds([
             [-85, -180], //SW corner
             [85, 180], //NE corner
         ])
-
+        function clearMap() {
+            if (currentLayer) {
+                currentLayer.eachLayer(l => { l.closePopup(); l.unbindPopup(); l.off(); });
+                currentLayer.remove();
+                currentLayer = null;
+            }
+        }
         function clearPersonMarkers() {
-            personMarkers.forEach(m => map.removeLayer(m));
-            personMarkers = [];
+            if (personMarkers) {
+                personMarkers.forEach(m => {
+                    m.off();
+                    map.removeLayer(m);
+                })
+                personMarkers = [];
+            }
         }
         function addPersonMarker(pid, lat, lon, imageUrl) {
             const icon = L.divIcon({
@@ -111,14 +123,16 @@
 
         function getPolityStyle(feature) {
             const c = feature.properties.Color
+            const interactive = map.getZoom() >= 3
             return {
                 color: '#000',
                 weight: 0.5,
                 fillColor: c,
                 fillOpacity: 0.5,
-                interactive: true
+                interactive
             }
         }
+        map.on('zoomend', () => currentLayer && currentLayer.setStyle(getPolityStyle))
 
         function onEachPolity(feature, layer) {
             const name = feature.properties.DisplayName;
@@ -176,19 +190,12 @@
             const message = JSON.parse(event.data);
             console.log("received message: ", message);
             if (message.type === 'UPDATE_YEAR') {
-                if (currentLayer) {
-                    map.removeLayer(currentLayer)
-                    console.log("removed previous map layer")
-                }
-                currentTooltips.forEach(t => map.removeLayer(t));
-                currentTooltips = [];
-                polityFeatures = [];
+                clearMap();
 
                 currentLayer = L.geoJSON(message.geojson, {
                     style: getPolityStyle,
                     onEachFeature: onEachPolity,
-                    renderer: L.canvas({ padding: 0.5 }),
-                    noClip: true
+                    renderer: canvasRenderer,
                 }).addTo(map)
 
                 //updateLabelsForZoom();
@@ -203,7 +210,7 @@
         }
 
         document.addEventListener('message', handleMessage);
-        window.addEventListener('message', handleMessage);
+        //window.addEventListener('message', handleMessage);
         //map.on('zoomend', updateLabelsForZoom);
     </script>
 </body>

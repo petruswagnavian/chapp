@@ -48,6 +48,7 @@ const Mapper = () => {
     const handleSelectAge = (age: Age) => {
         setSelectedAge(age);
         setCurrentYear(age.startYear);
+        //geojsonCache.current.clear(); //should i?
     }
 
     const visiblePersons =
