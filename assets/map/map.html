@@ -139,7 +139,16 @@
             layer.bindPopup(`<b>${name}</b>`, {
                 className: 'polity-popup',
                 closeButton: false
-            });
+            })
+            layer.on('popupopen', (e) => {
+                const popup = e.popup;
+                const contentArea = popup.getElement();
+                if (contentArea) {
+                    contentArea.addEventListener('click', () => {
+                        map.closePopup(popup);
+                    })
+                }
+            })
             polityFeatures.push({
                 feature,
                 layer,
