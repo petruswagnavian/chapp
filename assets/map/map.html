@@ -51,9 +51,10 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
         let currentLayer = null;
-        let currentTooltips = [];
         let polityFeatures = [];
         let personMarkers = [];
+        let lastMapVersion = 0;
+        let lastPersonsVersion = 0;
         const canvasRenderer = L.canvas({padding: 0.25})
         const map = L.map('map', {
             zoomControl: false,
@@ -155,6 +156,7 @@
                 tooltip: null
             })
         }
+
         /*
         function updateLabelsForZoom() {
             const zoom = map.getZoom();
@@ -198,27 +200,40 @@
         function handleMessage(event) {
             const message = JSON.parse(event.data);
             console.log("received message: ", message);
-            if (message.type === 'UPDATE_YEAR') {
-                clearMap();
 
+            if (message.type === 'UPDATE_YEAR') {
+                const v = message.version || 0;
+                if (v <= lastMapVersion) return;
+                lastMapVersion = v;
+
+                clearMap();
                 currentLayer = L.geoJSON(message.geojson, {
                     style: getPolityStyle,
                     onEachFeature: onEachPolity,
                     renderer: canvasRenderer,
+                    noClip: false
                 }).addTo(map)
-
                 //updateLabelsForZoom();
+                return;
             }
 
             if (message.type === 'UPDATE_PERSONS') {
+                const v = message.personsVersion || 0;
+                if (v <= lastPersonsVersion) return;
+                lastPersonsVersion = v;
+
                 clearPersonMarkers();
-                (message.persons || []).forEach((p) => {
+                (message.persons || []).forEach((p) =>
                     addPersonMarker(p.pid, p.lat, p.lon, p.imageUrl)
-                })
+                )
             }
         }
 
-        document.addEventListener('message', handleMessage);
+        //bind once
+        if (!window.__msgBound) {
+            document.addEventListener('message', handleMessage);
+            window.__msgBound = true;
+        }
         //window.addEventListener('message', handleMessage);
         //map.on('zoomend', updateLabelsForZoom);
     </script>

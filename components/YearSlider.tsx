@@ -30,7 +30,6 @@ const YearSlider =
     const translateX = useSharedValue(0);
     const startX = useSharedValue(0);
 
-    const debouncedYear = useSharedValue(currentYear)
 
     useEffect(() => {
         if (trackWidth === 0) return;
@@ -41,7 +40,7 @@ const YearSlider =
     useEffect(() => {
         const debounceTimeout = setTimeout(() => {
             onYearChange(latestYear);
-        }, 40); //debounce ms
+        }, 0); //debounce ms
         return () => clearTimeout(debounceTimeout);
     }, [latestYear]);
 
