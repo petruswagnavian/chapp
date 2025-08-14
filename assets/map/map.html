@@ -20,30 +20,11 @@
             box-shadow: 0 0 0 2px black, 0 0 8px rgba(0,0,0,0.3);
             max-width: 200px;
         }
-
         .polity-popup .leaflet-popup-tip {
             background: #F5CE47;
             border: none;
             box-shadow: 0 0 0 2px black;
         }
-        /*
-        .polity-label {
-            font-weight: bold;
-            color: #111;
-            text-shadow: 1px 1px 2px white;
-            pointer-events: none;
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-        }
-
-        .leaflet-tooltip {
-            background: transparent;
-            border: none;
-            box-shadow: none;
-            pointer-events: none;
-        }
-        */
     </style>
 </head>
 <body>
@@ -79,7 +60,7 @@
             attribution: 'Tiles © Esri — Source: National Geographic, Esri, Garmin, HERE, UNEP-WCMC, USGS, NASA, ESA'
         }).addTo(map);
 
-        map.setView([40, 20], 3) //[lat, lng, zoomlevel] //starts at zoom = 3
+        map.setView([40, 30], 3) //[lat, lng, zoomlevel] //starts at zoom = 3
         map.setMaxBounds([
             [-85, -180], //SW corner
             [85, 180], //NE corner
@@ -157,49 +138,9 @@
             })
         }
 
-        /*
-        function updateLabelsForZoom() {
-            const zoom = map.getZoom();
-            currentTooltips.forEach(t => map.removeLayer(t));
-            currentTooltips = [];
-
-            polityFeatures.forEach(({feature, layer}) => {
-                const name = feature.properties.DisplayName;
-                const area = feature.properties.Area;
-
-                let zoomThreshold = 10;
-
-                if (area > 500000) {
-                    zoomThreshold = 3;
-                }
-                else if (area > 400000) {
-                    zoomThreshold = 4;
-                }
-                else if (area > 300000) {
-                    zoomThreshold = 5;
-                }
-                else {
-                    zoomThreshold = 6;
-                }
-
-                if (zoom >= zoomThreshold) {
-                    const fontSize = 3;
-                    const tooltip = L.tooltip({
-                        permanent: true,
-                        direction: 'center',
-                        className: 'polity-label',
-                        opacity: 1
-                    })
-                        .setContent(`<div style="font-size:${fontSize}">${name}</div>`)
-                        .setLatLng(layer.getBounds().getCenter());
-                    tooltip.addTo(map);
-                    currentTooltips.push(tooltip);
-                }
-            })
-        }*/
         function handleMessage(event) {
             const message = JSON.parse(event.data);
-            //console.log("received message: ", message);
+            console.log("received message: ", message);
 
             if (message.type === 'UPDATE_YEAR') {
                 const v = message.version || 0;
@@ -213,7 +154,6 @@
                     renderer: canvasRenderer,
                     noClip: false
                 }).addTo(map)
-                //updateLabelsForZoom();
                 return;
             }
 

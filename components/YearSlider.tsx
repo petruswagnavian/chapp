@@ -11,6 +11,8 @@ import Animated, {
 import colors from '@/constants/colors';
 
 const screenWidth = Dimensions.get('window').width;
+const lefty = screenWidth / 10;
+const righty = screenWidth / 5;
 const thumbSize = 30;
 
 interface Props {
@@ -28,6 +30,7 @@ const YearSlider =
         const range = endYear - startYear;
         const translateX = useSharedValue(0);
         const startX = useSharedValue(0);
+        const isDragging = useSharedValue(false);
 
 
         useEffect(() => {
@@ -45,6 +48,7 @@ const YearSlider =
 
         const pan = Gesture.Pan()
             .onStart((e) => {
+                isDragging.value = true;
                 startX.value = translateX.value
                 if (trackWidth === 0) return;
 
@@ -69,6 +73,7 @@ const YearSlider =
                 runOnJS(setLatestYear)(Math.round(year));
             })
             .onEnd(() => {
+                isDragging.value = false;
                 if (trackWidth === 0) return;
                 const position = translateX.value / trackWidth;
                 const year = Math.round(startYear + position * range);
@@ -78,7 +83,11 @@ const YearSlider =
                 runOnJS(setLatestYear)(Math.round(year));
             });
         const tap = Gesture.Tap()
+            .onStart(() => {
+                isDragging.value = true;
+            })
             .onEnd((e) => {
+                isDragging.value = false;
                 if (trackWidth === 0) return;
 
                 let newX = e.x;
@@ -89,10 +98,38 @@ const YearSlider =
                 translateX.value = withSpring(snappedPos, {damping: 10, stiffness: 200});
                 runOnJS(setLatestYear)(year);
             })
+        const bufferTap = Gesture.Tap()
+            .onStart(() => {
+                isDragging.value = true;
+            })
+            .onEnd((e) => {
+                isDragging.value = false;
+                const bufferWidth = screenWidth - lefty - righty;
+                const tapX = e.x;
+                const leftZone = bufferWidth * 0.15;
+                const rightZone = bufferWidth * 0.85;
+                if (tapX <= leftZone) {
+                    translateX.value = withSpring(0, {damping: 10, stiffness: 200});
+                    runOnJS(setLatestYear)(startYear);
+                } else if (tapX >= rightZone) {
+                    translateX.value = withSpring(trackWidth, {damping: 10, stiffness: 200});
+                    runOnJS(setLatestYear)(endYear);
+                }
+            })
 
-        const thumbStyle = useAnimatedStyle(() => ({
-            transform: [{translateX: translateX.value}]
-        }))
+        const filledTrackStyle = useAnimatedStyle(() => {
+            return {
+                width: translateX.value + 30
+            }
+        })
+        const thumbStyle = useAnimatedStyle(() => {
+            return {
+                transform: [
+                    {translateX: translateX.value},
+                    {scale: withSpring(isDragging.value ? 1.3 : 1, {damping: 10, stiffness: 200})}
+                ]
+            }
+        })
         const onTrackLayout = (e: LayoutChangeEvent) => {
             const width = e.nativeEvent.layout.width;
             if (width !== trackWidth) {
@@ -103,97 +140,71 @@ const YearSlider =
 
         return (
             <View style={styles.container}>
+                <View style={styles.track}>
+                    <Animated.View style={[styles.filledTrack, filledTrackStyle]}/>
+                </View>
                 <GestureDetector gesture={gestures}>
-                    <View style={styles.track} onLayout={onTrackLayout}>
-                        <Animated.View style={[styles.thumb, thumbStyle]} />
+                    <View style={styles.hitZone} onLayout={onTrackLayout}>
+                        <Animated.View style={[styles.thumb, thumbStyle]}/>
                     </View>
+                </GestureDetector>
+                <GestureDetector gesture={bufferTap}>
+                    <View style={styles.buffer}></View>
                 </GestureDetector>
             </View>
         )
-
-        /*
-        //handle buffer debounce
-        const debounceTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-        const clamp = (val: number) => Math.min(Math.max(val, startYear), endYear);
-        const handleValueChange = (val: number) => {
-            const rounded = Math.round(clamp(val));
-            if (debounceTimeout.current) {
-                clearTimeout(debounceTimeout.current);
-            }
-            debounceTimeout.current = setTimeout(() => {
-                onYearChange(rounded);
-            }, 30);
-        }
-
-        const handleSliding = (val: number) => {
-            const rounded = Math.round(clamp(val));
-            if (debounceTimeout.current) {
-                clearTimeout(debounceTimeout.current);
-                debounceTimeout.current = null;
-            }
-            onYearChange(rounded);
-        }
-
-        return (
-            <View style={styles.container}>
-                <Slider
-                    style={styles.slider}
-                    minimumValue={startYear}
-                    maximumValue={endYear}
-                    step={1}
-                    value={currentYear}
-                    onValueChange={handleValueChange}
-                    onSlidingComplete={handleSliding}
-                    minimumTrackTintColor={colors.purp[200]}
-                    maximumTrackTintColor={colors.purp[300]}
-                    thumbTintColor={colors.purp[200]}
-                />
-            </View>
-        )
-         */
     }
-
-/*
-const styles = StyleSheet.create({
-    container: {
-        position: 'absolute',
-        bottom: 20,
-        left: screenWidth / 10,
-        right: screenWidth / 5,
-        alignItems: 'center',
-        zIndex: 2
-    },
-    slider: {
-        width: '50%',
-        height: '100%',
-        transform: [{scaleY: 2}, {scaleX: 2}],
-    }
-})
-
- */
 
 const styles= StyleSheet.create({
     container: {
         position: 'absolute',
-        bottom: 20,
-        left: screenWidth / 10,
-        right: screenWidth / 5,
-        height: 15,
+        left: lefty,
+        right: righty,
+        bottom: 0,
+        height: 60,
+        //backgroundColor: 'rgba(0,0,0,0.5)',
+        backgroundColor: 'transparent',
         alignItems: 'center',
         justifyContent: 'center',
         zIndex: 2
     },
-    track: {
+    hitZone: {
+        position: 'absolute',
         width: '90%',
+        height: '100%',
+        //backgroundColor: 'rgba(0,0,0,0.5)',
+        backgroundColor: 'transparent',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 10,
+    },
+    buffer: {
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        //backgroundColor: 'rgba(0,0,0,0.5)',
+        backgroundColor: 'transparent',
+        zIndex: 5,
+    },
+    track: {
+        position: 'absolute',
+        width: '96%',
         height: 20,
+        borderRadius: 8,
+        borderWidth: 1,
+        overflow: 'hidden',
         backgroundColor: '#ccc',
-        borderRadius: 2,
-        zIndex: 20
+        zIndex: 1,
+    },
+    filledTrack: {
+        height: '100%',
+        backgroundColor: colors.purp[100],
+        zIndex: 2,
     },
     thumb: {
         position: 'absolute',
-        width: 20,
+        left: -thumbSize / 2 ,
+        width: thumbSize,
         height: thumbSize,
         borderRadius: 10,
         backgroundColor: 'dodgerblue',
