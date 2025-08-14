@@ -9,7 +9,6 @@ import Animated, {
     withSpring
 } from 'react-native-reanimated';
 import colors from '@/constants/colors';
-import {devNull} from "node:os";
 
 const screenWidth = Dimensions.get('window').width;
 const thumbSize = 30;
@@ -24,112 +23,136 @@ interface Props {
 const YearSlider =
     ({startYear, endYear, currentYear, onYearChange}: Props) => {
 
-    const [trackWidth, setTrackWidth] = useState(0);
-    const [latestYear, setLatestYear] = useState(currentYear);
-    const range = endYear - startYear;
-    const translateX = useSharedValue(0);
-    const startX = useSharedValue(0);
+        const [trackWidth, setTrackWidth] = useState(0);
+        const [latestYear, setLatestYear] = useState(currentYear);
+        const range = endYear - startYear;
+        const translateX = useSharedValue(0);
+        const startX = useSharedValue(0);
 
 
-    useEffect(() => {
-        if (trackWidth === 0) return;
-        const clampedYear = Math.min(Math.max(currentYear, startYear), endYear);
-        translateX.value = ((clampedYear - startYear) / range) * trackWidth;
-    }, [currentYear, startYear, endYear, trackWidth]);
-
-    useEffect(() => {
-        const debounceTimeout = setTimeout(() => {
-            onYearChange(latestYear);
-        }, 0); //debounce ms
-        return () => clearTimeout(debounceTimeout);
-    }, [latestYear]);
-
-    const pan = Gesture.Pan()
-        .onStart(() => {
-            startX.value = translateX.value
-        })
-        .onUpdate((e) => {
-            let newX = startX.value + e.translationX;
+        useEffect(() => {
             if (trackWidth === 0) return;
-            newX = Math.max(0, Math.min(trackWidth, newX));
-            translateX.value = newX;
+            const clampedYear = Math.min(Math.max(currentYear, startYear), endYear);
+            translateX.value = ((clampedYear - startYear) / range) * trackWidth;
+        }, [currentYear, startYear, endYear, trackWidth]);
 
-            const position = newX / trackWidth;
-            const year = startYear + position * range;
-            runOnJS(setLatestYear)(Math.round(year));
-        })
-        .onEnd(() => {
-            if (trackWidth === 0) return;
-            const position = translateX.value / trackWidth;
-            const year = Math.round(startYear + position * range);
-            const snappedPos = ((year - startYear) / range) * trackWidth;
-            translateX.value = withSpring(snappedPos, {damping: 15});
+        useEffect(() => {
+            const debounceTimeout = setTimeout(() => {
+                onYearChange(latestYear);
+            }, 0); //debounce ms
+            return () => clearTimeout(debounceTimeout);
+        }, [latestYear]);
 
-            runOnJS(setLatestYear)(Math.round(year));
-        });
+        const pan = Gesture.Pan()
+            .onStart((e) => {
+                startX.value = translateX.value
+                if (trackWidth === 0) return;
 
-    const thumbStyle = useAnimatedStyle(() => ({
-        transform: [{translateX: translateX.value}]
-    }))
-    const onTrackLayout = (e: LayoutChangeEvent) => {
-        const width = e.nativeEvent.layout.width;
-        if (width !== trackWidth) {
-            setTrackWidth(width);
+                let newX = e.x;
+                newX = Math.max(0, Math.min(trackWidth, newX));
+                const position = newX / trackWidth;
+                const year = Math.round(startYear + position * range);
+                const snappedPos = ((year - startYear) / range) * trackWidth;
+                translateX.value = withSpring(snappedPos, {damping: 10, stiffness: 200});
+                runOnJS(setLatestYear)(year);
+                startX.value = newX;
+            })
+            .onUpdate((e) => {
+                let newX = startX.value + e.translationX;
+                if (trackWidth === 0) return;
+
+                newX = Math.max(0, Math.min(trackWidth, newX));
+                translateX.value = withSpring(newX, {damping: 10, stiffness: 200});
+
+                const position = newX / trackWidth;
+                const year = startYear + position * range;
+                runOnJS(setLatestYear)(Math.round(year));
+            })
+            .onEnd(() => {
+                if (trackWidth === 0) return;
+                const position = translateX.value / trackWidth;
+                const year = Math.round(startYear + position * range);
+                const snappedPos = ((year - startYear) / range) * trackWidth;
+                translateX.value = withSpring(snappedPos, {damping: 10, stiffness: 200});
+
+                runOnJS(setLatestYear)(Math.round(year));
+            });
+        const tap = Gesture.Tap()
+            .onEnd((e) => {
+                if (trackWidth === 0) return;
+
+                let newX = e.x;
+                newX = Math.max(0, Math.min(trackWidth, newX));
+                const position = newX / trackWidth;
+                const year = Math.round(startYear + position * range);
+                const snappedPos = ((year - startYear) / range) * trackWidth;
+                translateX.value = withSpring(snappedPos, {damping: 10, stiffness: 200});
+                runOnJS(setLatestYear)(year);
+            })
+
+        const thumbStyle = useAnimatedStyle(() => ({
+            transform: [{translateX: translateX.value}]
+        }))
+        const onTrackLayout = (e: LayoutChangeEvent) => {
+            const width = e.nativeEvent.layout.width;
+            if (width !== trackWidth) {
+                setTrackWidth(width);
+            }
         }
-    }
+        const gestures = Gesture.Simultaneous(pan, tap);
 
-    return (
-        <View style={styles.container}>
-            <View style={styles.track} onLayout={onTrackLayout}>
-                <GestureDetector gesture={pan}>
-                    <Animated.View style={[styles.thumb, thumbStyle]} />
+        return (
+            <View style={styles.container}>
+                <GestureDetector gesture={gestures}>
+                    <View style={styles.track} onLayout={onTrackLayout}>
+                        <Animated.View style={[styles.thumb, thumbStyle]} />
+                    </View>
                 </GestureDetector>
             </View>
-        </View>
-    )
+        )
 
-    /*
-    //handle buffer debounce
-    const debounceTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+        /*
+        //handle buffer debounce
+        const debounceTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-    const clamp = (val: number) => Math.min(Math.max(val, startYear), endYear);
-    const handleValueChange = (val: number) => {
-        const rounded = Math.round(clamp(val));
-        if (debounceTimeout.current) {
-            clearTimeout(debounceTimeout.current);
+        const clamp = (val: number) => Math.min(Math.max(val, startYear), endYear);
+        const handleValueChange = (val: number) => {
+            const rounded = Math.round(clamp(val));
+            if (debounceTimeout.current) {
+                clearTimeout(debounceTimeout.current);
+            }
+            debounceTimeout.current = setTimeout(() => {
+                onYearChange(rounded);
+            }, 30);
         }
-        debounceTimeout.current = setTimeout(() => {
+
+        const handleSliding = (val: number) => {
+            const rounded = Math.round(clamp(val));
+            if (debounceTimeout.current) {
+                clearTimeout(debounceTimeout.current);
+                debounceTimeout.current = null;
+            }
             onYearChange(rounded);
-        }, 30);
-    }
-
-    const handleSliding = (val: number) => {
-        const rounded = Math.round(clamp(val));
-        if (debounceTimeout.current) {
-            clearTimeout(debounceTimeout.current);
-            debounceTimeout.current = null;
         }
-        onYearChange(rounded);
-    }
 
-    return (
-        <View style={styles.container}>
-            <Slider
-                style={styles.slider}
-                minimumValue={startYear}
-                maximumValue={endYear}
-                step={1}
-                value={currentYear}
-                onValueChange={handleValueChange}
-                onSlidingComplete={handleSliding}
-                minimumTrackTintColor={colors.purp[200]}
-                maximumTrackTintColor={colors.purp[300]}
-                thumbTintColor={colors.purp[200]}
-            />
-        </View>
-    )
-     */
-}
+        return (
+            <View style={styles.container}>
+                <Slider
+                    style={styles.slider}
+                    minimumValue={startYear}
+                    maximumValue={endYear}
+                    step={1}
+                    value={currentYear}
+                    onValueChange={handleValueChange}
+                    onSlidingComplete={handleSliding}
+                    minimumTrackTintColor={colors.purp[200]}
+                    maximumTrackTintColor={colors.purp[300]}
+                    thumbTintColor={colors.purp[200]}
+                />
+            </View>
+        )
+         */
+    }
 
 /*
 const styles = StyleSheet.create({
@@ -163,9 +186,10 @@ const styles= StyleSheet.create({
     },
     track: {
         width: '90%',
-        height: 4,
+        height: 20,
         backgroundColor: '#ccc',
-        borderRadius: 2
+        borderRadius: 2,
+        zIndex: 20
     },
     thumb: {
         position: 'absolute',
@@ -174,7 +198,8 @@ const styles= StyleSheet.create({
         borderRadius: 10,
         backgroundColor: 'dodgerblue',
         top: '50%',
-        marginTop: -0.5 * thumbSize
+        marginTop: -0.5 * thumbSize,
+        zIndex: 100
     }
 })
 

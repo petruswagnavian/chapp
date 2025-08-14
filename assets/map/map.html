@@ -199,7 +199,7 @@
         }*/
         function handleMessage(event) {
             const message = JSON.parse(event.data);
-            console.log("received message: ", message);
+            //console.log("received message: ", message);
 
             if (message.type === 'UPDATE_YEAR') {
                 const v = message.version || 0;

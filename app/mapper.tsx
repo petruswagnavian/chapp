@@ -36,15 +36,18 @@ const findLatestMappableYear = (targetYear: number): number | null => {
 
 const fetchGeojson = async (year: number, signal?: AbortSignal) => {
     const url = `https://ch-geojson-bucket-petrus.s3.amazonaws.com/original_years_geojson_AD/${year}.geojson`;
-    console.log(`Fetching GeoJSON for year ${year}: ${url}`);
+    //console.log(`Fetching GeoJSON for year ${year}: ${url}`);
     const response = await fetch(url, {signal});
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     const data = await response.json();
+    /*
     console.log(
         `Successfully fetched GeoJSON for year ${year}. ` +
         `Received ${data.features?.length ?? 'unknown'} features.`
     );
+
+     */
     return data;
 }
 
@@ -70,7 +73,7 @@ const Mapper = () => {
     const [webviewLoaded, setWebviewLoaded] = useState(false);
     const webviewRef = useRef<WebView>(null);
     const handleLoadEnd = () => {
-        console.log('[RN] Webview loaded');
+        //console.log('[RN] Webview loaded');
         setWebviewLoaded(true);
     }
 
@@ -114,7 +117,7 @@ const Mapper = () => {
                 return data;
             }).catch(err => {
                 inflight.current.delete(targetYear);
-                if (err?.name !== 'AbortError') console.error(`Error fetching GeoJSON for year ${targetYear}:`, err)
+                //if (err?.name !== 'AbortError') console.error(`Error fetching GeoJSON for year ${targetYear}:`, err)
                 throw err;
             })
             inflight.current.set(targetYear, p);
@@ -129,7 +132,7 @@ const Mapper = () => {
     //map commit to WebView
     useEffect(() => {
         if (!webviewLoaded || !mapCommit) return;
-        console.log(`[RN] posting UPDATE_YEAR ${mapCommit.year}`)
+        //.log(`[RN] posting UPDATE_YEAR ${mapCommit.year}`)
         webviewRef.current?.postMessage(JSON.stringify({
             type: 'UPDATE_YEAR',
             year: mapCommit.year,
@@ -141,7 +144,7 @@ const Mapper = () => {
     //person debounce
     useEffect(() => {
         if (!webviewLoaded) return
-        console.log('[RN] posting UPDATE_PERSONS');
+        //console.log('[RN] posting UPDATE_PERSONS');
         const seq = ++personsSeqRef.current;
         webviewRef.current?.postMessage(JSON.stringify({
             type: 'UPDATE_PERSONS',
@@ -186,7 +189,6 @@ const Mapper = () => {
                 currentYear={currentYear}
                 onYearChange={(year) => setCurrentYear(year)}
             />
-            <View style={styles.bottomBar}/>
         </View>
     )
 }
