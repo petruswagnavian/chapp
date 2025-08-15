@@ -13,6 +13,10 @@ import colors from '@/constants/colors';
 const screenWidth = Dimensions.get('window').width;
 const lefty = screenWidth / 10;
 const righty = screenWidth / 5;
+const bufferWidth = screenWidth - lefty - righty; //aka containerWidth
+const totalBufferOffset = bufferWidth * 0.05;
+const leftZone = bufferWidth * 0.05; //from start of container to start of thumbTrack
+const rightZone = bufferWidth * 0.95; //from start of container to end of thumbTrack
 const thumbSize = 30;
 
 interface Props {
@@ -32,7 +36,6 @@ const YearSlider =
         const startX = useSharedValue(0);
         const isDragging = useSharedValue(false);
 
-
         useEffect(() => {
             if (trackWidth === 0) return;
             const clampedYear = Math.min(Math.max(currentYear, startYear), endYear);
@@ -51,8 +54,18 @@ const YearSlider =
                 isDragging.value = true;
                 startX.value = translateX.value
                 if (trackWidth === 0) return;
-
-                let newX = e.x;
+                /*
+                const tapX = e.x;
+                if (tapX <= leftZone) {
+                    translateX.value = withSpring(0, {damping: 10, stiffness: 200});
+                    runOnJS(setLatestYear)(startYear);
+                } else if (tapX >= rightZone) {
+                    translateX.value = withSpring(trackWidth, {damping: 10, stiffness: 200});
+                    runOnJS(setLatestYear)(endYear);
+                }
+                 */
+                //bring thumb to finger on first touch
+                let newX = e.x - totalBufferOffset;
                 newX = Math.max(0, Math.min(trackWidth, newX));
                 const position = newX / trackWidth;
                 const year = Math.round(startYear + position * range);
@@ -60,11 +73,19 @@ const YearSlider =
                 translateX.value = withSpring(snappedPos, {damping: 10, stiffness: 200});
                 runOnJS(setLatestYear)(year);
                 startX.value = newX;
+
             })
             .onUpdate((e) => {
                 let newX = startX.value + e.translationX;
                 if (trackWidth === 0) return;
 
+                /*
+                const tapX = e.x;
+                if ((tapX <= leftZone) || (tapX >= rightZone)) {
+                    return;
+                }
+
+                 */
                 newX = Math.max(0, Math.min(trackWidth, newX));
                 translateX.value = withSpring(newX, {damping: 10, stiffness: 200});
 
@@ -90,24 +111,8 @@ const YearSlider =
                 isDragging.value = false;
                 if (trackWidth === 0) return;
 
-                let newX = e.x;
-                newX = Math.max(0, Math.min(trackWidth, newX));
-                const position = newX / trackWidth;
-                const year = Math.round(startYear + position * range);
-                const snappedPos = ((year - startYear) / range) * trackWidth;
-                translateX.value = withSpring(snappedPos, {damping: 10, stiffness: 200});
-                runOnJS(setLatestYear)(year);
-            })
-        const bufferTap = Gesture.Tap()
-            .onStart(() => {
-                isDragging.value = true;
-            })
-            .onEnd((e) => {
-                isDragging.value = false;
-                const bufferWidth = screenWidth - lefty - righty;
+                /*
                 const tapX = e.x;
-                const leftZone = bufferWidth * 0.15;
-                const rightZone = bufferWidth * 0.85;
                 if (tapX <= leftZone) {
                     translateX.value = withSpring(0, {damping: 10, stiffness: 200});
                     runOnJS(setLatestYear)(startYear);
@@ -115,6 +120,16 @@ const YearSlider =
                     translateX.value = withSpring(trackWidth, {damping: 10, stiffness: 200});
                     runOnJS(setLatestYear)(endYear);
                 }
+
+                 */
+
+                let newX = e.x - totalBufferOffset;
+                newX = Math.max(0, Math.min(trackWidth, newX));
+                const position = newX / trackWidth;
+                const year = Math.round(startYear + position * range);
+                const snappedPos = ((year - startYear) / range) * trackWidth;
+                translateX.value = withSpring(snappedPos, {damping: 10, stiffness: 200});
+                runOnJS(setLatestYear)(year);
             })
 
         const filledTrackStyle = useAnimatedStyle(() => {
@@ -139,19 +154,17 @@ const YearSlider =
         const gestures = Gesture.Simultaneous(pan, tap);
 
         return (
-            <View style={styles.container}>
-                <View style={styles.track}>
-                    <Animated.View style={[styles.filledTrack, filledTrackStyle]}/>
-                </View>
-                <GestureDetector gesture={gestures}>
-                    <View style={styles.hitZone} onLayout={onTrackLayout}>
-                        <Animated.View style={[styles.thumb, thumbStyle]}/>
+            <GestureDetector gesture={gestures}>
+                <View style={styles.container}>
+                    <View style={styles.track}>
+                        <Animated.View style={[styles.filledTrack, filledTrackStyle]}/>
                     </View>
-                </GestureDetector>
-                <GestureDetector gesture={bufferTap}>
-                    <View style={styles.buffer}></View>
-                </GestureDetector>
-            </View>
+                        <View style={styles.thumbTrack} onLayout={onTrackLayout}>
+                            <Animated.View style={[styles.thumb, thumbStyle]}/>
+                        </View>
+                        <View style={styles.buffer}></View>
+                </View>
+            </GestureDetector>
         )
     }
 
@@ -168,9 +181,9 @@ const styles= StyleSheet.create({
         justifyContent: 'center',
         zIndex: 2
     },
-    hitZone: {
+    thumbTrack: {
         position: 'absolute',
-        width: '90%',
+        width: bufferWidth * 0.90,
         height: '100%',
         //backgroundColor: 'rgba(0,0,0,0.5)',
         backgroundColor: 'transparent',
@@ -188,7 +201,7 @@ const styles= StyleSheet.create({
     },
     track: {
         position: 'absolute',
-        width: '96%',
+        width: '95%',
         height: 20,
         borderRadius: 8,
         borderWidth: 1,
