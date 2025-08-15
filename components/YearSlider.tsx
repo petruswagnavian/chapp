@@ -5,8 +5,12 @@ import {Gesture, GestureDetector} from "react-native-gesture-handler";
 import Animated, {
     useSharedValue,
     useAnimatedStyle,
+    useAnimatedReaction,
     runOnJS,
-    withSpring
+    withSpring,
+    withRepeat,
+    withTiming,
+    Easing
 } from 'react-native-reanimated';
 import colors from '@/constants/colors';
 
@@ -15,9 +19,9 @@ const lefty = screenWidth / 10;
 const righty = screenWidth / 5;
 const bufferWidth = screenWidth - lefty - righty; //aka containerWidth
 const totalBufferOffset = bufferWidth * 0.05;
-const leftZone = bufferWidth * 0.05; //from start of container to start of thumbTrack
-const rightZone = bufferWidth * 0.95; //from start of container to end of thumbTrack
-const thumbSize = 30;
+//const leftZone = bufferWidth * 0.05; //from start of container to start of thumbTrack
+//const rightZone = bufferWidth * 0.95; //from start of container to end of thumbTrack
+const thumbSize = 50;
 
 interface Props {
     startYear: number;
@@ -35,6 +39,19 @@ const YearSlider =
         const translateX = useSharedValue(0);
         const startX = useSharedValue(0);
         const isDragging = useSharedValue(false);
+        const spin = useSharedValue(0);
+
+        useAnimatedReaction(() => isDragging.value, (dragging) => {
+            if (dragging) {
+                spin.value = withRepeat(
+                    withTiming(360, {duration: 2000, easing: Easing.linear}),
+                    -1,
+                    false
+                )
+            } else {
+                spin.value = 0;
+            }
+        }, [])
 
         useEffect(() => {
             if (trackWidth === 0) return;
@@ -134,14 +151,15 @@ const YearSlider =
 
         const filledTrackStyle = useAnimatedStyle(() => {
             return {
-                width: translateX.value + 30
+                width: translateX.value + 10
             }
         })
         const thumbStyle = useAnimatedStyle(() => {
             return {
                 transform: [
                     {translateX: translateX.value},
-                    {scale: withSpring(isDragging.value ? 1.3 : 1, {damping: 10, stiffness: 200})}
+                    {scale: withSpring(isDragging.value ? 1.3 : 1, {damping: 10, stiffness: 200})},
+                    {rotate: `${spin.value}deg`}
                 ]
             }
         })
@@ -160,7 +178,10 @@ const YearSlider =
                         <Animated.View style={[styles.filledTrack, filledTrackStyle]}/>
                     </View>
                     <View style={styles.thumbTrack} onLayout={onTrackLayout}>
-                        <Animated.View style={[styles.thumb, thumbStyle]}/>
+                        <Animated.Image
+                            style={[styles.thumb, thumbStyle]}
+                            source={require("../assets/images/dove-colored-outline.png")}
+                        />
                     </View>
                     <View style={styles.buffer}></View>
                     <View style={styles.bars}></View>
@@ -229,8 +250,10 @@ const styles= StyleSheet.create({
         left: -thumbSize / 2 ,
         width: thumbSize,
         height: thumbSize,
-        borderRadius: 10,
-        backgroundColor: 'dodgerblue',
+        borderRadius: 0,
+        borderWidth: 0,
+        borderColor: colors.purp[100],
+        backgroundColor: 'transparent',
         top: '50%',
         marginTop: -0.5 * thumbSize,
         zIndex: 100

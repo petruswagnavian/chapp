@@ -140,7 +140,7 @@ const Mapper = () => {
     //person debounce
     useEffect(() => {
         if (!webviewLoaded) return
-        console.log('[RN] posting UPDATE_PERSONS');
+        //console.log('[RN] posting UPDATE_PERSONS');
         const seq = ++personsSeqRef.current;
         webviewRef.current?.postMessage(JSON.stringify({
             type: 'UPDATE_PERSONS',
