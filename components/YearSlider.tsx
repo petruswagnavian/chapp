@@ -159,10 +159,11 @@ const YearSlider =
                     <View style={styles.track}>
                         <Animated.View style={[styles.filledTrack, filledTrackStyle]}/>
                     </View>
-                        <View style={styles.thumbTrack} onLayout={onTrackLayout}>
-                            <Animated.View style={[styles.thumb, thumbStyle]}/>
-                        </View>
-                        <View style={styles.buffer}></View>
+                    <View style={styles.thumbTrack} onLayout={onTrackLayout}>
+                        <Animated.View style={[styles.thumb, thumbStyle]}/>
+                    </View>
+                    <View style={styles.buffer}></View>
+                    <View style={styles.bars}></View>
                 </View>
             </GestureDetector>
         )
@@ -180,6 +181,15 @@ const styles= StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         zIndex: 2
+    },
+    bars: {
+        position: 'absolute',
+        width: bufferWidth * 0.90,
+        height: '60%',
+        backgroundColor: 'transparent',
+        borderLeftWidth: 1,
+        borderRightWidth: 1,
+        zIndex: 9
     },
     thumbTrack: {
         position: 'absolute',
@@ -202,7 +212,7 @@ const styles= StyleSheet.create({
     track: {
         position: 'absolute',
         width: '95%',
-        height: 20,
+        height: 15,
         borderRadius: 8,
         borderWidth: 1,
         overflow: 'hidden',
