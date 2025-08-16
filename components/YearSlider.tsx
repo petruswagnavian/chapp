@@ -1,6 +1,5 @@
-import React, {useRef, useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Dimensions, StyleSheet, LayoutChangeEvent} from 'react-native';
-//import Slider from '@react-native-community/slider';
 import {Gesture, GestureDetector} from "react-native-gesture-handler";
 import Animated, {
     useSharedValue,
