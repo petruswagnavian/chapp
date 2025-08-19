@@ -5,7 +5,7 @@ import {Link, router} from "expo-router";
 import {list_of_ages, mappable_years} from '@/constants/ages_years';
 import {all_persons} from '@/constants/persons_data';
 import colors from '@/constants/colors';
-import HomeButton from '@/components/HomeButton';
+import BackButton from '@/components/BackButton';
 import AgeSelector, {Age} from '@/components/AgeSelector';
 import YearDisplay from '@/components/YearDisplay';
 import YearSlider from '@/components/YearSlider';
@@ -171,7 +171,10 @@ const Mapper = () => {
                 allowFileAccessFromFileURLs={true}
                 style={styles.map}
             />
-            <HomeButton />
+            <BackButton style={styles.homeButton}
+                        backgroundColor={colors.dark[300]}
+                        pressedColor={colors.dark[200]} />
+
             <YearDisplay year={currentYear} />
             <AgeSelector
                 ages={list_of_ages}
@@ -198,13 +201,23 @@ const styles = StyleSheet.create({
         width: screenWidth,
         height: screenHeight,
     },
+    homeButton: {
+        position: 'absolute',
+        bottom: 0,
+        height: 60,
+        left: 0,
+        width: screenWidth / 10,
+        borderRadius: 0,
+        borderTopWidth: 3,
+        zIndex: 5,
+    },
     bottomBar: {
         position: 'absolute',
-        bottom: -10,
+        bottom: 0,
+        height: 60,
         left: screenWidth / 10,
         right: screenWidth / 5,
-        height: 70,
-        borderRadius: 8,
+        borderRadius: 0,
 
         backgroundColor: colors.primary,
         borderTopWidth: 3,
