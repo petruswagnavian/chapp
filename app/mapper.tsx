@@ -171,7 +171,7 @@ const Mapper = () => {
                 allowFileAccessFromFileURLs={true}
                 style={styles.map}
             />
-            <BackButton style={styles.homeButton}
+            <BackButton style={styles.backButton}
                         backgroundColor={colors.dark[300]}
                         pressedColor={colors.dark[200]} />
 
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
         width: screenWidth,
         height: screenHeight,
     },
-    homeButton: {
+    backButton: {
         position: 'absolute',
         bottom: 0,
         height: 60,

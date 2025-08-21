@@ -23,6 +23,10 @@ export default function RootLayout() {
                     name="mapper"
                     options={{headerShown: false}}
                 />
+                <Stack.Screen
+                    name="person/[pid]"
+                    options={{headerShown: false}}
+                />
             </Stack>
           </SafeAreaProvider>
       </GestureHandlerRootView>
