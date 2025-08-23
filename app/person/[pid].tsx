@@ -57,7 +57,9 @@ const Identity = () => {
                             end={{ x: 0, y: 0 }}
                             style={styles.rightBanner}
             />
-            <View style={styles.nameBanner}></View>
+            <View style={styles.displayNameBanner}>
+                <Text numberOfLines={1} adjustsFontSizeToFit style={styles.displayNameText}>{person.displayName}</Text>
+            </View>
             <View style={styles.campBanner}></View>
             <View style={styles.scrollArea}>
                 <ScrollView style={styles.textScrollArea}
@@ -130,13 +132,24 @@ const styles = StyleSheet.create({
         borderRightWidth: 3,
         zIndex: 5,
     },
-    nameBanner: {
+    displayNameBanner: {
         position: 'absolute',
         top: 0,
         height: topBarHeight,
         left: leftBarWidth,
         width: textScrollAreaWidth,
-        backgroundColor: '#333'
+        //backgroundColor: '#333',
+        justifyContent: 'center',
+        paddingTop: scrollAreaPadding,
+        paddingLeft: scrollAreaPadding,
+    },
+    displayNameText: {
+        flex: 1,
+        textAlign: 'left',
+        textAlignVertical: 'center', //android only?
+        fontFamily: 'ArnoPro-Regular',
+        fontSize: 200,
+        //backgroundColor: '#555'
     },
     campBanner: {
         position: "absolute",
@@ -162,5 +175,4 @@ const styles = StyleSheet.create({
         width: rightBarWidth,
         borderLeftWidth: 3,
     }
-
 })
