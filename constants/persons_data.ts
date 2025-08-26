@@ -5,7 +5,11 @@ export type Person = {
     lon: number;
     imageUrl: string;
     fromYear: number;
+    fromApprox?: boolean;
     toYear: number;
+    toApprox?: boolean;
+    camps: string[];
+    mainCamp?: string;
 }
 
 export const all_persons: Person[] = [
@@ -16,7 +20,10 @@ export const all_persons: Person[] = [
         lon: 35.57,
         imageUrl: 'https://i0.wp.com/www.thebestcatholic.com/wp-content/uploads/2016/09/The-Best-Catholic.Matthew5a319b0c116995afb26cab5af9e51e4c.wix_mp_1024.jpeg',
         fromYear: 4,
-        toYear: 68
+        fromApprox: true,
+        toYear: 68,
+        toApprox: true,
+        camps: ["Apostle"]
     },
     {
         pid: "paul_of_tarsus",
@@ -25,7 +32,10 @@ export const all_persons: Person[] = [
         lon: 34.90,
         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Giovanni_Francesco_Barbieri_-_Saint_Paul.jpg/960px-Giovanni_Francesco_Barbieri_-_Saint_Paul.jpg?20190309231900',
         fromYear: 5,
-        toYear: 65
+        fromApprox: true,
+        toYear: 65,
+        toApprox: true,
+        camps: ["Apostle"]
     },
     {
         pid: "clement_of_rome",
@@ -34,7 +44,10 @@ export const all_persons: Person[] = [
         lon: 12.59,
         imageUrl: 'https://lonelypilgrim.com/wp-content/uploads/2014/05/clement-of-rome.jpg?w=214',
         fromYear: 35,
-        toYear: 101
+        fromApprox: true,
+        toYear: 101,
+        toApprox: true,
+        camps: ["Apostolic Father"]
     },
     {
         pid: "papias_of_hierapolis",
@@ -43,7 +56,10 @@ export const all_persons: Person[] = [
         lon: 29.11,
         imageUrl: 'https://pbcdn1.podbean.com/imglogo/ep-logo/pbblog17411067/papias.jpeg',
         fromYear: 60,
-        toYear: 130
+        fromApprox: true,
+        toYear: 130,
+        toApprox: true,
+        camps: ["Apostolic Father"]
     },
     {
         pid: "augustine_of_hippo",
@@ -52,6 +68,7 @@ export const all_persons: Person[] = [
         lon: 7.75,
         imageUrl: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/saint-augustine-of-hippo-philippe-de-champaigne-war-is-hell-store.jpg',
         fromYear: 354,
-        toYear: 430
+        toYear: 430,
+        camps: ["Western", "Nicene"]
     }
 ]

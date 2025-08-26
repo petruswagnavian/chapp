@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, Dimensions, ColorValue, ScrollView, Image} from 'react-native'
+import {StyleSheet, Text, View, Dimensions, ColorValue, ScrollView, Image, Pressable} from 'react-native'
 import React from 'react'
 import {useLocalSearchParams} from "expo-router";
 import {LinearGradient} from "expo-linear-gradient";
@@ -33,12 +33,13 @@ const Identity = () => {
     function darken(color: string, amount: number): string {
         return chroma.mix(color, "#000", amount, "lab").hex();
     }
-    const backgroundBase = colors.dark[100];
+    const backgroundBase = colors.primary;
     const backgroundGradient = [lighten(backgroundBase, 0.2),
         backgroundBase, darken(backgroundBase, 0.2)] as [ColorValue, ColorValue, ...ColorValue[]]
     const base = '#4A90E2';
     const sideGradient = [lighten(base, 0.2), base, darken(base, 0.4)
         ] as [ColorValue, ColorValue, ...ColorValue[]]
+    const capsDisplayName = person.displayName.toUpperCase();
     return (
         <LinearGradient colors={backgroundGradient}
                         start={{x: 0, y: 0}}
@@ -58,9 +59,9 @@ const Identity = () => {
                             style={styles.rightBanner}
             />
             <View style={styles.displayNameBanner}>
-                <Text numberOfLines={1} adjustsFontSizeToFit style={styles.displayNameText}>{person.displayName}</Text>
+                <Text numberOfLines={1} adjustsFontSizeToFit style={styles.displayNameText}>{capsDisplayName}</Text>
             </View>
-            <View style={styles.campBanner}></View>
+            <View style={styles.mainCampBanner}></View>
             <View style={styles.scrollArea}>
                 <ScrollView style={styles.textScrollArea}
                             contentContainerStyle={styles.scrollContent}
@@ -72,12 +73,23 @@ const Identity = () => {
                             contentContainerStyle={styles.scrollContent}
                             showsVerticalScrollIndicator={true}
                 >
-                    <View style={styles.infoBox}></View>
+                    <Text style={styles.infoHeader}>
+                        {person.displayName}
+                    </Text>
                     <Image
                         source={{uri: person.imageUrl}}
                         style={styles.image}
                         resizeMode="cover"
                     />
+                    <View style={{flexDirection: "row", paddingTop: scrollAreaPadding}}>
+                        <Text style={styles.infoLabel}>Born: </Text>
+                        <Text style={styles.infoValue}>{person.fromYear} AD</Text>
+                    </View>
+                    <View style={{flexDirection: "row"}}>
+                        <Text style={styles.infoLabel}>Died: </Text>
+                        <Text style={styles.infoValue}>{person.toYear} AD</Text>
+                    </View>
+
                 </ScrollView>
             </View>
         </LinearGradient>
@@ -109,15 +121,40 @@ const styles = StyleSheet.create({
     infoScrollArea: {
         //marginLeft: 0,
         width: infoScrollAreaWidth,
-        borderWidth: 1,
+        borderTopWidth: 3,
+        borderBottomWidth: 3,
+        borderLeftWidth: 3,
     },
-    infoBox: {
-        height: screenHeight * 1.5,
-        backgroundColor: '#777'
+    infoHeader: {
+        flex: 1,
+        textAlign: 'center',
+        fontFamily: 'ArnoPro-Bold',
+        fontSize: 16,
+        //backgroundColor: '#777',
     },
     image: {
-        width: infoScrollAreaWidth - (scrollAreaPadding * 2),
+        flex: 1,
+        width: infoScrollAreaWidth - (scrollAreaPadding * 2.4),
         height: infoScrollAreaWidth * 1.25,
+        borderWidth: 8,
+        //borderRadius: 8,
+    },
+    infoText: {
+        flex: 1,
+        textAlign: 'left',
+        fontFamily: 'ArnoPro-Regular',
+        fontSize: 20,
+        backgroundColor: '#777'
+    },
+    infoLabel: {
+        width: 60,
+        fontFamily: 'ArnoPro-Bold',
+        fontSize: 18,
+    },
+    infoValue: {
+        flex: 1,
+        fontFamily: 'ArnoPro-Regular',
+        fontSize: 18,
     },
     scrollContent: {
         padding: scrollAreaPadding
@@ -151,13 +188,17 @@ const styles = StyleSheet.create({
         fontSize: 200,
         //backgroundColor: '#555'
     },
-    campBanner: {
+    mainCampBanner: {
         position: "absolute",
         top: 0,
         height: topBarHeight,
         left: leftBarWidth + textScrollAreaWidth,
         width: infoScrollAreaWidth,
         backgroundColor: '#999'
+    },
+    mainCampButton: {
+        flex: 1,
+        padding: 16
     },
     leftBanner: {
         position: 'absolute',
