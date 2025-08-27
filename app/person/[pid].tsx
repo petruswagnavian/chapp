@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View, Dimensions, ColorValue, ScrollView, Image, Pressable} from 'react-native'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {useLocalSearchParams} from "expo-router";
 import {LinearGradient} from "expo-linear-gradient";
 import chroma from "chroma-js";
@@ -20,6 +20,16 @@ const infoScrollAreaWidth = scrollAreaWidth - textScrollAreaWidth;
 const Identity = () => {
     const { pid } = useLocalSearchParams();
     const person = all_persons.find(p => p.pid === pid);
+    const [imgHeight, setImgHeight] = useState<number | undefined>();
+    useEffect(() => {
+        if (person?.imageUrl) {
+            Image.getSize(person.imageUrl, (w, h) => {
+                const targetWidth = infoScrollAreaWidth - scrollAreaPadding * 2.4;
+                const scaledHeight = h * (targetWidth / w);
+                setImgHeight(scaledHeight);
+            })
+        }
+    }, [person?.imageUrl]);
     if (!person) {
         return (
             <View style={styles.container}>
@@ -86,8 +96,12 @@ const Identity = () => {
                     </Text>
                     <Image
                         source={{uri: person.imageUrl}}
-                        style={styles.image}
+                        style={[
+                            styles.image,
+                            imgHeight ? {height: imgHeight} : {height: infoScrollAreaWidth * 1.25}
+                        ]}
                         resizeMode="cover"
+                        onError={e => console.log("Image failed", e.nativeEvent.error)}
                     />
                     <View style={{flexDirection: "row", paddingTop: scrollAreaPadding}}>
                         <Text style={styles.infoLabel}>Born: </Text>
@@ -144,7 +158,8 @@ const styles = StyleSheet.create({
     image: {
         flex: 1,
         width: infoScrollAreaWidth - (scrollAreaPadding * 2.4),
-        height: infoScrollAreaWidth * 1.25,
+        //height: infoScrollAreaWidth * 1.25,
+        //height: imgHeight,
         borderWidth: 8,
         //borderRadius: 8,
     },

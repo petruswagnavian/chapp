@@ -62,6 +62,18 @@ export const all_persons: Person[] = [
         camps: ["Apostolic Father"]
     },
     {
+        pid: "irenaeus_of_lyon",
+        displayName: "Irenaeus of Lyon",
+        lat: 45.76,
+        lon: 4.84,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/3/38/Saint_irenee_saint_irenee.jpg',
+        fromYear: 125,
+        fromApprox: true,
+        toYear: 202,
+        toApprox: true,
+        camps: ["Western"]
+    },
+    {
         pid: "augustine_of_hippo",
         displayName: "Augustine of Hippo",
         lat: 36.90,
