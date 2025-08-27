@@ -5,7 +5,7 @@ import {LinearGradient} from "expo-linear-gradient";
 import chroma from "chroma-js";
 import {all_persons} from "@/constants/persons_data";
 import colors from "@/constants/colors"
-import BackButton from "@/components/BackButton";
+import TransferButton from "@/components/TransferButton";
 
 const screenWidth = Dimensions.get("window").width;
 const screenHeight = Dimensions.get("window").height;
@@ -40,14 +40,22 @@ const Identity = () => {
     const sideGradient = [lighten(base, 0.2), base, darken(base, 0.4)
         ] as [ColorValue, ColorValue, ...ColorValue[]]
     const capsDisplayName = person.displayName.toUpperCase();
+    const fromYear = person.fromApprox ? "~" + person.fromYear : person.fromYear;
+    const toYear = person.toApprox ? "~" + person.toYear : person.toYear;
     return (
         <LinearGradient colors={backgroundGradient}
                         start={{x: 0, y: 0}}
                         end={{x: 0, y: 1}}
                         style = {styles.container}>
-            <BackButton style={styles.backButton}
-                        backgroundColor={colors.dark[300]}
-                        pressedColor={colors.dark[200]}/>
+            <TransferButton style={styles.backButton}
+                            functionName="back"
+                            backgroundColor={colors.dark[300]}
+                            pressedColor={colors.dark[200]}/>
+            <TransferButton style={styles.mapButton}
+                            functionName="map"
+                            backgroundColor={colors.dark[300]}
+                            pressedColor={colors.dark[200]}
+                            />
             <LinearGradient colors={sideGradient}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 1 }}
@@ -74,7 +82,7 @@ const Identity = () => {
                             showsVerticalScrollIndicator={true}
                 >
                     <Text style={styles.infoHeader}>
-                        {person.displayName}
+                        {person.displayName}{"\n"}({fromYear} – {toYear})
                     </Text>
                     <Image
                         source={{uri: person.imageUrl}}
@@ -83,11 +91,11 @@ const Identity = () => {
                     />
                     <View style={{flexDirection: "row", paddingTop: scrollAreaPadding}}>
                         <Text style={styles.infoLabel}>Born: </Text>
-                        <Text style={styles.infoValue}>{person.fromYear} AD</Text>
+                        <Text style={styles.infoValue}>{fromYear} AD</Text>
                     </View>
                     <View style={{flexDirection: "row"}}>
                         <Text style={styles.infoLabel}>Died: </Text>
-                        <Text style={styles.infoValue}>{person.toYear} AD</Text>
+                        <Text style={styles.infoValue}>{toYear} AD</Text>
                     </View>
 
                 </ScrollView>
@@ -130,6 +138,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontFamily: 'ArnoPro-Bold',
         fontSize: 16,
+        lineHeight: 20
         //backgroundColor: '#777',
     },
     image: {
@@ -167,6 +176,16 @@ const styles = StyleSheet.create({
         width: leftBarWidth,
         borderBottomWidth: 3,
         borderRightWidth: 3,
+        zIndex: 5,
+    },
+    mapButton: {
+        position: 'absolute',
+        top: 0,
+        height: screenHeight / 6,
+        right: 0,
+        width: rightBarWidth,
+        borderBottomWidth: 3,
+        borderLeftWidth: 3,
         zIndex: 5,
     },
     displayNameBanner: {
@@ -210,8 +229,8 @@ const styles = StyleSheet.create({
     },
     rightBanner: {
         position: 'absolute',
-        top: 0,
-        height: screenHeight,
+        top: screenHeight / 6,
+        height: screenHeight - (screenHeight / 6),
         right: 0,
         width: rightBarWidth,
         borderLeftWidth: 3,
