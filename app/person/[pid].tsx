@@ -2,9 +2,9 @@ import {StyleSheet, Text, View, Dimensions, ColorValue, ScrollView, Image, Press
 import React, {useEffect, useState} from 'react'
 import {useLocalSearchParams} from "expo-router";
 import {LinearGradient} from "expo-linear-gradient";
-import chroma from "chroma-js";
 import {all_persons} from "@/constants/persons_data";
 import colors from "@/constants/colors"
+import {lighten, darken} from "@/utils/colorUtils"
 import TransferButton from "@/components/TransferButton";
 
 const screenWidth = Dimensions.get("window").width;
@@ -37,35 +37,39 @@ const Identity = () => {
             </View>
         )
     }
-    function lighten(color: string, amount: number): string {
-        return chroma.mix(color, "#fff", amount, "lab").hex();
-    }
-    function darken(color: string, amount: number): string {
-        return chroma.mix(color, "#000", amount, "lab").hex();
-    }
+
+    const mainCamp = person.mainCamp ? person.mainCamp : person.camps[0];
+    const mainCampId = mainCamp.toLowerCase().replace(/\s+/g,"_");
+    const mainCampCaps = mainCamp.toUpperCase();
+    const mainCampColor = colors.camp[mainCampId as keyof typeof colors.camp];
+
     const backgroundBase = colors.primary;
     const backgroundGradient = [lighten(backgroundBase, 0.2),
         backgroundBase, darken(backgroundBase, 0.2)] as [ColorValue, ColorValue, ...ColorValue[]]
-    const base = '#4A90E2';
-    const sideGradient = [lighten(base, 0.2), base, darken(base, 0.4)
-        ] as [ColorValue, ColorValue, ...ColorValue[]]
-    const capsDisplayName = person.displayName.toUpperCase();
+
+    const sideGradient = [lighten(mainCampColor, 0.2), mainCampColor,
+        darken(mainCampColor, 0.4)] as [ColorValue, ColorValue, ...ColorValue[]]
+
+    const displayNameCaps = person.displayName.toUpperCase();
+
     const fromYear = person.fromApprox ? "~" + person.fromYear : person.fromYear;
     const toYear = person.toApprox ? "~" + person.toYear : person.toYear;
+
     return (
         <LinearGradient colors={backgroundGradient}
                         start={{x: 0, y: 0}}
                         end={{x: 0, y: 1}}
-                        style = {styles.container}>
+                        style={styles.container}>
             <TransferButton style={styles.backButton}
                             functionName="back"
                             backgroundColor={colors.dark[300]}
-                            pressedColor={colors.dark[200]}/>
+                            pressedColor={colors.dark[200]}
+                            showIcon={true}/>
             <TransferButton style={styles.mapButton}
                             functionName="map"
                             backgroundColor={colors.dark[300]}
                             pressedColor={colors.dark[200]}
-                            />
+                            showIcon={true}/>
             <LinearGradient colors={sideGradient}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 1 }}
@@ -77,9 +81,18 @@ const Identity = () => {
                             style={styles.rightBanner}
             />
             <View style={styles.displayNameBanner}>
-                <Text numberOfLines={1} adjustsFontSizeToFit style={styles.displayNameText}>{capsDisplayName}</Text>
+                <Text numberOfLines={1} adjustsFontSizeToFit style={styles.displayNameText}>{displayNameCaps}</Text>
             </View>
-            <View style={styles.mainCampBanner}></View>
+            <View style={styles.mainCampBanner}>
+                <TransferButton style={styles.mainCampButton}
+                                functionName="camp"
+                                backgroundColor={mainCampColor}
+                                pressedColor={lighten(mainCampColor, 0.3)}
+                                showIcon={false}
+                >
+                    <Text numberOfLines={1} adjustsFontSizeToFit style={styles.mainCampButtonText}>{mainCampCaps}</Text>
+                </TransferButton>
+            </View>
             <View style={styles.scrollArea}>
                 <ScrollView style={styles.textScrollArea}
                             contentContainerStyle={styles.scrollContent}
@@ -98,7 +111,8 @@ const Identity = () => {
                         source={{uri: person.imageUrl}}
                         style={[
                             styles.image,
-                            imgHeight ? {height: imgHeight} : {height: infoScrollAreaWidth * 1.25}
+                            imgHeight ? {height: imgHeight} : {height: infoScrollAreaWidth * 1.25},
+                            {borderColor: '#000'}
                         ]}
                         resizeMode="cover"
                         onError={e => console.log("Image failed", e.nativeEvent.error)}
@@ -143,9 +157,7 @@ const styles = StyleSheet.create({
     infoScrollArea: {
         //marginLeft: 0,
         width: infoScrollAreaWidth,
-        borderTopWidth: 3,
-        borderBottomWidth: 3,
-        borderLeftWidth: 3,
+        borderWidth: 1
     },
     infoHeader: {
         flex: 1,
@@ -223,16 +235,30 @@ const styles = StyleSheet.create({
         //backgroundColor: '#555'
     },
     mainCampBanner: {
-        position: "absolute",
+        position: 'absolute',
         top: 0,
         height: topBarHeight,
         left: leftBarWidth + textScrollAreaWidth,
         width: infoScrollAreaWidth,
-        backgroundColor: '#999'
+        //backgroundColor: '#999',
+        backgroundColor: 'transparent',
+        alignItems: 'center',
+        justifyContent: 'center',
+
     },
     mainCampButton: {
+        height: topBarHeight * 0.7,
+        width: infoScrollAreaWidth * 0.8,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 1,
+    },
+    mainCampButtonText: {
         flex: 1,
-        padding: 16
+        textAlign: 'center',
+        textAlignVertical: 'center', //android only ?
+        fontFamily: 'ArnoPro-Bold',
+        fontSize: 25,
     },
     leftBanner: {
         position: 'absolute',

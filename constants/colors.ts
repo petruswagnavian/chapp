@@ -20,6 +20,16 @@ const colors = {
     antique_pink: {
         100: '#d2959b',
         200: '#ae696f',
+    },
+    camp: {
+        apostle: '#FCE728',
+        apostolic_father: '#CCBA25',
+        gnostic: '#98AB74',
+        western: '#62C7D9',
+        eastern: '#6BCF8B',
+        nicene: '#A69A33',
+        arian: '#8A2D0F',
+        monarchian: '#611385',
     }
 }
 
