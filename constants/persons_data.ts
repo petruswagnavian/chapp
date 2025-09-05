@@ -62,6 +62,18 @@ export const all_persons: Person[] = [
         camps: ["Apostolic Father"]
     },
     {
+        pid: "valentinus_gnostic",
+        displayName: "Valentinus",
+        lat: 41.88,
+        lon: 12.59,
+        imageUrl: 'https://bpb-us-e1.wpmucdn.com/blogs.uoregon.edu/dist/7/10891/files/2015/05/valentinus-1kiu29x.jpg',
+        fromYear: 100,
+        fromApprox: true,
+        toYear: 180,
+        toApprox: true,
+        camps: ["Gnostic"]
+    },
+    {
         pid: "irenaeus_of_lyon",
         displayName: "Irenaeus of Lyon",
         lat: 45.76,

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <title>Leaflet Historical Map</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
     <style>
         html, body, #map {height: 100%; margin: 0; padding: 0;}
         .polity-popup .leaflet-popup-content {
@@ -28,62 +30,106 @@
     </style>
 </head>
 <body>
-    <div id="map"></div>
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        let currentLayer = null;
-        let polityFeatures = [];
-        let personMarkers = [];
-        let lastMapVersion = 0;
-        let lastPersonsVersion = 0;
-        const canvasRenderer = L.canvas({padding: 1.25})
-        const map = L.map('map', {
-            zoomControl: false,
-            attributionControl: false,
-            minZoom: 2,
-            maxZoom: 8,
-            doubleClickZoom: false,
-            inertia: false,
-            //inertiaDeceleration: 100, //default 3000, lower is less glide
-            //inertiaMaxSpeed: 100, //lower stops sooner
-            unloadInvisibleTiles: false,
-            updateWhenIdle: false,
-            updateWhenZooming: true,
-            preferCanvas: true,
-        })
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+<script>
+    let currentLayer = null;
+    let polityFeatures = [];
+    let personMarkers = [];
+    let lastMapVersion = 0;
+    let lastPersonsVersion = 0;
+    let isSpiderfied = false;
+    const canvasRenderer = L.canvas({padding: 1.25})
+    const map = L.map('map', {
+        zoomControl: false,
+        attributionControl: false,
+        minZoom: 2,
+        maxZoom: 8,
+        doubleClickZoom: false,
+        inertia: false,
+        //inertiaDeceleration: 100, //default 3000, lower is less glide
+        //inertiaMaxSpeed: 100, //lower stops sooner
+        unloadInvisibleTiles: false,
+        updateWhenIdle: false,
+        updateWhenZooming: true,
+        preferCanvas: true,
+        tap: false
+    })
 
-        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}', {
-            keepBuffer: 4,
-            unloadInvisibleTiles: false,
-            updateWhenIdle: false,
-            updateWhenZooming: true,
-            attribution: 'Tiles © Esri — Source: National Geographic, Esri, Garmin, HERE, UNEP-WCMC, USGS, NASA, ESA'
-        }).addTo(map);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}', {
+        keepBuffer: 4,
+        unloadInvisibleTiles: false,
+        updateWhenIdle: false,
+        updateWhenZooming: true,
+        attribution: 'Tiles © Esri — Source: National Geographic, Esri, Garmin, HERE, UNEP-WCMC, USGS, NASA, ESA'
+    }).addTo(map);
 
-        map.setView([40, 30], 3) //[lat, lng, zoomlevel] //starts at zoom = 3
-        map.setMaxBounds([
-            [-85, -180], //SW corner
-            [85, 180], //NE corner
-        ])
-        function clearMap() {
-            if (currentLayer) {
-                currentLayer.eachLayer(l => { l.closePopup(); l.unbindPopup(); l.off(); });
-                currentLayer.remove();
-                currentLayer = null;
-            }
+    map.setView([40, 30], 3) //[lat, lng, zoomlevel] //starts at zoom = 3
+    map.setMaxBounds([
+        [-85, -180], //SW corner
+        [85, 180], //NE corner
+    ])
+
+    //panes
+    //map.createPane('polityPane'); map.getPane('polityPane').style.zIndex = "700"; //polities are at 400?
+    map.createPane('markerPane'); map.getPane('markerPane').style.zIndex = "500";
+    map.createPane('clusterPane'); map.getPane('clusterPane').style.zIndex = "500";
+    map.createPane('spiderfyPane'); map.getPane('spiderfyPane').style.zIndex = "300";
+
+    function clearMap() {
+        if (currentLayer) {
+            currentLayer.eachLayer(l => { l.closePopup(); l.unbindPopup(); l.off(); });
+            currentLayer.remove();
+            currentLayer = null;
         }
-        function clearPersonMarkers() {
-            if (personMarkers) {
-                personMarkers.forEach(m => {
-                    m.off();
-                    map.removeLayer(m);
-                })
-                personMarkers = [];
-            }
+    }
+    const personClusterGroup = L.markerClusterGroup({
+        maxClusterRadius: 40, //default 80
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: false,
+        spiderfyOnClick: true,
+        spiderfyOnEveryZoom: false,
+        animate: true,
+        singleMarkerMode: false,
+        pane: 'clusterPane',
+        spiderfyDistanceMultiplier: 3,
+        spiderLegPolylineOptions: {
+            color: '#000',
+            weight: 1,
+            opacity: 0,
+            pane: 'spiderfyPane',
+        },
+    })
+    map.addLayer(personClusterGroup);
+    personClusterGroup.on('clusterclick', (e) => {
+        e.layer.spiderfy();
+        isSpiderfied = true;
+    })
+
+    const safeUnspiderfy = () => {
+        if (personClusterGroup && personClusterGroup.unspiderfy && isSpiderfied) {
+            personClusterGroup.unspiderfy();
+            isSpiderfied = false;
         }
-        function addPersonMarker(pid, lat, lon, imageUrl) {
-            const icon = L.divIcon({
-                html: `
+    }
+    map.on('touchstart', safeUnspiderfy);
+    map.on('movestart zoomstart', safeUnspiderfy);
+
+    function clearPersonMarkers() {
+        if (personMarkers) {
+            personMarkers.forEach(m => {
+                m.off();
+                map.removeLayer(m);
+            })
+            personClusterGroup.clearLayers();
+            personMarkers = [];
+        }
+    }
+    function addPersonMarker(pid, lat, lon, imageUrl) {
+        const icon = L.divIcon({
+            pane: 'markerPane',
+            html: `
                     <img src="${imageUrl}" style="
                     width: 30px;
                     height: 30px;
@@ -92,90 +138,103 @@
                     box-shadow: 0 0 5px rgba(0,0,0,0.5);
                     "/>
                 `,
-                className: '',
-                iconSize: [40, 40],
-                iconAnchor: [20, 20],
-                popupAnchor: [0, -20]
-            })
-            const marker = L.marker([lat, lon], {icon}).on('click', () => {
-                window.ReactNativeWebView?.postMessage(`open_person:${pid}`)
-            }).addTo(map);
-            personMarkers.push(marker);
-        }
+            className: '',
+            iconSize: [40, 40],
+            iconAnchor: [20, 20],
+            popupAnchor: [0, -20]
+        })
+        const marker = L.marker([lat, lon], {icon, pid}).on('click', () => {
+            window.ReactNativeWebView?.postMessage(`open_person:${pid}`);
+        })
+        personClusterGroup.addLayer(marker);
+        personMarkers.push(marker);
+    }
 
-        function getPolityStyle(feature) {
-            const c = feature.properties.Color
-            const interactive = map.getZoom() >= 3
-            return {
-                color: '#000',
-                weight: 0.5,
-                fillColor: c,
-                fillOpacity: 0.5,
-                interactive
+    function onEachPolity(feature, layer) {
+        const name = feature.properties.DisplayName;
+        layer.bindPopup(`<b>${name}</b>`, {
+            className: 'polity-popup',
+            closeButton: false
+        })
+        layer.on('popupopen', (e) => {
+            safeUnspiderfy();
+            const popup = e.popup;
+            const contentArea = popup.getElement();
+            if (contentArea) {
+                contentArea.addEventListener('click', () => {
+                    map.closePopup(popup);
+                })
             }
+        })
+        polityFeatures.push({
+            feature,
+            layer,
+            tooltip: null
+        })
+    }
+
+    /*
+    function getPolityStyle(feature) {
+        const c = feature.properties.Color
+        const interactive = map.getZoom() >= 3
+        return {
+            color: '#000',
+            weight: 0.5,
+            fillColor: c,
+            fillOpacity: 0.5,
+            interactive
         }
-        map.on('zoomend', () => currentLayer && currentLayer.setStyle(getPolityStyle))
+    }
+    map.on('zoomend', () => currentLayer && currentLayer.setStyle(getPolityStyle))
+    */
 
-        function onEachPolity(feature, layer) {
-            const name = feature.properties.DisplayName;
-            layer.bindPopup(`<b>${name}</b>`, {
-                className: 'polity-popup',
-                closeButton: false
-            })
-            layer.on('popupopen', (e) => {
-                const popup = e.popup;
-                const contentArea = popup.getElement();
-                if (contentArea) {
-                    contentArea.addEventListener('click', () => {
-                        map.closePopup(popup);
-                    })
-                }
-            })
-            polityFeatures.push({
-                feature,
-                layer,
-                tooltip: null
-            })
-        }
+    function handleMessage(event) {
+        const message = JSON.parse(event.data);
+        console.log("received message: ", message);
 
-        function handleMessage(event) {
-            const message = JSON.parse(event.data);
-            console.log("received message: ", message);
+        if (message.type === 'UPDATE_YEAR') {
+            const v = message.version || 0;
+            if (v <= lastMapVersion) return;
+            lastMapVersion = v;
 
-            if (message.type === 'UPDATE_YEAR') {
-                const v = message.version || 0;
-                if (v <= lastMapVersion) return;
-                lastMapVersion = v;
-
-                clearMap();
-                currentLayer = L.geoJSON(message.geojson, {
-                    style: getPolityStyle,
-                    onEachFeature: onEachPolity,
-                    renderer: canvasRenderer,
-                    noClip: false
-                }).addTo(map)
-                return;
-            }
-
-            if (message.type === 'UPDATE_PERSONS') {
-                const v = message.personsVersion || 0;
-                if (v <= lastPersonsVersion) return;
-                lastPersonsVersion = v;
-
-                clearPersonMarkers();
-                (message.persons || []).forEach((p) =>
-                    addPersonMarker(p.pid, p.lat, p.lon, p.imageUrl)
-                )
-            }
+            safeUnspiderfy();
+            clearMap();
+            //polities
+            currentLayer = L.geoJSON(message.geojson, {
+                //pane: 'polityPane',
+                style: (f) => ({
+                    color: '#000',
+                    weight: 0.5,
+                    fillColor: f.properties.Color,
+                    fillOpacity: 0.5,
+                }),
+                onEachFeature: onEachPolity,
+                renderer: canvasRenderer,
+                interactive: true,
+                noClip: false
+            }).addTo(map)
+            return;
         }
 
-        //bind once
-        if (!window.__msgBound) {
-            document.addEventListener('message', handleMessage);
-            window.__msgBound = true;
+        if (message.type === 'UPDATE_PERSONS') {
+            const v = message.personsVersion || 0;
+            if (v <= lastPersonsVersion) return;
+            lastPersonsVersion = v;
+
+            clearPersonMarkers();
+            (message.persons || []).forEach((p) =>
+                addPersonMarker(p.pid, p.lat, p.lon, p.imageUrl)
+            )
         }
-        //window.addEventListener('message', handleMessage);
-        //map.on('zoomend', updateLabelsForZoom);
-    </script>
+    }
+
+    //bind once
+    if (!window.__msgBound) {
+        document.addEventListener('message', handleMessage);
+        window.__msgBound = true;
+    }
+    //window.addEventListener('message', handleMessage);
+    //map.on('zoomend', updateLabelsForZoom);
+</script>
 </body>
 </html>
