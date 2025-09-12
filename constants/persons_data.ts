@@ -30,7 +30,7 @@ export const all_persons: Person[] = [
         displayName: "Paul of Tarsus",
         lat: 36.92,
         lon: 34.90,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Giovanni_Francesco_Barbieri_-_Saint_Paul.jpg/960px-Giovanni_Francesco_Barbieri_-_Saint_Paul.jpg?20190309231900',
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/7/79/Giovanni_Francesco_Barbieri_-_Saint_Paul.jpg/960px-Giovanni_Francesco_Barbieri_-_Saint_Paul.jpg?20190309231900',
         fromYear: 5,
         fromApprox: true,
         toYear: 65,
