@@ -106,7 +106,9 @@
         e.layer.spiderfy();
         isSpiderfied = true;
     })
-
+    personClusterGroup._getExpandedVisibleBounds = function() {
+        return map.getBounds().pad(1.25);
+    }
     const safeUnspiderfy = () => {
         if (personClusterGroup && personClusterGroup.unspiderfy && isSpiderfied) {
             personClusterGroup.unspiderfy();
