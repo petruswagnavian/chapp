@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, Dimensions, StyleSheet, LayoutChangeEvent} from 'react-native';
 import {Gesture, GestureDetector} from "react-native-gesture-handler";
+//import {scheduleOnRN} from "react-native-worklets";
 import Animated, {
     useSharedValue,
     useAnimatedStyle,

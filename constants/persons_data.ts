@@ -14,6 +14,18 @@ export type Person = {
 
 export const all_persons: Person[] = [
     {
+        pid: "peter_the_apostle",
+        displayName: "Peter the Apostle",
+        lat: 32.91089391890956,
+        lon: 35.63200492242213,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Saint_Peter-Sinai_%286th_Century%29_Crop.jpg/1024px-Saint_Peter-Sinai_%286th_Century%29_Crop.jpg',
+        fromYear: -1,
+        fromApprox: true,
+        toYear: 65,
+        toApprox: true,
+        camps: ["Apostle"]
+    },
+    {
         pid: "matthew_the_apostle",
         displayName: "Matthew the Apostle",
         lat: 32.88,

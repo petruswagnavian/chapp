@@ -1,48 +1,54 @@
 import React from 'react';
-import {View, Text, ScrollView, TouchableOpacity, StyleSheet, Dimensions} from 'react-native';
+import { View, Text, ScrollView, Pressable, StyleSheet, Dimensions, Platform } from 'react-native';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-export type Age = {
-    id: string;
-    label: string;
-    startYear: number;
-    endYear: number;
-}
+export type Age = { id: string; label: string; startYear: number; endYear: number; };
 
 interface Props {
     ages: Age[];
     selectedAgeId: string;
     onSelectAge: (age: Age) => void;
+    onPress?: () => void;
+    backgroundColor?: string;
+    pressedColor?: string;
 }
 
-const AgeSelector =
-    ({ages, selectedAgeId, onSelectAge }: Props) => {
+const AgeSelector = ({ ages, selectedAgeId, onSelectAge, onPress, backgroundColor = '#000', pressedColor = '#555' }: Props) => {
+    const [pressed, setPressed] = React.useState<string | null>(null);
     return (
         <View style={styles.container}>
             <ScrollView
-                persistentScrollbar={true}
+                persistentScrollbar
+                keyboardShouldPersistTaps="always"
                 contentContainerStyle={styles.scrollContainer}
             >
                 {ages.map((age) => {
                     const isSelected = age.id === selectedAgeId;
+                    const isPressed = pressed === age.id;
                     return (
-                        <TouchableOpacity
+                        <Pressable
                             key={age.id}
-                            style={[styles.button, isSelected && styles.selectedButton]}
                             onPress={() => onSelectAge(age)}
+                            onPressIn={() => setPressed(age.id)}
+                            onPressOut={() => setPressed(null)}
+                            style={[
+                                styles.button,
+                                isSelected && styles.selectedButton,
+                                isPressed && styles.pressedButton
+                            ]}
                         >
                             <Text style={[styles.buttonText, isSelected && styles.selectedText]}>
                                 {age.label}
                             </Text>
-                        </TouchableOpacity>
-                    )
+                        </Pressable>
+                    );
                 })}
             </ScrollView>
         </View>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -52,6 +58,8 @@ const styles = StyleSheet.create({
         bottom: 60,
         width: screenWidth / 5,
         backgroundColor: '#ddd',
+        zIndex: 10,
+        ...(Platform.OS === 'android' ? { elevation: 10 } : null),
     },
     scrollContainer: {
         paddingVertical: 0,
@@ -60,26 +68,34 @@ const styles = StyleSheet.create({
     button: {
         marginVertical: 3,
         paddingVertical: 12,
-        paddingHorizontal: 4,
+        paddingHorizontal: 8,
+        minHeight: 44,
         borderRadius: 0,
         backgroundColor: '#ddd',
         width: '100%',
-        alignItems: 'center'
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    pressedButton: {
+        backgroundColor: 'red',
     },
     selectedButton: {
-        backgroundColor: '#333'
+        backgroundColor: '#333',
     },
     buttonText: {
         fontSize: 18,
         fontFamily: 'ArnoPro-Regular',
         textAlign: 'center',
-        color: "#000",
-        maxWidth: 150
+        color: '#000',
+        maxWidth: 150,
     },
     selectedText: {
         color: '#fff',
         fontFamily: 'ArnoPro-Bold',
+    },
+    test: {
+        backgroundColor: 'blue', padding: 20, alignItems: 'center'
     }
-})
+});
 
 export default AgeSelector;

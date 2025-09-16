@@ -39,7 +39,7 @@
     let personMarkers = [];
     let lastMapVersion = 0;
     let lastPersonsVersion = 0;
-    let isSpiderfied = false;
+    //let isSpiderfied = false;
     const canvasRenderer = L.canvas({padding: 1.25})
     const map = L.map('map', {
         zoomControl: false,
@@ -75,7 +75,7 @@
     //map.createPane('polityPane'); map.getPane('polityPane').style.zIndex = "700"; //polities are at 400?
     map.createPane('markerPane'); map.getPane('markerPane').style.zIndex = "500";
     map.createPane('clusterPane'); map.getPane('clusterPane').style.zIndex = "500";
-    map.createPane('spiderfyPane'); map.getPane('spiderfyPane').style.zIndex = "300";
+    //map.createPane('spiderfyPane'); map.getPane('spiderfyPane').style.zIndex = "300";
 
     function clearMap() {
         if (currentLayer) {
@@ -88,7 +88,7 @@
         maxClusterRadius: 40, //default 80
         showCoverageOnHover: false,
         zoomToBoundsOnClick: false,
-        spiderfyOnClick: true,
+        spiderfyOnClick: false,
         spiderfyOnEveryZoom: false,
         animate: true,
         singleMarkerMode: false,
@@ -102,13 +102,35 @@
         },
     })
     map.addLayer(personClusterGroup);
+    /*
     personClusterGroup.on('clusterclick', (e) => {
         e.layer.spiderfy();
         isSpiderfied = true;
     })
+     */
+    L.MarkerCluster.prototype.spiderfy = function () {
+        return this; //actually disables spiderfy animation
+    }
+    personClusterGroup.on('clusterclick', (e) => {
+        e.originalEvent.preventDefault();
+        e.originalEvent.stopPropagation();
+
+        const markers = e.layer.getAllChildMarkers();
+        const data = markers.map(m => ({
+            pid: m.options.pid,
+            displayName: m.options.displayName,
+            imageUrl: m.options.imageUrl
+        }))
+        window.ReactNativeWebView?.postMessage(JSON.stringify({
+            type: 'OPEN_CLUSTER_PANEL',
+            markers: data
+        }))
+    })
+
     personClusterGroup._getExpandedVisibleBounds = function() {
         return map.getBounds().pad(1.25);
     }
+    /*
     const safeUnspiderfy = () => {
         if (personClusterGroup && personClusterGroup.unspiderfy && isSpiderfied) {
             personClusterGroup.unspiderfy();
@@ -117,6 +139,8 @@
     }
     map.on('touchstart', safeUnspiderfy);
     map.on('movestart zoomstart', safeUnspiderfy);
+
+     */
 
     function clearPersonMarkers() {
         if (personMarkers) {
@@ -128,7 +152,7 @@
             personMarkers = [];
         }
     }
-    function addPersonMarker(pid, lat, lon, imageUrl) {
+    function addPersonMarker(lat, lon, pid, displayName, imageUrl) {
         const icon = L.divIcon({
             pane: 'markerPane',
             html: `
@@ -143,9 +167,9 @@
             className: '',
             iconSize: [40, 40],
             iconAnchor: [20, 20],
-            popupAnchor: [0, -20]
+            popupAnchor: [0, 0]
         })
-        const marker = L.marker([lat, lon], {icon, pid}).on('click', () => {
+        const marker = L.marker([lat, lon], {pid, displayName, imageUrl, icon}).on('click', () => {
             window.ReactNativeWebView?.postMessage(`open_person:${pid}`);
         })
         personClusterGroup.addLayer(marker);
@@ -159,7 +183,7 @@
             closeButton: false
         })
         layer.on('popupopen', (e) => {
-            safeUnspiderfy();
+            //safeUnspiderfy();
             const popup = e.popup;
             const contentArea = popup.getElement();
             if (contentArea) {
@@ -199,7 +223,7 @@
             if (v <= lastMapVersion) return;
             lastMapVersion = v;
 
-            safeUnspiderfy();
+            //safeUnspiderfy();
             clearMap();
             //polities
             currentLayer = L.geoJSON(message.geojson, {
@@ -225,7 +249,7 @@
 
             clearPersonMarkers();
             (message.persons || []).forEach((p) =>
-                addPersonMarker(p.pid, p.lat, p.lon, p.imageUrl)
+                addPersonMarker(p.lat, p.lon, p.pid, p.displayName, p.imageUrl)
             )
         }
     }

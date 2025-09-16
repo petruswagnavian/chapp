@@ -1,10 +1,11 @@
 import {StyleSheet, Text, View, Dimensions} from 'react-native';
 import React, {useState, useEffect, useRef, useMemo} from 'react';
-import {WebView} from 'react-native-webview';
+import {WebView, WebViewMessageEvent} from 'react-native-webview';
 import {Link, router} from "expo-router";
 import {list_of_ages, mappable_years} from '@/constants/ages_years';
 import {all_persons} from '@/constants/persons_data';
 import colors from '@/constants/colors';
+import ClusterPanel from '@/components/ClusterPanel';
 import TransferButton from '@/components/TransferButton';
 import AgeSelector, {Age} from '@/components/AgeSelector';
 import YearDisplay from '@/components/YearDisplay';
@@ -63,7 +64,6 @@ const Mapper = () => {
         //geojsonCache.current.clear(); //should i?
     }
 
-
     //webview
     const [webviewLoaded, setWebviewLoaded] = useState(false);
     const webviewRef = useRef<WebView>(null);
@@ -71,6 +71,9 @@ const Mapper = () => {
         console.log('[RN] Webview loaded');
         setWebviewLoaded(true);
     }
+
+    const [clusterMarkers, setClusterMarkers] = useState<any[]>([]);
+    const [isClusterPanelVisible, setClusterPanelVisible] = useState(false);
 
     const geojsonCache = useRef<Map<number, any>>(new Map()); //cache remembers all fetched years until app is closed
     const inflight = useRef<Map<number, Promise<any>>>(new Map());
@@ -156,11 +159,20 @@ const Mapper = () => {
                 originWhitelist={['*']}
                 source={require('@/assets/map/map.html')}
                 onMessage={(event) => {
-                    const message = event.nativeEvent.data;
-                    if (message.startsWith('open_person:')) {
-                        const pid = message.replace
-                        ('open_person:', '');
-                        router.push(`/person/${pid}`);
+                    try {
+                        const rawMsg = event.nativeEvent.data;
+                        if (rawMsg.startsWith('open_person:')) {
+                            const pid = rawMsg.replace('open_person:', '');
+                            router.push(`/person/${pid}`);
+                            return;
+                        }
+                        const parsedMsg = JSON.parse(rawMsg);
+                        if (parsedMsg.type === "OPEN_CLUSTER_PANEL") {
+                            setClusterMarkers(parsedMsg.markers);
+                            setClusterPanelVisible(true);
+                        }
+                    } catch (err) {
+                        console.warn('bad message from WebView: ', err);
                     }
                 }}
                 onLoadEnd={handleLoadEnd}
@@ -171,10 +183,21 @@ const Mapper = () => {
                 allowFileAccessFromFileURLs={true}
                 style={styles.map}
             />
+            <ClusterPanel
+                visible={isClusterPanelVisible}
+                markers={clusterMarkers}
+                onClose={() => setClusterPanelVisible(false)}
+                onSelect={(marker) => {
+                    setClusterPanelVisible(false);
+                    router.push(`/person/${marker.pid}`);
+                }}
+            />
             <TransferButton style={styles.backButton}
                             functionName="back"
                             backgroundColor={colors.dark[300]}
-                            pressedColor={colors.dark[200]} />
+                            pressedColor={colors.dark[200]}
+                            showIcon={true}
+            />
 
             <YearDisplay year={currentYear} />
             <AgeSelector
@@ -196,7 +219,7 @@ export default Mapper
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 1
     },
     map: {
         width: screenWidth,
