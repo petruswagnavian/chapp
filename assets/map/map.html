@@ -27,6 +27,34 @@
             border: none;
             box-shadow: 0 0 0 2px black;
         }
+        .cluster-avatar-icon {
+            border-radius: 30px;
+            background: #fff;
+            border: 2px solid #fff;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+            overflow: visible;
+        }
+        .cluster-avatar-icon .cluster-avatar {
+            width: 32px;
+            height: 32px;
+            position: relative;
+            border-radius: 30px;
+            overflow: visible;
+        }
+        .cluster-avatar-icon .cluster-avatar img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 30px;
+        }
+        .cluster-avatar-icon .cluster-badge {
+            position: absolute;
+            right: -6px; bottom: -6px;
+            width: 10px; height: 18px; padding: 0 4px;
+            border-radius: 30px; background: #111; color: #fff;
+            font: 700 11px/18px Georgia; text-align: center;
+            border: 2px solid #fff
+        }
     </style>
 </head>
 <body>
@@ -39,7 +67,6 @@
     let personMarkers = [];
     let lastMapVersion = 0;
     let lastPersonsVersion = 0;
-    //let isSpiderfied = false;
     const canvasRenderer = L.canvas({padding: 1.25})
     const map = L.map('map', {
         zoomControl: false,
@@ -75,7 +102,6 @@
     //map.createPane('polityPane'); map.getPane('polityPane').style.zIndex = "700"; //polities are at 400?
     map.createPane('markerPane'); map.getPane('markerPane').style.zIndex = "500";
     map.createPane('clusterPane'); map.getPane('clusterPane').style.zIndex = "500";
-    //map.createPane('spiderfyPane'); map.getPane('spiderfyPane').style.zIndex = "300";
 
     function clearMap() {
         if (currentLayer) {
@@ -84,6 +110,7 @@
             currentLayer = null;
         }
     }
+    const clusterCycleIndex = new WeakMap();
     const personClusterGroup = L.markerClusterGroup({
         maxClusterRadius: 40, //default 80
         showCoverageOnHover: false,
@@ -93,6 +120,7 @@
         animate: true,
         singleMarkerMode: false,
         pane: 'clusterPane',
+        /*
         spiderfyDistanceMultiplier: 3,
         spiderLegPolylineOptions: {
             color: '#000',
@@ -100,14 +128,33 @@
             opacity: 0,
             pane: 'spiderfyPane',
         },
+
+         */
+
+        iconCreateFunction: (cluster) => {
+            const children = cluster.getAllChildMarkers();
+            const i = (clusterCycleIndex.get(cluster) || 0) % children.length;
+            //avatar for dynamic clusters
+            const avatar = children[i].options.imageUrl;
+            const count = cluster.getChildCount();
+            const html = `
+            <div class="cluster-avatar">
+                <img src="${avatar}" alt="">
+                <span class="cluster-badge">${count}</span>
+            </div>
+            `;
+            return L.divIcon({
+                html,
+                className: "cluster-avatar-icon",
+                iconSize: [32, 32],
+                iconAnchor: [20, 20],
+                popupAnchor: [0, 0]
+            })
+        }
     })
+
     map.addLayer(personClusterGroup);
-    /*
-    personClusterGroup.on('clusterclick', (e) => {
-        e.layer.spiderfy();
-        isSpiderfied = true;
-    })
-     */
+
     L.MarkerCluster.prototype.spiderfy = function () {
         return this; //actually disables spiderfy animation
     }
@@ -130,17 +177,6 @@
     personClusterGroup._getExpandedVisibleBounds = function() {
         return map.getBounds().pad(1.25);
     }
-    /*
-    const safeUnspiderfy = () => {
-        if (personClusterGroup && personClusterGroup.unspiderfy && isSpiderfied) {
-            personClusterGroup.unspiderfy();
-            isSpiderfied = false;
-        }
-    }
-    map.on('touchstart', safeUnspiderfy);
-    map.on('movestart zoomstart', safeUnspiderfy);
-
-     */
 
     function clearPersonMarkers() {
         if (personMarkers) {
@@ -175,6 +211,30 @@
         personClusterGroup.addLayer(marker);
         personMarkers.push(marker);
     }
+    function startClusterCycler(group, intervalMs = 2000) {
+        let t = null;
+        const tick = () => {
+            group._featureGroup.eachLayer(layer => {
+                if (typeof layer.getChildCount === 'function') { //only clusters
+                    const children = layer.getAllChildMarkers();
+                    if (!children.length) return;
+                    const next = ((clusterCycleIndex.get(layer) || 0) + 1) % children.length;
+                    clusterCycleIndex.set(layer, next);
+                }
+            })
+            group.refreshClusters();
+        }
+        const start = () => {if (!t) t = setInterval(tick, intervalMs)};
+        const stop = () => {if (t) clearInterval(t), t = null};
+
+        group.on('animationstart', stop);
+        group.on('animationend', start);
+        map.on('movestart zoomstart', stop);
+        map.on('moveend zoomend', start);
+
+        start();
+    }
+    startClusterCycler(personClusterGroup, 2000);
 
     function onEachPolity(feature, layer) {
         const name = feature.properties.DisplayName;
@@ -183,7 +243,6 @@
             closeButton: false
         })
         layer.on('popupopen', (e) => {
-            //safeUnspiderfy();
             const popup = e.popup;
             const contentArea = popup.getElement();
             if (contentArea) {
@@ -223,7 +282,6 @@
             if (v <= lastMapVersion) return;
             lastMapVersion = v;
 
-            //safeUnspiderfy();
             clearMap();
             //polities
             currentLayer = L.geoJSON(message.geojson, {
