@@ -27,9 +27,30 @@ const colors = {
         gnostic: '#98AB74',
         western: '#62C7D9',
         eastern: '#6BCF8B',
-        nicene: '#A69A33',
+        nicene: '#DBAB23',
         arian: '#8A2D0F',
+        origenist: '#379C21',
         monarchian: '#611385',
+        montanist: '#C74A4A',
+        pelagian: '#7D5968',
+        nestorian: '#1D728C',
+        chalcedonian: '#F0953E',
+        monophysite: '#B516A8',
+        miaphysite: '#CF3EC0',
+        iconodule: '#67CBB2',
+        iconoclast: '#5E7015'
+    },
+    age: {
+        apostolic_age: '#E4D127',
+        great_age: '#67CBB2',
+        nicene_age: '#B36C19',
+        chalcedon_age: '#D35673',
+        eastWest_age: '#7B49E6',
+        highMiddle_age: '#8C67B5',
+        lateMiddle_age: '#695987',
+        reformation_age: '#3748A3',
+        westphalian_age: '#2796E3',
+        modern_age: '#AFCCC0'
     }
 }
 
