@@ -11,6 +11,7 @@ import AgeSelector, {Age} from '@/components/AgeSelector';
 import YearDisplay from '@/components/YearDisplay';
 import YearSlider from '@/components/YearSlider';
 
+
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
@@ -71,6 +72,11 @@ const Mapper = () => {
         console.log('[RN] Webview loaded');
         setWebviewLoaded(true);
     }
+
+    const [layout, setLayout] = useState<{ width: number; height: number }>({
+        width: screenWidth,
+        height: screenHeight,
+    });
 
     const [clusterMarkers, setClusterMarkers] = useState<any[]>([]);
     const [isClusterPanelVisible, setClusterPanelVisible] = useState(false);
@@ -153,7 +159,13 @@ const Mapper = () => {
     }, [webviewLoaded, visiblePersons, personsDebouncedYear])
 
     return (
-        <View style={styles.container}>
+        <View
+            style={{flex: 1}}
+            onLayout={(e) => {
+                const {width, height} = e.nativeEvent.layout;
+                setLayout({width, height});
+            }}
+        >
             <WebView
                 ref={webviewRef}
                 originWhitelist={['*']}
@@ -181,7 +193,7 @@ const Mapper = () => {
                 allowFileAccess={true}
                 allowUniversalAccessFromFileURLs={true}
                 allowFileAccessFromFileURLs={true}
-                style={styles.map}
+                style={{width: layout.width, height: layout.height}}
             />
             <ClusterPanel
                 visible={isClusterPanelVisible}
@@ -192,11 +204,21 @@ const Mapper = () => {
                     router.push(`/person/${marker.pid}`);
                 }}
             />
-            <TransferButton style={styles.backButton}
-                            functionName="back"
-                            backgroundColor={colors.dark[300]}
-                            pressedColor={colors.dark[200]}
-                            showIcon={true}
+            <TransferButton
+                style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    height: 60,
+                    left: 0,
+                    width: layout.width / 10,
+                    borderRadius: 0,
+                    borderTopWidth: 3,
+                    zIndex: 5,
+                }}
+                functionName="back"
+                backgroundColor={colors.dark[300]}
+                pressedColor={colors.dark[200]}
+                showIcon={true}
             />
 
             <YearDisplay year={currentYear} />
@@ -211,42 +233,22 @@ const Mapper = () => {
                 currentYear={currentYear}
                 onYearChange={(year) => setCurrentYear(year)}
             />
-            <View style={styles.bottomBar} />
+            <View
+                style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    height: 60,
+                    left: layout.width / 10,
+                    right: layout.width / 5,
+                    borderRadius: 0,
+                    backgroundColor: colors.primary,
+                    borderTopWidth: 3,
+                    borderLeftWidth: 3,
+                    borderRightWidth: 3,
+                    zIndex: 1
+                }}
+            />
         </View>
     )
 }
 export default Mapper
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    },
-    map: {
-        width: screenWidth,
-        height: screenHeight,
-    },
-    backButton: {
-        position: 'absolute',
-        bottom: 0,
-        height: 60,
-        left: 0,
-        width: screenWidth / 10,
-        borderRadius: 0,
-        borderTopWidth: 3,
-        zIndex: 5,
-    },
-    bottomBar: {
-        position: 'absolute',
-        bottom: 0,
-        height: 60,
-        left: screenWidth / 10,
-        right: screenWidth / 5,
-        borderRadius: 0,
-
-        backgroundColor: colors.primary,
-        borderTopWidth: 3,
-        borderLeftWidth: 3,
-        borderRightWidth: 3,
-        zIndex: 1
-    }
-})

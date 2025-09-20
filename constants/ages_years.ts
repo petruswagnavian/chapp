@@ -8,7 +8,7 @@ export interface Age {
 export const list_of_ages: Age[] = [
     {id: 'apostolic_age', label: 'APOSTOLIC CHURCH', startYear: 33, endYear: 179},
     {id: 'great_age', label: 'GREAT CHURCH', startYear: 180, endYear: 324},
-    {id: 'nicene_age', label: 'NICENO-ROMAN AGE', startYear: 325, endYear: 450},
+    {id: 'nicene_age', label: 'NICENE-ROMAN AGE', startYear: 325, endYear: 450},
     {id: 'chalcedon_age', label: 'CHALCEDONIAN AGE', startYear: 451, endYear: 786},
     {id: 'eastWest_age', label: 'EAST-WEST CONFLICT', startYear: 787, endYear: 1053},
     {id: 'highMiddle_age', label: 'HIGH MIDDLE AGES', startYear: 1054, endYear: 1301},

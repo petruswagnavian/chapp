@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, Text, ScrollView, Pressable, StyleSheet, Dimensions, Platform } from 'react-native';
+import colors from '@/constants/colors';
+import {lighten, darken} from "@/utils/colorUtils"
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -16,30 +18,37 @@ interface Props {
 }
 
 const AgeSelector = ({ ages, selectedAgeId, onSelectAge, onPress, backgroundColor = '#000', pressedColor = '#555' }: Props) => {
-    const [pressed, setPressed] = React.useState<string | null>(null);
+    //const [pressed, setPressed] = React.useState<string | null>(null);
     return (
         <View style={styles.container}>
             <ScrollView
-                persistentScrollbar
-                keyboardShouldPersistTaps="always"
+                //persistentScrollbar
                 contentContainerStyle={styles.scrollContainer}
             >
                 {ages.map((age) => {
                     const isSelected = age.id === selectedAgeId;
-                    const isPressed = pressed === age.id;
+                    //const isPressed = pressed === age.id;
+                    const ageColor = colors.age[age.id as keyof typeof colors.age];
                     return (
                         <Pressable
                             key={age.id}
                             onPress={() => onSelectAge(age)}
+                            /*
                             onPressIn={() => setPressed(age.id)}
                             onPressOut={() => setPressed(null)}
+                             */
                             style={[
-                                styles.button,
-                                isSelected && styles.selectedButton,
-                                isPressed && styles.pressedButton
+                                styles.button, {
+                                    backgroundColor: colors.primary
+                                },
+                                isSelected && {backgroundColor: ageColor},
+                                //isPressed && {backgroundColor: lighten(ageColor, 0.4)}
                             ]}
                         >
-                            <Text style={[styles.buttonText, isSelected && styles.selectedText]}>
+                            <Text
+                                numberOfLines={1} adjustsFontSizeToFit
+                                style={[styles.buttonText, isSelected && styles.selectedText]}
+                            >
                                 {age.label}
                             </Text>
                         </Pressable>
@@ -57,21 +66,25 @@ const styles = StyleSheet.create({
         top: screenHeight / 5,
         bottom: 60,
         width: screenWidth / 5,
-        backgroundColor: '#ddd',
+        //backgroundColor: '#ddd',
+        borderTopWidth: 3,
+        borderBottomWidth: 3,
+        borderLeftWidth: 3,
+        borderRightWidth: 3,
+        borderColor: '#000',
         zIndex: 10,
         ...(Platform.OS === 'android' ? { elevation: 10 } : null),
     },
     scrollContainer: {
-        paddingVertical: 0,
         alignItems: 'stretch',
+        gap: 3,
+        backgroundColor: '#000'
+
     },
     button: {
-        marginVertical: 3,
-        paddingVertical: 12,
-        paddingHorizontal: 8,
-        minHeight: 44,
         borderRadius: 0,
         backgroundColor: '#ddd',
+        height: (screenHeight / 7),
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
@@ -83,18 +96,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#333',
     },
     buttonText: {
-        fontSize: 18,
-        fontFamily: 'ArnoPro-Regular',
+        flex: 1,
         textAlign: 'center',
+        textAlignVertical: 'center', //android only ?
+        fontSize: 16,
+        fontFamily: 'ArnoPro-Regular',
         color: '#000',
-        maxWidth: 150,
+        width: '95%'
     },
     selectedText: {
         color: '#fff',
         fontFamily: 'ArnoPro-Bold',
-    },
-    test: {
-        backgroundColor: 'blue', padding: 20, alignItems: 'center'
     }
 });
 
