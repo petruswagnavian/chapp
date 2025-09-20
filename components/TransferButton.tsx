@@ -65,12 +65,4 @@ const TransferButton =
     )
 }
 
-const styles = StyleSheet.create({
-    fillCenter: {
-        ...StyleSheet.absoluteFillObject,
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-})
-
 export default TransferButton;

@@ -3,10 +3,15 @@ import { View, Text, ScrollView, Pressable, StyleSheet, Dimensions, Platform } f
 import colors from '@/constants/colors';
 import {lighten, darken} from "@/utils/colorUtils"
 
-const screenWidth = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
+//const screenWidth = Dimensions.get('window').width;
+//const screenHeight = Dimensions.get('window').height;
 
-export type Age = { id: string; label: string; startYear: number; endYear: number; };
+export type Age = {
+    id: string;
+    label: string;
+    startYear: number;
+    endYear: number;
+}
 
 interface Props {
     ages: Age[];
@@ -15,12 +20,20 @@ interface Props {
     onPress?: () => void;
     backgroundColor?: string;
     pressedColor?: string;
+    layout: {width: number, height: number};
 }
 
-const AgeSelector = ({ ages, selectedAgeId, onSelectAge, onPress, backgroundColor = '#000', pressedColor = '#555' }: Props) => {
+const AgeSelector =
+    ({ ages, selectedAgeId, onSelectAge, layout}: Props) => {
     //const [pressed, setPressed] = React.useState<string | null>(null);
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {
+            position: 'absolute',
+            right: 0,
+            top: layout.height / 5,
+            bottom: 60,
+            width: layout.width / 5,
+        }]}>
             <ScrollView
                 //persistentScrollbar
                 contentContainerStyle={styles.scrollContainer}
@@ -39,7 +52,8 @@ const AgeSelector = ({ ages, selectedAgeId, onSelectAge, onPress, backgroundColo
                              */
                             style={[
                                 styles.button, {
-                                    backgroundColor: colors.primary
+                                    backgroundColor: colors.primary,
+                                    height: (layout.height / 7),
                                 },
                                 isSelected && {backgroundColor: ageColor},
                                 //isPressed && {backgroundColor: lighten(ageColor, 0.4)}
@@ -61,11 +75,6 @@ const AgeSelector = ({ ages, selectedAgeId, onSelectAge, onPress, backgroundColo
 
 const styles = StyleSheet.create({
     container: {
-        position: 'absolute',
-        right: 0,
-        top: screenHeight / 5,
-        bottom: 60,
-        width: screenWidth / 5,
         //backgroundColor: '#ddd',
         borderTopWidth: 3,
         borderBottomWidth: 3,
@@ -84,7 +93,6 @@ const styles = StyleSheet.create({
     button: {
         borderRadius: 0,
         backgroundColor: '#ddd',
-        height: (screenHeight / 7),
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',

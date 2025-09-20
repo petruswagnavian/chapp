@@ -221,17 +221,22 @@ const Mapper = () => {
                 showIcon={true}
             />
 
-            <YearDisplay year={currentYear} />
+            <YearDisplay
+                year={currentYear}
+                layout={layout}
+            />
             <AgeSelector
                 ages={list_of_ages}
                 selectedAgeId={selectedAge.id}
                 onSelectAge={handleSelectAge}
+                layout={layout}
             />
             <YearSlider
                 startYear={selectedAge.startYear}
                 endYear={selectedAge.endYear}
                 currentYear={currentYear}
                 onYearChange={(year) => setCurrentYear(year)}
+                layout={layout}
             />
             <View
                 style={{

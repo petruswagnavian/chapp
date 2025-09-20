@@ -14,11 +14,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import colors from '@/constants/colors';
 
-const screenWidth = Dimensions.get('window').width;
-const lefty = screenWidth / 10;
-const righty = screenWidth / 5;
-const bufferWidth = screenWidth - lefty - righty; //aka containerWidth
-const totalBufferOffset = bufferWidth * 0.05;
+//const screenWidth = Dimensions.get('window').width;
 //const leftZone = bufferWidth * 0.05; //from start of container to start of thumbTrack
 //const rightZone = bufferWidth * 0.95; //from start of container to end of thumbTrack
 const thumbSize = 50;
@@ -28,10 +24,16 @@ interface Props {
     endYear: number;
     currentYear: number;
     onYearChange: (year: number) => void;
+    layout: {width: number, height: number};
 }
 
 const YearSlider =
-    ({startYear, endYear, currentYear, onYearChange}: Props) => {
+    ({startYear, endYear, currentYear, onYearChange, layout}: Props) => {
+
+        const lefty = layout.width / 10;
+        const righty = layout.width / 5;
+        const bufferWidth = layout.width - lefty - righty; //aka containerWidth
+        const totalBufferOffset = bufferWidth * 0.05;
 
         const [trackWidth, setTrackWidth] = useState(0);
         const [latestYear, setLatestYear] = useState(currentYear);
@@ -173,18 +175,26 @@ const YearSlider =
 
         return (
             <GestureDetector gesture={gestures}>
-                <View style={styles.container}>
+                <View style={[styles.container, {
+                    left: lefty,
+                    right: righty
+                }]}>
                     <View style={styles.track}>
                         <Animated.View style={[styles.filledTrack, filledTrackStyle]}/>
                     </View>
-                    <View style={styles.thumbTrack} onLayout={onTrackLayout}>
+                    <View style={[styles.thumbTrack, {
+                        width: bufferWidth * 0.90,
+                    }]} onLayout={onTrackLayout}>
                         <Animated.Image
                             style={[styles.thumb, thumbStyle]}
                             source={require("../assets/images/dove-colored-outline.png")}
                         />
                     </View>
                     <View style={styles.buffer}></View>
-                    <View style={styles.bars}></View>
+                    <View style={[styles.bars, {
+                        width: bufferWidth * 0.90,
+                    }]}>
+                    </View>
                 </View>
             </GestureDetector>
         )
@@ -193,8 +203,6 @@ const YearSlider =
 const styles= StyleSheet.create({
     container: {
         position: 'absolute',
-        left: lefty,
-        right: righty,
         bottom: 0,
         height: 60,
         //backgroundColor: 'rgba(0,0,0,0.5)',
@@ -205,7 +213,6 @@ const styles= StyleSheet.create({
     },
     bars: {
         position: 'absolute',
-        width: bufferWidth * 0.90,
         height: '60%',
         backgroundColor: 'transparent',
         borderLeftWidth: 1,
@@ -214,7 +221,6 @@ const styles= StyleSheet.create({
     },
     thumbTrack: {
         position: 'absolute',
-        width: bufferWidth * 0.90,
         height: '100%',
         //backgroundColor: 'rgba(0,0,0,0.5)',
         backgroundColor: 'transparent',
