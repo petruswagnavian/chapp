@@ -114,6 +114,34 @@ export const all_persons: Person[] = [
         camps: ["Apostle"]
     },
     {
+        pid: "judas_thaddaeus",
+        displayName: "Judas Thaddaeus",
+        birthplace: "Galilee, Judaea, Roman Empire",
+        deathplace: "",
+        lat: 32.69903106070133,
+        lon: 35.303823054325235,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/0/0d/Anthonis_van_Dyck%2C_Kunsthistorisches_Museum_Wien%2C_Gem%C3%A4ldegalerie_-_Apostel_Judas_Thadd%C3%A4us_-_GG_6809_-_Kunsthistorisches_Museum.jpg',
+        fromYear: 10,
+        fromApprox: true,
+        toYear: 65,
+        toApprox: true,
+        camps: ["Apostle"]
+    },
+    {
+        pid: "simon_magus",
+        displayName: "Simon Magus",
+        birthplace: "Gitta, Samaria, Judaea, Roman Empire",
+        deathplace: "Rome, Italia, Roman Empire",
+        lat: 32.275,
+        lon: 35.190,
+        imageUrl: 'https://images.weserv.nl/?url=miro.medium.com/v2/1*dtSfizyQhZ6dAVIujqL6FA.jpeg',
+        fromYear: 15,
+        fromApprox: true,
+        toYear: 65,
+        toApprox: true,
+        camps: ["Gnostic"]
+    },
+    {
         pid: "clement_of_rome",
         displayName: "Clement of Rome",
         birthplace: "Rome, Italia, Roman Empire",
@@ -128,6 +156,20 @@ export const all_persons: Person[] = [
         camps: ["Apostolic Father"]
     },
     {
+        pid: "ignatius_of_antioch",
+        displayName: "Ignatius of Antioch",
+        birthplace: "Syria, Roman Empire",
+        deathplace: "Rome, Italia, Roman Empire",
+        lat: 36.204930647486165,
+        lon: 36.16699792842562,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/b/bf/Hosios_Loukas_%28south_west_chapel%2C_south_side%29_-_Ignatios.jpg',
+        fromYear: 45,
+        fromApprox: true,
+        toYear: 116,
+        toApprox: true,
+        camps: ["Apostolic Father"]
+    },
+    {
         pid: "papias_of_hierapolis",
         displayName: "Papias of Hierapolis",
         lat: 37.91,
@@ -138,6 +180,34 @@ export const all_persons: Person[] = [
         toYear: 130,
         toApprox: true,
         camps: ["Apostolic Father"]
+    },
+    {
+        pid: "polycarp_of_smyrna",
+        displayName: "Polycarp of Smyrna",
+        birthplace: "Smyrna, Asia Minor, Roman Empire",
+        deathplace: "Smyrna, Asia Minor, Roman Empire",
+        lat: 38.42270378420375,
+        lon: 27.14573543165261,
+        imageUrl: 'https://images.weserv.nl/?url=orthodoxwiki.org/images/4/41/Polycarp.jpg',
+        fromYear: 69,
+        fromApprox: true,
+        toYear: 155,
+        toApprox: true,
+        camps: ["Apostolic Father"]
+    },
+    {
+        pid: "marcion_of_sinope",
+        displayName: "Marcion of Sinope",
+        birthplace: "Sinope, Pontus, Roman Empire",
+        deathplace: "Rome, Italia, Roman Empire",
+        lat: 42.02723141456593,
+        lon: 35.151250446989664,
+        imageUrl: "",
+        fromYear: 85,
+        fromApprox: true,
+        toYear: 160,
+        toApprox: true,
+        camps: ["Gnostic"]
     },
     {
         pid: "valentinus_gnostic",
