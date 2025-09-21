@@ -256,4 +256,4 @@ const Mapper = () => {
         </View>
     )
 }
-export default Mapper
+export default Mapper;

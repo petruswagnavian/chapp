@@ -205,18 +205,15 @@ const Identity = () => {
                     </Text>
                     <Image
                         source={{uri: person.imageUrl}}
-                        style={[
-                            imgHeight ? {height: imgHeight} : {height: infoScrollAreaWidth * 1.25},
-                            {
-                                flex: 1,
-                                width: infoScrollAreaWidth - (scrollAreaPadding * 2.4),
-                                //height: infoScrollAreaWidth * 1.25,
-                                //height: imgHeight,
-                                borderWidth: 8,
-                                borderColor: '#000',
-                                //borderRadius: 8,
-                            }
-                        ]}
+                        style={{
+                            height: imgHeight ?? infoScrollAreaWidth * 1.25,
+                            width: infoScrollAreaWidth - (scrollAreaPadding * 2.4),
+                            //height: infoScrollAreaWidth * 1.25,
+                            //height: imgHeight,
+                            borderWidth: 8,
+                            borderColor: '#000',
+                            //borderRadius: 8,
+                        }}
                         resizeMode="cover"
                         onError={e => console.log("Image failed", e.nativeEvent.error)}
                     />
@@ -234,8 +231,6 @@ const Identity = () => {
         </LinearGradient>
     )
 }
-
-export default Identity
 
 const styles = StyleSheet.create({
     infoHeader: {
@@ -279,3 +274,5 @@ const styles = StyleSheet.create({
         fontSize: 25,
     }
 })
+
+export default Identity;
