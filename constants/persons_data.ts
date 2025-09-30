@@ -3,6 +3,8 @@ export type Person = {
     displayName: string;
     birthplace?: string;
     deathplace?: string;
+    birthApprox?: boolean;
+    deathApprox?: boolean;
     lat: number;
     lon: number;
     imageUrl: string;
@@ -210,6 +212,20 @@ export const all_persons: Person[] = [
         camps: ["Gnostic"]
     },
     {
+        pid: "justin_martyr",
+        displayName: "Justin Martyr",
+        birthplace: "Flavius Neapolis, Judaea, Roman Empire",
+        deathplace: "Rome, Italia, Roman Empire",
+        lat: 32.22230610198572,
+        lon: 35.25856314446059,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/a/a7/Saint_Justin_Martyr_by_Theophanes_the_Cretan.jpg',
+        fromYear: 100,
+        fromApprox: true,
+        toYear: 165,
+        toApprox: true,
+        camps: ["Eastern"]
+    },
+    {
         pid: "valentinus_gnostic",
         displayName: "Valentinus",
         lat: 41.88,
@@ -234,6 +250,103 @@ export const all_persons: Person[] = [
         camps: ["Western"]
     },
     {
+        pid: "tertullian_of_carthage",
+        displayName: "Tertullian of Carthage",
+        birthplace: "Carthage, Africa, Roman Empire",
+        deathplace: "Carthage, Africa, Roman Empire",
+        lat: 36.863945752812484,
+        lon: 10.332574211900262,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/7/73/Tertullian2.png/1024px-Tertullian2.png',
+        fromYear: 155,
+        fromApprox: true,
+        toYear: 220,
+        toApprox: true,
+        camps: ["Western", "Montanist"]
+    },
+    {
+        pid: "hippolytus_of_rome",
+        displayName: "Hippolytus of Rome",
+        birthplace: "Rome, Italia, Roman Empire",
+        deathplace: "Sardinia, Sardinia and Corsica, Roman Empire",
+        lat: 41.88,
+        lon: 12.59,
+        imageUrl: 'https://images.weserv.nl/?url=images.oca.org/icons/lg/january/0130hippolytus.jpg',
+        fromYear: 170,
+        fromApprox: true,
+        toYear: 236,
+        toApprox: true,
+        camps: ["Western"]
+    },
+    {
+        pid: "origen_of_alexandria",
+        displayName: "Origen of Alexandria",
+        birthplace: "Alexandria, Egypt, Roman Empire",
+        deathplace: "Tyre, Phoenice, Roman Empire",
+        lat: 31.20025863903445,
+        lon: 29.91846236548454,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/c/c7/Origen3.jpg',
+        fromYear: 185,
+        fromApprox: true,
+        toYear: 253,
+        toApprox: true,
+        camps: ["Eastern", "Origenist"],
+        mainCamp: "Origenist"
+    },
+    {
+        pid: "cyprian_of_carthage",
+        displayName: "Cyprian of Carthage",
+        birthplace: "Carthage, Africa, Roman Empire",
+        deathplace: "Carthage, Africa, Roman Empire",
+        lat: 36.863945752812484,
+        lon: 10.332574211900262,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/a/ae/Cyprian_von_Karthago2.jpg',
+        fromYear: 210,
+        fromApprox: true,
+        toYear: 258,
+        toApprox: true,
+        camps: ["Western"]
+    },
+    {
+        pid: "anthony_the_great",
+        displayName: "Anthony the Great",
+        birthplace: "Koma, Egypt, Roman Empire",
+        deathplace: "Mount Colzim, Egypt, Roman Empire",
+        lat: 29.299916177194383,
+        lon: 31.169464033267953,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Saint_Anthony_%28Damaskinos%29.png/1024px-Saint_Anthony_%28Damaskinos%29.png',
+        fromYear: 251,
+        toYear: 356,
+        camps: ["Eastern"]
+    },
+    {
+        pid: "eusebius_of_caesarea",
+        displayName: "Eusebius of Caesarea",
+        birthplace: "Caesarea Maritima, Syria Palaestina, Roman Empire",
+        deathplace: "Caesarea Maritima, Syria Palaestina, Roman Empire",
+        lat: 32.51667524676977,
+        lon: 34.9019981388087,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/7/70/Eusebius_of_Caesarea_Rabbula_Gospels_Icon.jpg',
+        fromYear: 260,
+        fromApprox: true,
+        toYear: 339,
+        camps: ["Eastern"]
+    },
+    {
+        pid: "athanasius_of_alexandria",
+        displayName: "Athanasius of Alexandria",
+        birthplace: "Alexandria, Egypt, Roman Empire",
+        deathplace: "Alexandria, Egypt, Roman Empire",
+        lat: 31.20025863903445,
+        lon: 29.91846236548454,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/2/26/Ikone_Athanasius_von_Alexandria.jpg',
+        fromYear: 296,
+        fromApprox: true,
+        toYear: 373,
+        camps: ["Eastern", "Nicene"],
+        mainCamp: "Nicene"
+
+    },
+    {
         pid: "augustine_of_hippo",
         displayName: "Augustine of Hippo",
         lat: 36.90,
@@ -241,6 +354,7 @@ export const all_persons: Person[] = [
         imageUrl: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/saint-augustine-of-hippo-philippe-de-champaigne-war-is-hell-store.jpg',
         fromYear: 354,
         toYear: 430,
-        camps: ["Western", "Nicene"]
+        camps: ["Western", "Nicene"],
+        mainCamp: "Nicene"
     }
 ]

@@ -27,7 +27,7 @@ const Identity = () => {
     const person = all_persons.find(p => p.pid === pid);
     const [imgHeight, setImgHeight] = useState<number | undefined>();
     useEffect(() => {
-        if (person?.imageUrl) {
+        if (person?.imageUrl && infoScrollAreaWidth > 0) { //depends on person?.imageUrl and infoScrollAreaWidth
             Image.getSize(person.imageUrl, (w, h) => {
                 const targetWidth = infoScrollAreaWidth - scrollAreaPadding * 2.4;
                 const scaledHeight = h * (targetWidth / w);
@@ -206,7 +206,7 @@ const Identity = () => {
                     <Image
                         source={{uri: person.imageUrl}}
                         style={{
-                            height: imgHeight ?? infoScrollAreaWidth * 1.25,
+                            height: imgHeight ?? infoScrollAreaWidth * 1.5,
                             width: infoScrollAreaWidth - (scrollAreaPadding * 2.4),
                             //height: infoScrollAreaWidth * 1.25,
                             //height: imgHeight,
