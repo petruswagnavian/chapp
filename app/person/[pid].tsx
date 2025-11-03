@@ -32,7 +32,7 @@ const Identity = () => {
                 const targetWidth = infoScrollAreaWidth - scrollAreaPadding * 2.4;
                 const scaledHeight = h * (targetWidth / w);
                 setImgHeight(scaledHeight);
-            })
+            }, (error) => console.error("Failed to get image size", error));
         }
     }, [person?.imageUrl]);
     if (!person) {

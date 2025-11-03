@@ -6,6 +6,7 @@ import Animated, {
     withSpring,
     withTiming,
 } from 'react-native-reanimated';
+import colors from "@/constants/colors"
 
 interface Marker {
     pid: string;
@@ -72,7 +73,13 @@ const ClusterPanel =
                             <View style={styles.buttonContent}>
                                 <Image
                                     source={{uri: item.imageUrl}}
-                                    style={styles.icon}
+                                    style={{
+                                        width: 36,
+                                        height: 36,
+                                        borderRadius: 18,
+                                        borderWidth: 3,
+                                        borderColor: item.campColor,
+                                    }}
                                     resizeMode="cover"
                                     onError={e => console.log("Image failed", e.nativeEvent.error)}
                                 />
@@ -100,7 +107,7 @@ const styles = StyleSheet.create({
         backgroundColor: "rgba(0,0,0,0.4)",
     },
     panel: {
-        backgroundColor: "#fff",
+        backgroundColor: "rgba(255,255,255,0.85)",
         borderRadius: 16,
         padding: 16,
         minWidth: "30%",
@@ -116,13 +123,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         gap: 12,
-    },
-    icon: {
-        width: 36,
-        height: 36,
-        borderRadius: 18,
-        borderWidth: 1,
-        borderColor: '#000'
     },
     buttonText: {
         fontSize: 16

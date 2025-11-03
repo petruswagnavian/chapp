@@ -29,8 +29,7 @@
         }
         .cluster-avatar-icon {
             border-radius: 30px;
-            background: #fff;
-            border: 2px solid #fff;
+            border: none;
             box-shadow: 0 0 5px rgba(0,0,0,0.5);
             overflow: visible;
         }
@@ -62,11 +61,14 @@
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 <script>
+    //import colors from "tailwindcss/colors";
+
     let currentLayer = null;
     let polityFeatures = [];
     let personMarkers = [];
     let lastMapVersion = 0;
     let lastPersonsVersion = 0;
+    let colors = {};
     const canvasRenderer = L.canvas({padding: 1.25})
     const map = L.map('map', {
         zoomControl: false,
@@ -137,8 +139,11 @@
             //avatar for dynamic clusters
             const avatar = children[i].options.imageUrl;
             const count = cluster.getChildCount();
+            const clusterColor = children[i].options.campColor;
             const html = `
-            <div class="cluster-avatar">
+            <div class="cluster-avatar" style="
+                border: 2px solid ${clusterColor};
+            ">
                 <img src="${avatar}" alt="">
                 <span class="cluster-badge">${count}</span>
             </div>
@@ -166,7 +171,10 @@
         const data = markers.map(m => ({
             pid: m.options.pid,
             displayName: m.options.displayName,
-            imageUrl: m.options.imageUrl
+            imageUrl: m.options.imageUrl,
+            //camps: m.options.camps,
+            //mainCamp: m.options.mainCamp,
+            campColor: m.options.campColor,
         }))
         window.ReactNativeWebView?.postMessage(JSON.stringify({
             type: 'OPEN_CLUSTER_PANEL',
@@ -188,7 +196,9 @@
             personMarkers = [];
         }
     }
-    function addPersonMarker(lat, lon, pid, displayName, imageUrl) {
+    function addPersonMarker(lat, lon, pid, displayName, imageUrl, camps, mainCamp, campColor) {
+        //let campKey = mainCamp || (camps && camps.length > 0 ? camps[0] : null);
+        //let campColor = (campKey && campKey && colors.camp[campKey]) ? colors.camp[campKey] : "#000";
         const icon = L.divIcon({
             pane: 'markerPane',
             html: `
@@ -196,7 +206,7 @@
                     width: 30px;
                     height: 30px;
                     border-radius: 30px;
-                    border: 2px solid white;
+                    border: 2px solid ${campColor};
                     box-shadow: 0 0 5px rgba(0,0,0,0.5);
                     "/>
                 `,
@@ -205,7 +215,15 @@
             iconAnchor: [20, 20],
             popupAnchor: [0, 0]
         })
-        const marker = L.marker([lat, lon], {pid, displayName, imageUrl, icon}).on('click', () => {
+        const marker = L.marker([lat, lon], {
+            pid: pid,
+            displayName: displayName,
+            imageUrl: imageUrl,
+            icon: icon,
+            //camps: camps,
+            //mainCamp: mainCamp,
+            campColor: campColor,
+            }).on('click', () => {
             window.ReactNativeWebView?.postMessage(`open_person:${pid}`);
         })
         personClusterGroup.addLayer(marker);
@@ -307,8 +325,12 @@
 
             clearPersonMarkers();
             (message.persons || []).forEach((p) =>
-                addPersonMarker(p.lat, p.lon, p.pid, p.displayName, p.imageUrl)
+                addPersonMarker(p.lat, p.lon, p.pid, p.displayName, p.imageUrl, p.camps, p.mainCamp, p.campColor)
             )
+        }
+
+        if (message.type === 'SET_COLORS') {
+            colors = message.colors;
         }
     }
 

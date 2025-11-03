@@ -59,6 +59,14 @@ type Commit = {
 const Mapper = () => {
     const [selectedAge, setSelectedAge] = useState<Age>(list_of_ages[0])
     const [currentYear, setCurrentYear] = useState<number>(selectedAge.startYear)
+
+    const sendColorsToWebView = () => {
+        webviewRef.current?.postMessage(JSON.stringify({
+            type: "SET_COLORS",
+            colors
+        }))
+    }
+
     const handleSelectAge = (age: Age) => {
         setSelectedAge(age);
         setCurrentYear(age.startYear);
@@ -71,6 +79,7 @@ const Mapper = () => {
     const handleLoadEnd = () => {
         console.log('[RN] Webview loaded');
         setWebviewLoaded(true);
+        sendColorsToWebView();
     }
 
     const [layout, setLayout] = useState<{ width: number; height: number }>({
@@ -92,8 +101,19 @@ const Mapper = () => {
     //atomic map commit state
     const [mapCommit, setMapCommit] = useState<Commit | null>(null);
 
+    const normalize = (s?: string) => (s ?? '').toLowerCase().replace(/\s+/g,"_");
+    const campColorOf = (camps: string[], mainCamp?: string) => {
+        const table = (colors.camp ?? {}) as Record<string, string>;
+        const key = mainCamp ?? camps?.[0];
+        if (!key) return '#000';
+        if (table[key]) return table[key];
+        const hit = Object.entries(table).find(([k]) => normalize(k) === normalize(key));
+        return hit ? hit[1] : '#000';
+    };
     const visiblePersons = useMemo(() => {
-        return all_persons.filter(p => personsDebouncedYear >= p.fromYear && personsDebouncedYear <= p.toYear);
+        return all_persons
+            .filter(p => personsDebouncedYear >= p.fromYear && personsDebouncedYear <= p.toYear)
+            .map(p => ({...p, campColor: campColorOf(p.camps ?? [], p.mainCamp)}));
     }, [personsDebouncedYear]);
 
     //map debounce and snapped years

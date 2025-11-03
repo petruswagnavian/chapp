@@ -223,7 +223,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 165,
         toApprox: true,
-        camps: ["Eastern"]
+        camps: ["Eastern Father"]
     },
     {
         pid: "valentinus_gnostic",
@@ -247,7 +247,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 202,
         toApprox: true,
-        camps: ["Western"]
+        camps: ["Western Father"]
     },
     {
         pid: "tertullian_of_carthage",
@@ -261,7 +261,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 220,
         toApprox: true,
-        camps: ["Western", "Montanist"]
+        camps: ["Western Father", "Montanist"]
     },
     {
         pid: "hippolytus_of_rome",
@@ -275,7 +275,21 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 236,
         toApprox: true,
-        camps: ["Western"]
+        camps: ["Western Father"]
+    },
+    {
+        pid: "alexander_of_jerusalem",
+        displayName: "Alexander of Jerusalem",
+        birthplace: "Unknown (Likely Cappadocia)",
+        deathplace: "Caesarea Maritima, Syria Palaestina, Roman Empire",
+        lat: 31.782201629960873,
+        lon: 35.219051643225036,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/3/36/Alexander_of_Jerusalem.jpg',
+        fromYear: 170,
+        fromApprox: true,
+        toYear: 251,
+        toApprox: true,
+        camps: ["Eastern Father"]
     },
     {
         pid: "origen_of_alexandria",
@@ -289,7 +303,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 253,
         toApprox: true,
-        camps: ["Eastern", "Origenist"],
+        camps: ["Eastern Father", "Origenist"],
         mainCamp: "Origenist"
     },
     {
@@ -304,7 +318,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 258,
         toApprox: true,
-        camps: ["Western"]
+        camps: ["Western Father"]
     },
     {
         pid: "anthony_the_great",
@@ -316,7 +330,22 @@ export const all_persons: Person[] = [
         imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Saint_Anthony_%28Damaskinos%29.png/1024px-Saint_Anthony_%28Damaskinos%29.png',
         fromYear: 251,
         toYear: 356,
-        camps: ["Eastern"]
+        camps: ["Eastern Father"]
+    },
+    {
+        pid: "alexander_i_of_alexandria",
+        displayName: "Alexander I of Alexandria",
+        birthplace: "Unknown",
+        deathplace: "Alexandria, Egypt, Roman Empire",
+        lat: 31.20025863903445,
+        lon: 29.91846236548454,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/e/ec/Veljusa_Monastery_St._Alexander_of_Alexandria.jpg',
+        fromYear: 260,
+        fromApprox: true,
+        toYear: 328,
+        toApprox: true,
+        camps: ["Eastern Father", "Nicene"],
+        mainCamp: "Nicene"
     },
     {
         pid: "eusebius_of_caesarea",
@@ -329,7 +358,8 @@ export const all_persons: Person[] = [
         fromYear: 260,
         fromApprox: true,
         toYear: 339,
-        camps: ["Eastern"]
+        camps: ["Eastern Father", "Origenist"],
+        mainCamp: "Origenist"
     },
     {
         pid: "athanasius_of_alexandria",
@@ -342,9 +372,24 @@ export const all_persons: Person[] = [
         fromYear: 296,
         fromApprox: true,
         toYear: 373,
-        camps: ["Eastern", "Nicene"],
+        camps: ["Eastern Father", "Nicene"],
         mainCamp: "Nicene"
 
+    },
+    {
+        pid: "gregory_of_nazianzus",
+        displayName: "Gregory of Nazianzus",
+        birthplace: "Arianzus, Cappadocia, Roman Empire",
+        deathplace: "Arianzus, Cappadocia, Roman Empire",
+        lat: 38.26143964360644,
+        lon: 34.38466113638501,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/5/5d/Gregor-Chora_%28cropped%29.jpg',
+        fromYear: 329,
+        fromApprox: true,
+        toYear: 390,
+        toApprox: true,
+        camps: ["Eastern Father", "Nicene", "Cappadocian Father"],
+        mainCamp: "Cappadocian Father"
     },
     {
         pid: "augustine_of_hippo",
@@ -354,7 +399,7 @@ export const all_persons: Person[] = [
         imageUrl: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/saint-augustine-of-hippo-philippe-de-champaigne-war-is-hell-store.jpg',
         fromYear: 354,
         toYear: 430,
-        camps: ["Western", "Nicene"],
+        camps: ["Western Father", "Nicene"],
         mainCamp: "Nicene"
     }
 ]
