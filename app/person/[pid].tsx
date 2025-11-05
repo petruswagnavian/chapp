@@ -1,10 +1,10 @@
-import {StyleSheet, Text, View, Dimensions, ColorValue, ScrollView, Image, Pressable} from 'react-native'
-import React, {useEffect, useState} from 'react'
+import {StyleSheet, Text, View, Dimensions, ColorValue, ScrollView, Image, Pressable} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import {useLocalSearchParams} from "expo-router";
 import {LinearGradient} from "expo-linear-gradient";
 import {all_persons} from "@/constants/persons_data";
-import colors from "@/constants/colors"
-import {lighten, darken} from "@/utils/colorUtils"
+import colors from "@/constants/colors";
+import {lighten, darken} from "@/utils/colorUtils";
 import TransferButton from "@/components/TransferButton";
 
 const screenWidth = Dimensions.get("window").width;
@@ -23,7 +23,7 @@ const Identity = () => {
     const textScrollAreaWidth = scrollAreaWidth * 0.7;
     const infoScrollAreaWidth = scrollAreaWidth - textScrollAreaWidth;
 
-    const { pid } = useLocalSearchParams();
+    const {pid} = useLocalSearchParams();
     const person = all_persons.find(p => p.pid === pid);
     const [imgHeight, setImgHeight] = useState<number | undefined>();
     useEffect(() => {
@@ -34,7 +34,7 @@ const Identity = () => {
                 setImgHeight(scaledHeight);
             }, (error) => console.error("Failed to get image size", error));
         }
-    }, [person?.imageUrl]);
+    }, [person?.imageUrl, infoScrollAreaWidth, scrollAreaPadding]);
     if (!person) {
         return (
             <View style={{flex: 1}}>

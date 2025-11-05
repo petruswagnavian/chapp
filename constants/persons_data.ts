@@ -250,6 +250,20 @@ export const all_persons: Person[] = [
         camps: ["Western Father"]
     },
     {
+        pid: "clement_of_alexandria",
+        displayName: "Clement of Alexandria",
+        birthplace: "Athens, Achaia, Roman Empire",
+        deathplace: "Jerusalem, Syria Palaestina, Roman Empire",
+        lat: 31.20025863903445,
+        lon: 29.91846236548454,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Clement_alexandrin.jpg/500px-Clement_alexandrin.jpg',
+        fromYear: 150,
+        fromApprox: true,
+        toYear: 215,
+        toApprox: true,
+        camps: ["Eastern Father"]
+    },
+    {
         pid: "tertullian_of_carthage",
         displayName: "Tertullian of Carthage",
         birthplace: "Carthage, Africa, Roman Empire",
@@ -321,6 +335,21 @@ export const all_persons: Person[] = [
         camps: ["Western Father"]
     },
     {
+        pid: "lucius_lactantius",
+        displayName: "Lucius Lactantius",
+        birthplace: "Unknown (Numidia)",
+        deathplace: "Unknown",
+        lat: 40.76770445285668,
+        lon: 29.933262567556298,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/5/5c/Lactantius.jpg',
+        fromYear: 250,
+        fromApprox: true,
+        toYear: 325,
+        toApprox: true,
+        camps: ["Western Father"]
+
+    },
+    {
         pid: "anthony_the_great",
         displayName: "Anthony the Great",
         birthplace: "Koma, Egypt, Roman Empire",
@@ -377,6 +406,20 @@ export const all_persons: Person[] = [
 
     },
     {
+        pid: "epiphanius_of_salamis",
+        displayName: "Epiphanius of Salamis",
+        birthplace: "Besanduk, Syria Palaestina, Roman Empire",
+        deathplace: "at sea near Cyprus",
+        lat: 35.1865222055156,
+        lon: 33.90346888919054,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/2/2c/Epiphanius-Kosovo.jpg',
+        fromYear: 315,
+        fromApprox: true,
+        toYear: 403,
+        camps: ["Eastern Father", "Nicene", "Iconoclast"],
+        mainCamp: "Nicene"
+    },
+    {
         pid: "gregory_of_nazianzus",
         displayName: "Gregory of Nazianzus",
         birthplace: "Arianzus, Cappadocia, Roman Empire",
@@ -390,6 +433,33 @@ export const all_persons: Person[] = [
         toApprox: true,
         camps: ["Eastern Father", "Nicene", "Cappadocian Father"],
         mainCamp: "Cappadocian Father"
+    },
+    {
+        pid: "jerome_of_stridon",
+        displayName: "Jerome of Stridon",
+        birthplace: "Stridon, Dalmatia, Roman Empire",
+        deathplace: "Bethlehem, Palaestina, Byzantine Empire",
+        lat: 44.2,
+        lon: 17.7,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/5/5f/MatthiasStom-SaintJerome-Nantes.jpg',
+        fromYear: 342,
+        fromApprox: true,
+        toYear: 420,
+        camps: ["Western Father", "Nicene"],
+        mainCamp: "Nicene"
+    },
+    {
+        pid: "rufinus_of_aquileia",
+        displayName: "Rufinus of Aquileia",
+        lat: 45.767206596249956,
+        lon: 13.368906699413515,
+        imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Rufinus_Aquileiensis.jpg/800px-Rufinus_Aquileiensis.jpg',
+        fromYear: 344,
+        fromApprox: true,
+        toYear: 411,
+        toApprox: true,
+        camps: ["Western Father", "Origenist"],
+        mainCamp: "Origenist"
     },
     {
         pid: "augustine_of_hippo",
