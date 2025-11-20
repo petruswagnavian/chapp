@@ -1,10 +1,9 @@
 export type Person = {
     pid: string;
     displayName: string;
+    altNames?: string[];
     birthplace?: string;
     deathplace?: string;
-    birthApprox?: boolean;
-    deathApprox?: boolean;
     lat: number;
     lon: number;
     imageUrl: string;
@@ -20,6 +19,7 @@ export const all_persons: Person[] = [
     {
         pid: "peter_the_apostle",
         displayName: "Peter the Apostle",
+        altNames: ["Simon Peter", "Cephas"],
         birthplace: "Bethsaida, Galilee, Judaea, Roman Empire",
         deathplace: "Rome, Italia, Roman Empire",
         lat: 32.91089391890956,
@@ -362,6 +362,20 @@ export const all_persons: Person[] = [
         camps: ["Eastern Father"]
     },
     {
+        pid: "arius_of_alexandria",
+        displayName: "Arius of Alexandria",
+        birthplace: "Ptolemais, Cyrenaica, Roman Empire",
+        deathplace: "Constantinople, Thracia, Roman Empire",
+        lat: 31.20025863903445,
+        lon: 29.91846236548454,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/0/02/Arius_p%C3%BCsp%C3%B6k.jpg',
+        fromYear: 256,
+        fromApprox: true,
+        toYear: 336,
+        camps: ["Eastern Father", "Arian"],
+        mainCamp: "Arian"
+    },
+    {
         pid: "alexander_i_of_alexandria",
         displayName: "Alexander I of Alexandria",
         birthplace: "Unknown",
@@ -391,6 +405,20 @@ export const all_persons: Person[] = [
         mainCamp: "Origenist"
     },
     {
+        pid: "eusebius_of_nicomedia",
+        displayName: "Eusebius of Nicomedia",
+        birthplace: "Unknown",
+        deathplace: "Constantinople, Thracia, Roman Empire",
+        lat: 40.76247630958466,
+        lon: 29.917517499562084,
+        imageUrl: 'https://images.weserv.nl/?url=',
+        fromYear: 280,
+        fromApprox: true,
+        toYear: 341,
+        camps: ["Eastern Father", "Arian"],
+        mainCamp: "Arian"
+    },
+    {
         pid: "athanasius_of_alexandria",
         displayName: "Athanasius of Alexandria",
         birthplace: "Alexandria, Egypt, Roman Empire",
@@ -403,7 +431,6 @@ export const all_persons: Person[] = [
         toYear: 373,
         camps: ["Eastern Father", "Nicene"],
         mainCamp: "Nicene"
-
     },
     {
         pid: "epiphanius_of_salamis",
@@ -422,6 +449,7 @@ export const all_persons: Person[] = [
     {
         pid: "gregory_of_nazianzus",
         displayName: "Gregory of Nazianzus",
+        altNames: ["Gregory Nazianzen"],
         birthplace: "Arianzus, Cappadocia, Roman Empire",
         deathplace: "Arianzus, Cappadocia, Roman Empire",
         lat: 38.26143964360644,
@@ -432,6 +460,37 @@ export const all_persons: Person[] = [
         toYear: 390,
         toApprox: true,
         camps: ["Eastern Father", "Nicene", "Cappadocian Father"],
+        mainCamp: "Cappadocian Father"
+    },
+    {
+        pid: "basil_of_caesarea",
+        displayName: "Basil of Caesarea",
+        altNames: ["Basil the Great"],
+        birthplace: "Caesarea Mazaca, Cappadocia, Roman Empire",
+        deathplace: "Caesarea Mazaca, Cappadocia, Roman Empire",
+        lat: 38.722417611256404,
+        lon: 35.48746598237236,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/0/04/Basil_of_Caesarea.jpg',
+        fromYear: 330,
+        fromApprox: true,
+        toYear: 379,
+        camps: ["Eastern Father", "Nicene", "Cappadocian Father"],
+        mainCamp: "Cappadocian Father"
+    },
+    {
+        pid: "gregory_of_nyssa",
+        displayName: "Gregory of Nyssa",
+        altNames: ["Gregory Nyssen"],
+        birthplace: "Neocaesarea, Cappadocia, Roman Empire",
+        deathplace: "Nyssa, Cappadocia, Roman Empire",
+        lat: 38.93386362845272,
+        lon: 33.94907023316791,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/2/29/Gregory_of_Nyssa.jpg',
+        fromYear: 335,
+        fromApprox: true,
+        toYear: 394,
+        toApprox: true,
+        camps: ["Eastern Father", "Nicene", "Cappadocian Father", "Origenist"],
         mainCamp: "Cappadocian Father"
     },
     {

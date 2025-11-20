@@ -135,7 +135,9 @@ const Identity = () => {
                     paddingLeft: scrollAreaPadding,
                 }}
             >
-                <Text numberOfLines={1} adjustsFontSizeToFit style={styles.displayNameText}>{displayNameCaps}</Text>
+                <Text numberOfLines={1} adjustsFontSizeToFit style={styles.displayNameText}>
+                    {displayNameCaps}
+                </Text>
             </View>
             <View
                 style={{ //mainCampBanner
