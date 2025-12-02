@@ -335,6 +335,21 @@ export const all_persons: Person[] = [
         camps: ["Western Father"]
     },
     {
+        pid: "paul_of_thebes",
+        displayName: "Paul of Thebes",
+        birthplace: "Thebaid, Aegyptus, Roman Empire",
+        deathplace: "Thebes, Aegyptus, Roman Empire",
+        lat: 25.713133070514296,
+        lon: 32.62190391281979,
+        imageUrl: 'https://images.weserv.nl/url=upload.wikimedia.org/wikipedia/commons/3/39/Paul_of_Thebes.jpg',
+        fromYear: 227,
+        fromApprox: true,
+        toYear: 341,
+        toApprox: true,
+        camps: ["Eastern Father", "Monastic"],
+        mainCamp: "Monastic"
+    },
+    {
         pid: "lucius_lactantius",
         displayName: "Lucius Lactantius",
         birthplace: "Unknown (Numidia)",
@@ -359,7 +374,8 @@ export const all_persons: Person[] = [
         imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Saint_Anthony_%28Damaskinos%29.png/1024px-Saint_Anthony_%28Damaskinos%29.png',
         fromYear: 251,
         toYear: 356,
-        camps: ["Eastern Father"]
+        camps: ["Eastern Father", "Monastic"],
+        mainCamp: "Monastic"
     },
     {
         pid: "arius_of_alexandria",
@@ -419,6 +435,22 @@ export const all_persons: Person[] = [
         mainCamp: "Arian"
     },
     {
+        pid: "hilarion_of_gaza",
+        displayName: "Hilarion of Gaza",
+        altNames: ["Hilarion the Great", "Hilarion of Thavata"],
+        birthplace: "Thavata, Syria Palaestina, Roman Empire",
+        deathplace: "Cyprus, Roman Empire",
+        lat: 31.516648470299234,
+        lon: 34.44998533044062,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/9/9f/Hilarion_the_Great_%28Menologion_of_Basil_II%29_%28cropped%29.jpg',
+        fromYear: 291,
+        fromApprox: true,
+        toYear: 371,
+        toApprox: true,
+        camps: ["Eastern Father", "Monastic"],
+        mainCamp: "Monastic"
+    },
+    {
         pid: "athanasius_of_alexandria",
         displayName: "Athanasius of Alexandria",
         birthplace: "Alexandria, Egypt, Roman Empire",
@@ -431,6 +463,36 @@ export const all_persons: Person[] = [
         toYear: 373,
         camps: ["Eastern Father", "Nicene"],
         mainCamp: "Nicene"
+    },
+    {
+        pid: "hilary_of_poitiers",
+        displayName: "Hilary of Poitiers",
+        birthplace: "Pictavium, Gallia Aquitania, Roman Empire",
+        deathplace: "Pictavium, Septem Provinciae, Roman Empire",
+        lat: 46.579841096591224,
+        lon: 0.3416894346137863,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/0/06/Hilary_of_Poitiers.png/500px-Hilary_of_Poitiers.png',
+        fromYear: 310,
+        fromApprox: true,
+        toYear: 367,
+        toApprox: true,
+        camps: ["Western Father", "Nicene"],
+        mainCamp: "Nicene"
+    },
+    {
+        pid: "didymus_the_blind",
+        displayName: "Didymus the Blind",
+        birthplace: "Unknown, probably Alexandria",
+        deathplace: "Unknown, probably Alexandria",
+        lat: 31.20025863903445,
+        lon: 29.91846236548454,
+        imageUrl: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/4/46/Didymus_the_blind.jpg",
+        fromYear: 313,
+        fromApprox: true,
+        toYear: 398,
+        toApprox: true,
+        camps: ["Eastern Father", "Origenist", "Nicene"],
+        mainCamp: "Origenist"
     },
     {
         pid: "epiphanius_of_salamis",
@@ -474,7 +536,7 @@ export const all_persons: Person[] = [
         fromYear: 330,
         fromApprox: true,
         toYear: 379,
-        camps: ["Eastern Father", "Nicene", "Cappadocian Father"],
+        camps: ["Eastern Father", "Nicene", "Cappadocian Father", "Monastic"],
         mainCamp: "Cappadocian Father"
     },
     {
@@ -504,7 +566,7 @@ export const all_persons: Person[] = [
         fromYear: 342,
         fromApprox: true,
         toYear: 420,
-        camps: ["Western Father", "Nicene"],
+        camps: ["Western Father", "Nicene", "Monastic"],
         mainCamp: "Nicene"
     },
     {
@@ -512,13 +574,26 @@ export const all_persons: Person[] = [
         displayName: "Rufinus of Aquileia",
         lat: 45.767206596249956,
         lon: 13.368906699413515,
-        imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Rufinus_Aquileiensis.jpg/800px-Rufinus_Aquileiensis.jpg',
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/1/10/Rufinus_Aquileiensis.jpg/800px-Rufinus_Aquileiensis.jpg',
         fromYear: 344,
         fromApprox: true,
         toYear: 411,
         toApprox: true,
         camps: ["Western Father", "Origenist"],
         mainCamp: "Origenist"
+    },
+    {
+        pid: "john_chrysostom",
+        displayName: "John Chrysostom",
+        altNames: ["John of Antioch", "John of Constantinople"],
+        lat: 41.00817513927148,
+        lon: 28.978539039041394,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/c/cf/Johnchrysostom.jpg',
+        fromYear: 349,
+        fromApprox: true,
+        toYear: 407,
+        camps: ["Eastern Father", "Nicene"],
+        mainCamp: "Nicene"
     },
     {
         pid: "augustine_of_hippo",

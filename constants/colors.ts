@@ -27,6 +27,7 @@ const colors = {
         gnostic: '#98AB74',
         western_father: '#62C7D9',
         eastern_father: '#6BCF8B',
+        monastic: '#A97142',
         nicene: '#DBAB23',
         cappadocian_father: '#CF9B06',
         arian: '#8A2D0F',
