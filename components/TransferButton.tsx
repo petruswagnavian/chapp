@@ -40,6 +40,9 @@ const TransferButton =
                     router.push('/');
                 }
             }
+            if (functionName === 'map') {
+                router.push('/mapper')
+            }
         }
     }
 

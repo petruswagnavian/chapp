@@ -51,7 +51,7 @@ export default function Index() {
                 <View
                     style={{ //displayTitleBanner
                         flex: 1,
-                        marginBottom: quoteHeight * 4,
+                        marginBottom: 0,
                         justifyContent: 'center',
                         alignItems: 'center',
                         backgroundColor: '#666'
@@ -63,16 +63,16 @@ export default function Index() {
                 </View>
                 <TransferButton
                     style={{
-                        position: 'absolute',
-                        left: 2 * rightTitleWidth,
-                        right: 0,
-                        height: layout.height / 6,
+                        flex: 1,
+                        margin: quoteHeight,
                         backgroundColor: "#000",
                         zIndex: 100
                     }}
                     functionName="map"
                     backgroundColor={colors.dark[300]}
-                    pressedColor={"#555"}>
+                    pressedColor={"#555"}
+                >
+                    <Text numberOfLines={1} adjustsFontSizeToFit style={styles.mapButtonText}>Map</Text>
                 </TransferButton>
             </View>
             <View style={{ //quote area
@@ -93,5 +93,12 @@ const styles = StyleSheet.create({
         textAlignVertical: 'center',
         fontFamily: 'ArnoPro-Regular',
         fontSize: 100,
+    },
+    mapButtonText: {
+        flex: 1,
+        textAlign: 'center',
+        textAlignVertical: 'center', //android only ?
+        fontFamily: 'ArnoPro-Bold',
+        fontSize: 25,
     }
 })

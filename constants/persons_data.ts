@@ -341,7 +341,7 @@ export const all_persons: Person[] = [
         deathplace: "Thebes, Aegyptus, Roman Empire",
         lat: 25.713133070514296,
         lon: 32.62190391281979,
-        imageUrl: 'https://images.weserv.nl/url=upload.wikimedia.org/wikipedia/commons/3/39/Paul_of_Thebes.jpg',
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/3/39/Paul_of_Thebes.jpg',
         fromYear: 227,
         fromApprox: true,
         toYear: 341,
