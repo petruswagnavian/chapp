@@ -47,6 +47,7 @@ const colors = {
         great_age: '#67CBB2',
         nicene_age: '#B36C19',
         chalcedon_age: '#D35673',
+        icon_age: '#B300FF',
         eastWest_age: '#7B49E6',
         highMiddle_age: '#8C67B5',
         lateMiddle_age: '#695987',
