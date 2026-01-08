@@ -556,6 +556,21 @@ export const all_persons: Person[] = [
         mainCamp: "Cappadocian Father"
     },
     {
+        pid: "ambrose_of_milan",
+        displayName: "Ambrose of Milan",
+        altNames: ["Aurelius Ambrosius"],
+        birthplace: "Augusta Treverorum, Gallia Belgica, Roman Empire",
+        deathplace: "Mediolanum, Italia, Western Roman Empire",
+        lat: 45.46509212922207,
+        lon: 9.18057778962911,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/7/74/AmbroseOfMilan_%28cropped%29.jpg',
+        fromYear: 339,
+        fromApprox: true,
+        toYear: 397,
+        camps: ["Western Father", "Nicene"],
+        mainCamp: "Nicene"
+    },
+    {
         pid: "jerome_of_stridon",
         displayName: "Jerome of Stridon",
         birthplace: "Stridon, Dalmatia, Roman Empire",
