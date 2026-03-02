@@ -378,6 +378,22 @@ export const all_persons: Person[] = [
         mainCamp: "Monastic"
     },
     {
+        pid: "hosius_of_cordoba",
+        displayName: "Hosius of Cordoba",
+        altNames: ["Hosius the Confessor", "Osius", "Ossius"],
+        birthplace: "Cordoba, Hispania, Roman Empire",
+        deathplace: "Cordoba, Hispania, Roman Empire",
+        lat: 37.88923549620351,
+        lon: -4.779505534652193,
+        imageUrl: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/0/05/Hosius_of_Cordoba.jpg/250px-Hosius_of_Cordoba.jpg",
+        fromYear: 256,
+        fromApprox: true,
+        toYear: 359,
+        toApprox: true,
+        camps: ["Western Father", "Nicene"],
+        mainCamp: "Nicene"
+    },
+    {
         pid: "arius_of_alexandria",
         displayName: "Arius of Alexandria",
         birthplace: "Ptolemais, Cyrenaica, Roman Empire",
@@ -581,7 +597,7 @@ export const all_persons: Person[] = [
         fromYear: 342,
         fromApprox: true,
         toYear: 420,
-        camps: ["Western Father", "Nicene", "Monastic"],
+        camps: ["Western Father", "Eastern Father", "Nicene", "Monastic"],
         mainCamp: "Nicene"
     },
     {
@@ -613,12 +629,32 @@ export const all_persons: Person[] = [
     {
         pid: "augustine_of_hippo",
         displayName: "Augustine of Hippo",
+        altNames: ["Aurelius Augustinus", "Austin"],
+        birthplace: "Thagaste, Numidia Cirtensis, Roman Empire",
+        deathplace: "Hippo Regius, Numidia Cirtensis, Western Roman Empire",
         lat: 36.90,
         lon: 7.75,
         imageUrl: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/saint-augustine-of-hippo-philippe-de-champaigne-war-is-hell-store.jpg',
         fromYear: 354,
         toYear: 430,
-        camps: ["Western Father", "Nicene"],
-        mainCamp: "Nicene"
+        camps: ["Western Father", "Nicene", "Augustinian", "Monastic"],
+        mainCamp: "Augustinian"
+    },
+    {
+        pid: "john_cassian",
+        displayName: "John Cassian",
+        altNames: ["John the Ascetic", "John Cassian the Roman"],
+        birthplace: "Scythia Minor, Roman Empire",
+        deathplace: "Massalia, Gallia Narbonensis, Western Roman Empire",
+        lat: 43.30270514648704,
+        lon: 5.36823823706311,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/a/a0/John_Cassian.jpeg/960px-John_Cassian.jpeg',
+        fromYear: 360,
+        fromApprox: true,
+        toYear: 435,
+        toApprox: true,
+        camps: ["Western Father", "Eastern Father", "Nicene", "Semipelagian", "Monastic"],
+        mainCamp: "Semipelagian"
+
     }
 ]
