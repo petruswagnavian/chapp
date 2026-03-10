@@ -252,6 +252,7 @@ export const all_persons: Person[] = [
     {
         pid: "clement_of_alexandria",
         displayName: "Clement of Alexandria",
+        altNames: ["Titus Flavius Clemens"],
         birthplace: "Athens, Achaia, Roman Empire",
         deathplace: "Jerusalem, Syria Palaestina, Roman Empire",
         lat: 31.20025863903445,
@@ -261,7 +262,8 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 215,
         toApprox: true,
-        camps: ["Eastern Father"]
+        camps: ["Eastern Father", "Alexandrian"],
+        mainCamp: "Eastern Father"
     },
     {
         pid: "tertullian_of_carthage",
@@ -317,7 +319,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 253,
         toApprox: true,
-        camps: ["Eastern Father", "Origenist"],
+        camps: ["Eastern Father", "Alexandrian", "Origenist"],
         mainCamp: "Origenist"
     },
     {
@@ -507,7 +509,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 398,
         toApprox: true,
-        camps: ["Eastern Father", "Origenist", "Nicene"],
+        camps: ["Eastern Father", "Alexandrian", "Origenist", "Nicene"],
         mainCamp: "Origenist"
     },
     {
@@ -623,7 +625,7 @@ export const all_persons: Person[] = [
         fromYear: 349,
         fromApprox: true,
         toYear: 407,
-        camps: ["Eastern Father", "Nicene"],
+        camps: ["Eastern Father", "Nicene", "Antiochene"],
         mainCamp: "Nicene"
     },
     {
@@ -655,6 +657,21 @@ export const all_persons: Person[] = [
         toApprox: true,
         camps: ["Western Father", "Eastern Father", "Nicene", "Semipelagian", "Monastic"],
         mainCamp: "Semipelagian"
-
+    },
+    {
+        pid: "prosper_of_aquitaine",
+        displayName: "Prosper of Aquitaine",
+        altNames: ["Prosper Aquitanus", "Prosper Tiro"],
+        birthplace: "Gallia Aquitania, Roman Empire",
+        deathplace: "Rome, Italia, Western Roman Empire",
+        lat: 43.29846758926648,
+        lon: 5.372771118291032,
+        imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/0/0f/Aquit%C3%A1niai_Szent_Prosper.jpg',
+        fromYear: 390,
+        fromApprox: true,
+        toYear: 455,
+        toApprox: true,
+        camps: ["Western Father", "Nicene", "Augustinian"],
+        mainCamp: "Augustinian"
     }
 ]

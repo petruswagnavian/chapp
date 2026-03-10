@@ -37,9 +37,11 @@ const colors = {
         augustinian: '#82A697',
         semipelagian: '#808080',
         pelagian: '#7D5968',
+        alexandrian: '#FF24ED',
+        antiochene: '#37CEFC',
+        eutychian: '#B516A8',
         nestorian: '#1D728C',
         chalcedonian: '#F0953E',
-        monophysite: '#B516A8',
         miaphysite: '#CF3EC0',
         iconodule: '#67CBB2',
         iconoclast: '#5E7015'
