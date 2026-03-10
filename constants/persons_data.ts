@@ -666,12 +666,28 @@ export const all_persons: Person[] = [
         deathplace: "Rome, Italia, Western Roman Empire",
         lat: 43.29846758926648,
         lon: 5.372771118291032,
-        imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/0/0f/Aquit%C3%A1niai_Szent_Prosper.jpg',
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/0/0f/Aquit%C3%A1niai_Szent_Prosper.jpg',
         fromYear: 390,
         fromApprox: true,
         toYear: 455,
         toApprox: true,
         camps: ["Western Father", "Nicene", "Augustinian"],
         mainCamp: "Augustinian"
+    },
+    {
+        pid: "vincent_of_lerins",
+        displayName: "Vincent of Lérins",
+        altNames: ["Vincentius Lerinensis"],
+        birthplace: "Toulouse, Gallia Narbonensis, Roman Empire",
+        deathplace: "Insulae Lero et Lerina, Western Roman Empire",
+        lat: 43.50653899905318,
+        lon: 7.047321380485845,
+        imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Icon_of_St_Vincent_of_Lerins_by_Bojan_Teodosijevi%C4%87.jpg/960px-Icon_of_St_Vincent_of_Lerins_by_Bojan_Teodosijevi%C4%87.jpg',
+        fromYear: 390,
+        fromApprox: true,
+        toYear: 445,
+        toApprox: true,
+        camps: ["Western Father", "Nicene", "Semipelagian"],
+        mainCamp: "Semipelagian"
     }
 ]
