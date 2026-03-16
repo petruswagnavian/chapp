@@ -238,6 +238,21 @@ export const all_persons: Person[] = [
         camps: ["Gnostic"]
     },
     {
+        pid: "theophilus_of_antioch",
+        displayName: "Theophilus of Antioch",
+        altNames: ["Theophilus of Antiochenus"],
+        birthplace: "Near the Tigris and Euphrates rivers, Mesopotamia",
+        deathplace: "Antioch, Syria, Roman Empire",
+        lat: 36.20655,
+        lon: 36.15722,
+        imageUrl: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/1/16/Theophilus_Antiochenus.png/960px-Theophilus_Antiochenus.png",
+        fromYear: 120,
+        fromApprox: true,
+        toYear: 183,
+        toApprox: true,
+        camps: ["Eastern Father"],
+    },
+    {
         pid: "irenaeus_of_lyon",
         displayName: "Irenaeus of Lyon",
         lat: 45.76,
@@ -248,6 +263,21 @@ export const all_persons: Person[] = [
         toYear: 202,
         toApprox: true,
         camps: ["Western Father"]
+    },
+    {
+        pid: "athenagoras_of_athens",
+        displayName: "Athenagoras of Athens",
+        altNames: ["Athenagoras the Athenian"],
+        birthplace: "Athens, Achaia, Roman Empire",
+        deathplace: "Unknown",
+        lat: 37.9838,
+        lon: 23.7275,
+        imageUrl: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/6/62/Greek_Icon_of_Saint_Athenagoras_of_Athens.jpg/960px-Greek_Icon_of_Saint_Athenagoras_of_Athens.jpg",
+        fromYear: 133,
+        fromApprox: true,
+        toYear: 190,
+        toApprox: true,
+        camps: ["Eastern Father"]
     },
     {
         pid: "clement_of_alexandria",
