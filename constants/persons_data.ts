@@ -238,6 +238,21 @@ export const all_persons: Person[] = [
         camps: ["Gnostic"]
     },
     {
+        pid: "tatian_the_assyrian",
+        displayName: "Tatian the Assyrian",
+        altNames: ["Tatian the Syrian", "Tatian of Adiabene"],
+        birthplace: "Assyria, Mesopotamia, Parthian Empire",
+        deathplace: "Likely Syria or Mesopotamia",
+        lat: 35.453997,
+        lon: 43.257500,
+        imageUrl: "https://images.weserv.nl/?url=images.squarespace-cdn.com/content/59714ce0cd39c3d2d282cc58/1500693415502-KN0XEXF712GJ1QNXTBVQ/tatian.jpg?content-type=image%2Fjpeg",
+        fromYear: 120,
+        fromApprox: true,
+        toYear: 180,
+        toApprox: true,
+        camps: ["Eastern Father", "Gnostic"]
+    },
+    {
         pid: "theophilus_of_antioch",
         displayName: "Theophilus of Antioch",
         altNames: ["Theophilus of Antiochenus"],
@@ -436,7 +451,7 @@ export const all_persons: Person[] = [
         fromYear: 256,
         fromApprox: true,
         toYear: 336,
-        camps: ["Eastern Father", "Arian"],
+        camps: ["Eastern Father", "Arian", "Alexandrian"],
         mainCamp: "Arian"
     },
     {
@@ -451,12 +466,13 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 328,
         toApprox: true,
-        camps: ["Eastern Father", "Nicene"],
+        camps: ["Eastern Father", "Nicene", "Alexandrian"],
         mainCamp: "Nicene"
     },
     {
         pid: "eusebius_of_caesarea",
         displayName: "Eusebius of Caesarea",
+        altNames: ["Eusebius Pamphilius"],
         birthplace: "Caesarea Maritima, Syria Palaestina, Roman Empire",
         deathplace: "Caesarea Maritima, Syria Palaestina, Roman Empire",
         lat: 32.51667524676977,
@@ -509,7 +525,7 @@ export const all_persons: Person[] = [
         fromYear: 296,
         fromApprox: true,
         toYear: 373,
-        camps: ["Eastern Father", "Nicene"],
+        camps: ["Eastern Father", "Nicene", "Alexandrian"],
         mainCamp: "Nicene"
     },
     {
@@ -534,13 +550,29 @@ export const all_persons: Person[] = [
         deathplace: "Unknown, probably Alexandria",
         lat: 31.20025863903445,
         lon: 29.91846236548454,
-        imageUrl: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/4/46/Didymus_the_blind.jpg",
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/4/46/Didymus_the_blind.jpg',
         fromYear: 313,
         fromApprox: true,
         toYear: 398,
         toApprox: true,
         camps: ["Eastern Father", "Alexandrian", "Origenist", "Nicene"],
         mainCamp: "Origenist"
+    },
+    {
+        pid: "cyril_of_jerusalem",
+        displayName: "Cyril of Jerusalem",
+        altNames: ["Cyrillus Hierosolymitanus"],
+        birthplace: "Jerusalem, Syria Palaestina, Roman Empire",
+        deathplace: "Jerusalem, Palaestina Prima, Roman Empire",
+        lat: 31.77889,
+        lon: 35.22556,
+        imageUrl: 'https://images.weserv.nl/?url=adoremus.org/app/uploads/2020/03/StCyril-5.jpg',
+        fromYear: 315,
+        fromApprox: true,
+        toYear: 386,
+        toApprox: true,
+        camps: ["Eastern Father", "Nicene"],
+        mainCamp: "Nicene"
     },
     {
         pid: "epiphanius_of_salamis",
@@ -673,6 +705,22 @@ export const all_persons: Person[] = [
         mainCamp: "Augustinian"
     },
     {
+        pid: "pelagius_pelagian",
+        displayName: "Pelagius",
+        altNames: ["Pelagius the Monk", "Pelagius Brito"],
+        birthplace: "Probably Britain, Roman Empire",
+        deathplace: "Possibly Palestine",
+        lat: 52.4153,
+        lon: -3.4821,
+        imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Pelagius.jpg/960px-Pelagius.jpg',
+        fromYear: 354,
+        fromApprox: true,
+        toYear: 418,
+        toApprox: true,
+        camps: ["Western Father", "Pelagian", "Monastic"],
+        mainCamp: "Pelagian"
+    },
+    {
         pid: "john_cassian",
         displayName: "John Cassian",
         altNames: ["John the Ascetic", "John Cassian the Roman"],
@@ -687,6 +735,22 @@ export const all_persons: Person[] = [
         toApprox: true,
         camps: ["Western Father", "Eastern Father", "Nicene", "Semipelagian", "Monastic"],
         mainCamp: "Semipelagian"
+    },
+    {
+        pid: "caelestius_pelagian",
+        displayName: "Caelestius",
+        altNames: ["Celestius"],
+        birthplace: "Probably Italy, Western Roman Empire",
+        deathplace: "Unknown; perhaps Constantinople, Thracia, Eastern Roman Empire",
+        lat: 41.9028,
+        lon: 12.4964,
+        imageUrl: "",
+        fromYear: 380,
+        fromApprox: true,
+        toYear: 430,
+        toApprox: true,
+        camps: ["Western Father", "Pelagian"],
+        mainCamp: "Pelagian"
     },
     {
         pid: "prosper_of_aquitaine",
