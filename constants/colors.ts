@@ -35,7 +35,7 @@ const colors = {
         monarchian: '#611385',
         montanist: '#C74A4A',
         augustinian: '#82A697',
-        semipelagian: '#808080',
+        massilian: '#808080',
         pelagian: '#7D5968',
         alexandrian: '#FF24ED',
         antiochene: '#1D728C',

@@ -69,6 +69,7 @@
     let lastMapVersion = 0;
     let lastPersonsVersion = 0;
     let colors = {};
+    let defaultImageUrl = '';
     const canvasRenderer = L.canvas({padding: 1.25})
     const map = L.map('map', {
         zoomControl: false,
@@ -145,7 +146,10 @@
             <div class="cluster-avatar" style="
                 border: 2px solid ${clusterColor};
             ">
-                <img src="${avatar}" alt="">
+                <img src="${avatar}"
+                     onerror="this.onerror=null; this.src='${defaultImageUrl}';"
+                     alt=""
+                >
                 <span class="cluster-badge">${count}</span>
             </div>
             `;
@@ -203,12 +207,14 @@
         const icon = L.divIcon({
             pane: 'markerPane',
             html: `
-                    <img src="${imageUrl}" style="
-                    width: 30px;
-                    height: 30px;
-                    border-radius: 30px;
-                    border: 2px solid ${campColor};
-                    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+                    <img src="${imageUrl}"
+                         onerror="this.onerror=null; this.src='${defaultImageUrl}';"
+                         style="
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 30px;
+                            border: 2px solid ${campColor};
+                            box-shadow: 0 0 5px rgba(0,0,0,0.5);
                     "/>
                 `,
             className: '',
@@ -330,8 +336,9 @@
             )
         }
 
-        if (message.type === 'SET_COLORS') {
+        if (message.type === 'SET_CONFIG') {
             colors = message.colors;
+            defaultImageUrl = message.defaultImage;
         }
     }
 

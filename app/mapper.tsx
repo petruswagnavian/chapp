@@ -64,10 +64,11 @@ const Mapper = () => {
     const [selectedAge, setSelectedAge] = useState<Age>(list_of_ages[0])
     const [currentYear, setCurrentYear] = useState<number>(selectedAge.startYear)
 
-    const sendColorsToWebView = () => {
+    const sendConfigToWebView = () => {
         webviewRef.current?.postMessage(JSON.stringify({
-            type: "SET_COLORS",
-            colors
+            type: "SET_CONFIG",
+            colors,
+            defaultImage: DEFAULT_PERSON_IMAGE
         }))
     }
 
@@ -83,7 +84,7 @@ const Mapper = () => {
     const handleLoadEnd = () => {
         console.log('[RN] Webview loaded');
         setWebviewLoaded(true);
-        sendColorsToWebView();
+        sendConfigToWebView();
     }
 
     const [layout, setLayout] = useState<{ width: number; height: number }>({

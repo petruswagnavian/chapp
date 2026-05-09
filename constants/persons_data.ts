@@ -748,8 +748,8 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 435,
         toApprox: true,
-        camps: ["Western Father", "Eastern Father", "Nicene", "Semipelagian", "Monastic"],
-        mainCamp: "Semipelagian"
+        camps: ["Western Father", "Eastern Father", "Nicene", "Massilian", "Monastic"],
+        mainCamp: "Massilian"
     },
     {
         pid: "john_i_of_antioch",
@@ -812,8 +812,8 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 445,
         toApprox: true,
-        camps: ["Western Father", "Nicene", "Semipelagian"],
-        mainCamp: "Semipelagian"
+        camps: ["Western Father", "Nicene", "Massilian"],
+        mainCamp: "Massilian"
     },
     {
         pid: "faustus_of_riez",
@@ -827,8 +827,8 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 490,
         toApprox: true,
-        camps: ["Western Father", "Nicene", "Semipelagian"],
-        mainCamp: "Semipelagian"
+        camps: ["Western Father", "Nicene", "Massilian"],
+        mainCamp: "Massilian"
     },
     {
         pid: "avitus_of_vienne",
