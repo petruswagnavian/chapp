@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, Dimensions} from 'react-native';
+import {StyleSheet, Text, View, Dimensions, Image} from 'react-native';
 import React, {useState, useEffect, useRef, useMemo} from 'react';
 import {WebView, WebViewMessageEvent} from 'react-native-webview';
 import {Link, router} from "expo-router";
@@ -14,6 +14,10 @@ import YearSlider from '@/components/YearSlider';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
+
+const DEFAULT_PERSON_IMAGE = Image.resolveAssetSource(
+    require('@/assets/images/default_person.png')
+).uri;
 
 const DEBOUNCE_MAP_MS = 30;
 const DEBOUNCE_PERSONS_MS = 30;
@@ -113,7 +117,16 @@ const Mapper = () => {
     const visiblePersons = useMemo(() => {
         return all_persons
             .filter(p => personsDebouncedYear >= p.fromYear && personsDebouncedYear <= p.toYear)
-            .map(p => ({...p, campColor: campColorOf(p.camps ?? [], p.mainCamp)}));
+            .map(p => {
+                const finalImageUrl = (p.imageUrl && p.imageUrl.trim() != "")
+                    ? p.imageUrl
+                    : DEFAULT_PERSON_IMAGE;
+                return {
+                    ...p,
+                    imageUrl: finalImageUrl,
+                    campColor: campColorOf(p.camps ?? [], p.mainCamp)
+                }
+            });
     }, [personsDebouncedYear]);
 
     //map debounce and snapped years

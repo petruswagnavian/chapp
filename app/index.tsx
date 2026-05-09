@@ -14,7 +14,7 @@ const screenHeight = Dimensions.get("window").height;
 export default function Index() {
     useEffect(() => {
         NavigationBar.setVisibilityAsync('hidden');
-    })
+    }, []);
     const [layout, setLayout] = useState<{width: number; height: number}>({
         width: screenWidth,
         height: screenHeight
@@ -93,6 +93,11 @@ const styles = StyleSheet.create({
         textAlignVertical: 'center',
         fontFamily: 'ArnoPro-Regular',
         fontSize: 100,
+        letterSpacing: 4,
+        color: '#f3e7c9',
+        textShadowColor: 'rgba(0,0,0,0.35)',
+        textShadowOffset: { width: 2, height: 2 },
+        textShadowRadius: 3,
     },
     mapButtonText: {
         flex: 1,

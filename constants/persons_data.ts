@@ -6,7 +6,7 @@ export type Person = {
     deathplace?: string;
     lat: number;
     lon: number;
-    imageUrl: string;
+    imageUrl?: string;
     fromYear: number;
     fromApprox?: boolean;
     toYear: number;
@@ -491,7 +491,7 @@ export const all_persons: Person[] = [
         deathplace: "Constantinople, Thracia, Roman Empire",
         lat: 40.76247630958466,
         lon: 29.917517499562084,
-        imageUrl: 'https://images.weserv.nl/?url=',
+        imageUrl: '',
         fromYear: 280,
         fromApprox: true,
         toYear: 341,
@@ -643,7 +643,7 @@ export const all_persons: Person[] = [
         deathplace: "Mediolanum, Italia, Western Roman Empire",
         lat: 45.46509212922207,
         lon: 9.18057778962911,
-        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/7/74/AmbroseOfMilan_%28cropped%29.jpg',
+        imageUrl: 'https://images.weserv.nl/?url=i.pinimg.com/736x/9d/63/52/9d6352be8f5cecf4f982ea7a014c31ee.jpg',
         fromYear: 339,
         fromApprox: true,
         toYear: 397,
@@ -657,7 +657,7 @@ export const all_persons: Person[] = [
         deathplace: "Bethlehem, Palaestina, Byzantine Empire",
         lat: 44.2,
         lon: 17.7,
-        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/5/5f/MatthiasStom-SaintJerome-Nantes.jpg',
+        imageUrl: 'https://images.weserv.nl/?url=cdn.britannica.com/06/234006-050-DA86F56B/Saint-Jerome-by-Jose-de-Ribera-c1638-1640.jpg',
         fromYear: 342,
         fromApprox: true,
         toYear: 420,
@@ -676,6 +676,21 @@ export const all_persons: Person[] = [
         toApprox: true,
         camps: ["Western Father", "Origenist"],
         mainCamp: "Origenist"
+    },
+    {
+        pid: "evagrius_ponticus",
+        displayName: "Evagrius Ponticus",
+        altNames: ["Evagrius of Pontus", "Evagrius the Solitary", "Euagrios Pontikos"],
+        birthplace: "Ibora, Helenopontus, Eastern Roman Empire",
+        deathplace: "Kellia, Aegyptus, Eastern Roman Empire",
+        lat: 30.776003,
+        lon: 30.368868,
+        imageUrl: 'https://images.weserv.nl/?url=firstthoughtsofgod.com/wp-content/uploads/2023/04/evagrius-edited.jpg',
+        fromYear: 345,
+        fromApprox: true,
+        toYear: 399,
+        camps: ["Nicene", "Origenist", "Monastic"],
+        mainCamp: "Origenist",
     },
     {
         pid: "john_chrysostom",
@@ -737,14 +752,30 @@ export const all_persons: Person[] = [
         mainCamp: "Semipelagian"
     },
     {
+        pid: "john_i_of_antioch",
+        displayName: "John I of Antioch",
+        altNames: ["John of Antioch", "John, Patriarch of Antioch"],
+        birthplace: "Antioch, Coele Syria, Roman Empire",
+        deathplace: "Antioch, Syria Prima, Eastern Roman Empire",
+        lat: 36.202105,
+        lon: 36.160509,
+        imageUrl: '',
+        fromYear: 370,
+        fromApprox: true,
+        toYear: 441,
+        toApprox: false,
+        camps: ["Antiochene"],
+        mainCamp: "Antiochene",
+    },
+    {
         pid: "caelestius_pelagian",
         displayName: "Caelestius",
         altNames: ["Celestius"],
-        birthplace: "Probably Italy, Western Roman Empire",
+        birthplace: "Probably Italy, Roman Empire",
         deathplace: "Unknown; perhaps Constantinople, Thracia, Eastern Roman Empire",
         lat: 41.9028,
         lon: 12.4964,
-        imageUrl: "",
+        imageUrl: '',
         fromYear: 380,
         fromApprox: true,
         toYear: 430,
