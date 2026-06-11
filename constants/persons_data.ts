@@ -470,6 +470,21 @@ export const all_persons: Person[] = [
         mainCamp: "Arian"
     },
     {
+        pid: "gregory_the_illuminator",
+        displayName: "Gregory the Illuminator",
+        altNames: ["Gregory the Enlightener", "Grigor Lusavorich", "Gregory I of Armenia"],
+        birthplace: "Vagharshapat, Ayrarat, Kingdom of Armenia",
+        deathplace: "Mount Sepuh, Daranali, Kingdom of Armenia",
+        lat: 39.8786,
+        lon: 44.5766,
+        imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Gregory_the_Illuminator_Aghtamar_bas_relief.jpg/500px-Gregory_the_Illuminator_Aghtamar_bas_relief.jpg',
+        fromYear: 257,
+        fromApprox: true,
+        toYear: 331,
+        toApprox: true,
+        camps: ["Eastern Father"]
+    },
+    {
         pid: "alexander_i_of_alexandria",
         displayName: "Alexander I of Alexandria",
         birthplace: "Unknown",
@@ -542,6 +557,20 @@ export const all_persons: Person[] = [
         toYear: 373,
         camps: ["Eastern Father", "Nicene", "Alexandrian"],
         mainCamp: "Nicene"
+    },
+    {
+        pid: "frumentius_of_axum",
+        displayName: "Frumentius of Axum",
+        birthplace: "Tyre, Phoenicia, Roman Empire",
+        deathplace: "Aksum, Kingdom of Aksum",
+        lat: 14.1211,
+        lon: 38.7234,
+        imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/4/47/St_Frumentius.jpg',
+        fromYear: 300,
+        fromApprox: true,
+        toYear: 383,
+        toApprox: true,
+        camps: ["Eastern Father"]
     },
     {
         pid: "hilary_of_poitiers",
