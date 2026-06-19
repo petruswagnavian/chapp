@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Dimensions, StyleSheet, LayoutChangeEvent} from 'react-native';
+import {View, Text, Dimensions, StyleSheet, LayoutChangeEvent} from 'react-native';
 import {Gesture, GestureDetector} from "react-native-gesture-handler";
 //import {scheduleOnRN} from "react-native-worklets";
 import Animated, {
@@ -34,9 +34,14 @@ const YearSlider =
         const righty = layout.width / 5;
         const bufferWidth = layout.width - lefty - righty; //aka containerWidth
         const totalBufferOffset = bufferWidth * 0.05;
+        const sliderInnerWidth = bufferWidth * 0.90;
 
         const [trackWidth, setTrackWidth] = useState(0);
         const [latestYear, setLatestYear] = useState(currentYear);
+
+        const [startBoxWidth, setStartBoxWidth] = useState(0);
+        const [endBoxWidth, setEndBoxWidth] = useState(0);
+
         const range = endYear - startYear;
         const translateX = useSharedValue(0);
         const startX = useSharedValue(0);
@@ -183,7 +188,7 @@ const YearSlider =
                         <Animated.View style={[styles.filledTrack, filledTrackStyle]}/>
                     </View>
                     <View style={[styles.thumbTrack, {
-                        width: bufferWidth * 0.90,
+                        width: sliderInnerWidth,
                     }]} onLayout={onTrackLayout}>
                         <Animated.Image
                             style={[styles.thumb, thumbStyle]}
@@ -192,8 +197,34 @@ const YearSlider =
                     </View>
                     <View style={styles.buffer}></View>
                     <View style={[styles.bars, {
-                        width: bufferWidth * 0.90,
-                    }]}>
+                        width: sliderInnerWidth,
+                    }]} />
+                    <View
+                        pointerEvents="none"
+                        style={[styles.yearLabels, {
+                            width: sliderInnerWidth,
+                        }]}
+                    >
+                        <View
+                            onLayout={(e) => setStartBoxWidth(e.nativeEvent.layout.width)}
+                            style={[styles.yearBox, {
+                                left: -startBoxWidth /2
+                            }]}
+                        >
+                            <Text numberOfLines={1} style={styles.yearLabel}>
+                                {startYear} AD
+                            </Text>
+                        </View>
+                        <View
+                            onLayout={(e) => setEndBoxWidth(e.nativeEvent.layout.width)}
+                            style={[styles.yearBox, {
+                                right: -endBoxWidth /2
+                            }]}
+                        >
+                            <Text numberOfLines={1} style={styles.yearLabel}>
+                                {endYear} AD
+                            </Text>
+                        </View>
                     </View>
                 </View>
             </GestureDetector>
@@ -235,6 +266,30 @@ const styles= StyleSheet.create({
         //backgroundColor: 'rgba(0,0,0,0.5)',
         backgroundColor: 'transparent',
         zIndex: 5,
+    },
+    yearLabels: {
+        position: 'absolute',
+        top: 0,
+        height: 24,
+        zIndex: 20,
+    },
+    yearBox: {
+        position: 'absolute',
+        top: -10,
+        height: 22,
+        paddingHorizontal: 3,
+        borderRadius: 6,
+        borderWidth: 1,
+        borderColor: '#000',
+        backgroundColor: colors.primary,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    yearLabel: {
+        fontFamily: 'ArnoPro-Bold',
+        fontSize: 16,
+        color: colors.purp[200],
+        fontWeight: '600',
     },
     track: {
         position: 'absolute',

@@ -16,7 +16,7 @@ export const list_of_ages: Age[] = [
     {id: 'lateMiddle_age', label: 'LATE MIDDLE AGES', startYear: 1302, endYear: 1516},
     {id: 'reformation_age', label: 'REFORMATION', startYear: 1517, endYear: 1647},
     {id: 'westphalian_age', label: 'REVIVAL AND REASON', startYear: 1648, endYear: 1913},
-    {id: 'modern_age', label: 'MODERN AGE', startYear: 1914, endYear: 2025},
+    {id: 'modern_age', label: 'MODERN AGE', startYear: 1914, endYear: 2026},
 ]
 
 export const mappable_years: number[] = [

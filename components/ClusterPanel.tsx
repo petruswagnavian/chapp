@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
         gap: 12,
     },
     buttonText: {
+        fontFamily: 'ArnoPro-Regular',
         fontSize: 16
     }
 })
