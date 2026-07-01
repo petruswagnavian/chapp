@@ -1067,6 +1067,21 @@ export const all_persons: Person[] = [
         mainCamp: "Antiochene",
     },
     {
+        pid: "gennadius_i_of_constantinople",
+        displayName: "Gennadius I of Constantinople",
+        birthplace: "Unknown, probably Constantinople, Thrace, Eastern Roman Empire",
+        deathplace: "Constantinople, Thrace, Eastern Roman Empire",
+        lat: 41.0082,
+        lon: 28.9784,
+        imageUrl: 'https://images.weserv.nl/?url=https://cdn.ballwool.com/products/1080_1440/0_1d271d1ab965e95a1d936c88309473be3f815e566a16644e860d6ad5b99daa0ba3109af4bbcafac06c8dcfb62ea1f94f274353288db8c1398389ccf97845ba43.webp',
+        fromYear: 405,
+        fromApprox: true,
+        toYear: 471,
+        toApprox: false,
+        camps: ["Eastern Father", "Antiochene", "Chalcedonian"],
+        mainCamp: "Chalcedonian"
+    },
+    {
         pid: "timothy_ii_of_alexandria",
         displayName: "Timothy II of Alexandria",
         altNames: ["Timothy the Cat", "Timotheus Aelurus", "Timothy II Ailuros"],
