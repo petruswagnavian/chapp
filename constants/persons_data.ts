@@ -500,6 +500,22 @@ export const all_persons: Person[] = [
         mainCamp: "Nicene"
     },
     {
+        pid: "jacob_of_nisibis",
+        displayName: "Jacob of Nisibis",
+        altNames: ["James of Nisibis", "Jacob the Great", "James the Great", "Jacob of Mygdonia"],
+        birthplace: "Nisibis, Mesopotamia, Roman Empire",
+        deathplace: "Nisibis, Mesopotamia, Roman Empire",
+        lat: 37.0750,
+        lon: 41.2189,
+        imageUrl: 'https://images.weserv.nl/?url=https://cdn11.bigcommerce.com/s-30c33/images/stencil/1280x1280/products/3643/5536/SaintJacobNisibisSmall__45369.1642617287.jpg?c=2',
+        fromYear: 260,
+        fromApprox: true,
+        toYear: 338,
+        toApprox: true,
+        camps: ["Eastern Father", "Nicene", "Monastic"],
+        mainCamp: "Monastic"
+    },
+    {
         pid: "eusebius_of_caesarea",
         displayName: "Eusebius of Caesarea",
         altNames: ["Eusebius Pamphilius"],
@@ -513,6 +529,22 @@ export const all_persons: Person[] = [
         toYear: 339,
         camps: ["Eastern Father", "Origenist"],
         mainCamp: "Origenist"
+    },
+    {
+        pid: "eustathius_of_antioch",
+        displayName: "Eustathius of Antioch",
+        altNames: ["Eustathius the Great", "Eustathius of Side", "Eustathios of Antioch"],
+        birthplace: "Side, Pamphylia, Roman Empire",
+        deathplace: "Trajanopolis, Thrace, Roman Empire",
+        lat: 36.2021,
+        lon: 36.1613,
+        imageUrl: 'https://images.weserv.nl/?url=https://blogger.googleusercontent.com/img/a/AVvXsEjtuJCotPNn9FxS2syjzkVk8geuJQrapwFjX6vg9om84JuKgP0mgCiAr5zy65yBg9yy0-fqoKpCw8mEJOuRWONrg18vJC_dO9QQ8pvRxhO11fMjRoRyw2g-x1AHYz_9qeDwHPhAx4j9eoCmSTwOFAWROkrEszSS8-x5wsIzelbA3KtthmVx2YDjkGp1Hw=w344-h400',
+        fromYear: 270,
+        fromApprox: true,
+        toYear: 337,
+        toApprox: true,
+        camps: ["Eastern Father", "Antiochene", "Nicene"],
+        mainCamp: "Nicene"
     },
     {
         pid: "eusebius_of_nicomedia",
@@ -571,6 +603,22 @@ export const all_persons: Person[] = [
         toYear: 383,
         toApprox: true,
         camps: ["Eastern Father"]
+    },
+    {
+        pid: "ephrem_the_syrian",
+        displayName: "Ephrem the Syrian",
+        altNames: ["Ephrem of Nisibis", "Ephrem of Edessa", "Ephraem the Syrian", "Ephraim the Syrian"],
+        birthplace: "Nisibis, Mesopotamia, Roman Empire",
+        deathplace: "Edessa, Osrhoene, Roman Empire",
+        lat: 37.1591,
+        lon: 38.7969,
+        imageUrl: 'https://images.weserv.nl/?url=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlEo5H6YyujAkd6fJw3oJy0Nl3vIUu_owOCBPdRry7QT5eX0bE9RvnElg&s=10',
+        fromYear: 306,
+        fromApprox: true,
+        toYear: 373,
+        toApprox: false,
+        camps: ["Eastern Father", "Nicene", "Monastic"],
+        mainCamp: "Nicene"
     },
     {
         pid: "hilary_of_poitiers",
