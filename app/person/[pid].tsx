@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {useLocalSearchParams} from "expo-router";
 import {LinearGradient} from "expo-linear-gradient";
 import {all_persons} from "@/constants/persons_data";
+import type {WorkEntry} from "@/constants/persons_data";
 import colors from "@/constants/colors";
 import {lighten, darken} from "@/utils/colorUtils";
 import TransferButton from "@/components/TransferButton";
@@ -26,15 +27,18 @@ const Identity = () => {
     const {pid} = useLocalSearchParams();
     const person = all_persons.find(p => p.pid === pid);
     const [imgHeight, setImgHeight] = useState<number | undefined>();
+    const imageUrl = person?.imageUrl?.trim() || undefined;
     useEffect(() => {
-        if (person?.imageUrl && infoScrollAreaWidth > 0) { //depends on person?.imageUrl and infoScrollAreaWidth
-            Image.getSize(person.imageUrl, (w, h) => {
+        if (imageUrl && infoScrollAreaWidth > 0) { //depends on person?.imageUrl and infoScrollAreaWidth
+            Image.getSize(imageUrl, (w, h) => {
                 const targetWidth = infoScrollAreaWidth - scrollAreaPadding * 2.4;
                 const scaledHeight = h * (targetWidth / w);
                 setImgHeight(scaledHeight);
             }, (error) => console.error("Failed to get image size", error));
+        } else {
+            setImgHeight(undefined);
         }
-    }, [person?.imageUrl, infoScrollAreaWidth, scrollAreaPadding]);
+    }, [imageUrl, infoScrollAreaWidth, scrollAreaPadding]);
     if (!person) {
         return (
             <View style={{flex: 1}}>
@@ -59,6 +63,32 @@ const Identity = () => {
 
     const fromYear = person.fromApprox ? "~" + person.fromYear : person.fromYear;
     const toYear = person.toApprox ? "~" + person.toYear : person.toYear;
+    const birthplace = person.birthplace?.trim();
+    const deathplace = person.deathplace?.trim();
+    const hasKnownWritings =
+        !!person.authentic_works?.length ||
+        !!person.disputed_works?.length ||
+        !!person.pseudo_works?.length;
+    const renderWorkList = (works: WorkEntry[] | undefined) => {
+        if (!works?.length) {
+            return null;
+        }
+        return (
+            <View style={styles.workItems}>
+                {works.map((work, index) => (
+                    <Text
+                        key={`${work.text}-${index}`}
+                        style={[
+                            styles.workItem,
+                            work.ital && styles.workItalic,
+                        ]}
+                    >
+                        {work.text}
+                    </Text>
+                ))}
+            </View>
+        );
+    };
 
     return (
         <LinearGradient colors={backgroundGradient}
@@ -205,28 +235,65 @@ const Identity = () => {
                     <Text style={styles.infoHeader}>
                         {person.displayName}{"\n"}({fromYear} – {toYear})
                     </Text>
-                    <Image
-                        source={{uri: person.imageUrl}}
-                        style={{
-                            height: imgHeight ?? infoScrollAreaWidth * 1.5,
-                            width: infoScrollAreaWidth - (scrollAreaPadding * 2.4),
-                            //height: infoScrollAreaWidth * 1.25,
-                            //height: imgHeight,
-                            borderWidth: 8,
-                            borderColor: '#000',
-                            //borderRadius: 8,
-                        }}
-                        resizeMode="cover"
-                        onError={e => console.log("Image failed", e.nativeEvent.error)}
-                    />
+                    {imageUrl && (
+                        <Image
+                            source={{uri: person.imageUrl}}
+                            style={{
+                                height: imgHeight ?? infoScrollAreaWidth * 1.5,
+                                width: infoScrollAreaWidth - (scrollAreaPadding * 2.4),
+                                //height: infoScrollAreaWidth * 1.25,
+                                //height: imgHeight,
+                                borderWidth: 8,
+                                borderColor: '#000',
+                                //borderRadius: 8,
+                            }}
+                            resizeMode="cover"
+                            onError={e => console.log("Image failed", e.nativeEvent.error)}
+                        />
+                    )}
                     <View style={{flexDirection: "row", paddingTop: scrollAreaPadding}}>
-                        <Text style={styles.infoLabel}>Born: </Text>
-                        <Text style={styles.infoValue}>{fromYear} AD</Text>
+                        <Text style={styles.infoLabel}>Born:</Text>
+                        <View style={{flex: 1}}>
+                            <Text style={styles.infoValue}>{fromYear} AD</Text>
+                            {birthplace && (
+                                <Text style={styles.infoValue}>{birthplace}</Text>
+                            )}
+                        </View>
                     </View>
                     <View style={{flexDirection: "row"}}>
-                        <Text style={styles.infoLabel}>Died: </Text>
-                        <Text style={styles.infoValue}>{toYear} AD</Text>
+                        <Text style={styles.infoLabel}>Died:</Text>
+                        <View style={{flex: 1}}>
+                            <Text style={styles.infoValue}>{toYear} AD</Text>
+                            {deathplace && (
+                                <Text style={styles.infoValue}>{deathplace}</Text>
+                            )}
+                        </View>
                     </View>
+                    {hasKnownWritings && (
+                        <View style={styles.knownWritingsBox}>
+                            <Text style={styles.knownWritingsHeader}>Known writings:</Text>
+                            <View style={styles.knownWritingsRows}>
+                                {!!person.authentic_works?.length && (
+                                    <View style={styles.workCategory}>
+                                        <Text style={styles.workLabel}>Authentic:</Text>
+                                        {renderWorkList(person.authentic_works)}
+                                    </View>
+                                )}
+                                {!!person.disputed_works?.length && (
+                                    <View style={styles.workCategory}>
+                                        <Text style={styles.workLabel}>Disputed:</Text>
+                                        {renderWorkList(person.disputed_works)}
+                                    </View>
+                                )}
+                                {!!person.pseudo_works?.length && (
+                                    <View style={styles.workCategory}>
+                                        <Text style={styles.workLabel}>Pseudepigrapha:</Text>
+                                        {renderWorkList(person.pseudo_works)}
+                                    </View>
+                                )}
+                            </View>
+                        </View>
+                    )}
 
                 </ScrollView>
             </View>
@@ -247,11 +314,11 @@ const styles = StyleSheet.create({
         flex: 1,
         textAlign: 'left',
         fontFamily: 'ArnoPro-Regular',
-        fontSize: 20,
+        fontSize: 18,
         backgroundColor: '#777'
     },
     infoLabel: {
-        width: 60,
+        width: 50, //born: width
         fontFamily: 'ArnoPro-Bold',
         fontSize: 18,
     },
@@ -274,7 +341,38 @@ const styles = StyleSheet.create({
         textAlignVertical: 'center', //android only ?
         fontFamily: 'ArnoPro-Bold',
         fontSize: 25,
-    }
+    },
+    knownWritingsBox: {
+        paddingTop: 8,
+    },
+    knownWritingsHeader: {
+        fontFamily: 'ArnoPro-Bold',
+        fontSize: 17,
+        lineHeight: 20,
+    },
+    knownWritingsRows: {
+        paddingLeft: 12,
+    },
+    workCategory: {
+        marginTop: 2,
+    },
+    workLabel: {
+        fontFamily: 'ArnoPro-Bold',
+        fontSize: 16,
+        lineHeight: 19,
+    },
+    workItems: {
+        paddingLeft: 12,
+        marginTop: 1,
+    },
+    workItem: {
+        fontFamily: 'ArnoPro-Regular',
+        fontSize: 16,
+        lineHeight: 19,
+    },
+    workItalic: {
+        fontFamily: 'ArnoPro-Italic',
+    },
 })
 
 export default Identity;

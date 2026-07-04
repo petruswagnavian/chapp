@@ -1,3 +1,8 @@
+export type WorkEntry = {
+    text: string;
+    ital?: boolean;
+}
+
 export type Person = {
     pid: string;
     displayName: string;
@@ -13,6 +18,9 @@ export type Person = {
     toApprox?: boolean;
     camps: string[];
     mainCamp?: string;
+    authentic_works?: WorkEntry[];
+    disputed_works?: WorkEntry[];
+    pseudo_works?: WorkEntry[];
 }
 
 export const all_persons: Person[] = [
@@ -29,7 +37,11 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 65,
         toApprox: true,
-        camps: ["Apostle"]
+        camps: ["Apostle"],
+        authentic_works: [
+            {text: "First Epistle of Peter", ital: true},
+            {text: "Second Epistle of Peter", ital: true},
+        ]
     },
     {
         pid: "matthew_the_apostle",
@@ -43,7 +55,10 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 68,
         toApprox: true,
-        camps: ["Apostle"]
+        camps: ["Apostle"],
+        authentic_works: [
+            {text: "Gospel of Matthew", ital: true}
+        ]
     },
     {
         pid: "james_the_just",
@@ -57,7 +72,10 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 62,
         toApprox: true,
-        camps: ["Apostle"]
+        camps: ["Apostle"],
+        authentic_works: [
+            {text: "Epistle of James", ital: true}
+        ],
     },
     {
         pid: "paul_of_tarsus",
@@ -71,7 +89,25 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 65,
         toApprox: true,
-        camps: ["Apostle"]
+        camps: ["Apostle"],
+        authentic_works: [
+            {text: "Epistle to the Romans", ital: true},
+            {text: "First Epistle to the Corinthians", ital: true},
+            {text: "Second Epistle to the Corinthians", ital: true},
+            {text: "Epistle to the Galatians", ital: true},
+            {text: "Epistle to the Ephesians", ital: true},
+            {text: "Epistle to the Philippians", ital: true},
+            {text: "Epistle to the Colossians", ital: true},
+            {text: "First Epistle to the Thessalonians", ital: true},
+            {text: "Second Epistle to the Thessalonians", ital: true},
+            {text: "First Epistle to Timothy", ital: true},
+            {text: "Second Epistle to Timothy", ital: true},
+            {text: "Epistle to Titus", ital: true},
+            {text: "Epistle to Philemon", ital: true},
+        ],
+        disputed_works: [
+            {text: "Epistle to the Hebrews", ital: true},
+        ]
     },
     {
         pid: "john_the_apostle",
@@ -85,7 +121,16 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 100,
         toApprox: true,
-        camps: ["Apostle"]
+        camps: ["Apostle"],
+        authentic_works: [
+            {text: "Gospel of John", ital: true}
+        ],
+        disputed_works: [
+            {text: "First Epistle of John", ital: true},
+            {text: "Second Epistle of John", ital: true},
+            {text: "Third Epistle of John", ital: true},
+            {text: "Revelation of John", ital: true}
+        ]
     },
     {
         pid: "john_mark_the_evangelist",
@@ -99,7 +144,10 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 68,
         toApprox: true,
-        camps: ["Apostle"]
+        camps: ["Apostle"],
+        authentic_works: [
+            {text: "Gospel of Mark", ital: true}
+        ],
     },
     {
         pid: "luke_the_evangelist",
@@ -113,7 +161,10 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 94,
         toApprox: true,
-        camps: ["Apostle"]
+        camps: ["Apostle"],
+        authentic_works: [
+            {text: "Gospel of Luke", ital: true}
+        ],
     },
     {
         pid: "judas_thaddaeus",
@@ -127,7 +178,10 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 65,
         toApprox: true,
-        camps: ["Apostle"]
+        camps: ["Apostle"],
+        authentic_works: [
+            {text: "Epistle of Jude", ital: true}
+        ],
     },
     {
         pid: "simon_magus",
@@ -155,7 +209,13 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 101,
         toApprox: true,
-        camps: ["Apostolic Father"]
+        camps: ["Apostolic Father"],
+        authentic_works: [
+            {text: "First Epistle of Clement", ital: true}
+        ],
+        disputed_works: [
+            {text: "Second Epistle of Clement", ital: true}
+        ]
     },
     {
         pid: "ignatius_of_antioch",
@@ -245,7 +305,7 @@ export const all_persons: Person[] = [
         displayName: "Valentinus",
         lat: 41.88,
         lon: 12.59,
-        imageUrl: 'https://bpb-us-e1.wpmucdn.com/blogs.uoregon.edu/dist/7/10891/files/2015/05/valentinus-1kiu29x.jpg',
+        imageUrl: '',
         fromYear: 100,
         fromApprox: true,
         toYear: 180,
@@ -462,7 +522,7 @@ export const all_persons: Person[] = [
         deathplace: "Constantinople, Thracia, Roman Empire",
         lat: 31.20025863903445,
         lon: 29.91846236548454,
-        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/0/02/Arius_p%C3%BCsp%C3%B6k.jpg',
+        imageUrl: 'https://images.weserv.nl/?url=https://cdn.britannica.com/94/271794-050-E611A266/Arius-Alexandria-engraving-Christian-priest-Arianism.jpg',
         fromYear: 256,
         fromApprox: true,
         toYear: 336,
@@ -583,7 +643,7 @@ export const all_persons: Person[] = [
         deathplace: "Alexandria, Egypt, Roman Empire",
         lat: 31.20025863903445,
         lon: 29.91846236548454,
-        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/2/26/Ikone_Athanasius_von_Alexandria.jpg',
+        imageUrl: 'https://images.weserv.nl/?url=https://www.sscyrilmethodius.org/wp-prod/wp-content/uploads/2020/04/st-athanasius-icon-702.jpg',
         fromYear: 296,
         fromApprox: true,
         toYear: 373,
@@ -677,7 +737,7 @@ export const all_persons: Person[] = [
         fromYear: 315,
         fromApprox: true,
         toYear: 403,
-        camps: ["Eastern Father", "Nicene", "Iconoclast"],
+        camps: ["Eastern Father", "Nicene"],
         mainCamp: "Nicene"
     },
     {
