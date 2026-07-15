@@ -198,8 +198,8 @@ export const all_persons: Person[] = [
         camps: ["Gnostic"]
     },
     {
-        pid: "clement_of_rome",
-        displayName: "Clement of Rome",
+        pid: "clement_i_of_rome",
+        displayName: "Clement I of Rome",
         birthplace: "Rome, Italia, Roman Empire",
         deathplace: "Chersonesus, Crimea, Bosporan Kingdom, Roman Empire",
         lat: 41.88,
@@ -1349,6 +1349,22 @@ export const all_persons: Person[] = [
         mainCamp: "Miaphysite"
     },
     {
+        pid: "julian_of_halicarnassus",
+        displayName: "Julian of Halicarnassus",
+        altNames: ["Julian the Aphthartodocetist"],
+        birthplace: "Unknown, perhaps Halicarnassus, Caria, Eastern Roman Empire",
+        deathplace: "Unknown, perhaps Alexandria, Aegyptus, Byzantine Empire",
+        lat: 37.0344,
+        lon: 27.4305,
+        imageUrl: '',
+        fromYear: 465,
+        fromApprox: true,
+        toYear: 527,
+        toApprox: true,
+        camps: ["Eastern Father", "Miaphysite", "Eutychian"],
+        mainCamp: "Eutychian"
+    },
+    {
         pid: "fulgentius_of_ruspe",
         displayName: "Fulgentius of Ruspe",
         altNames: ["Fabius Claudius Gordianus Fulgentius"],
@@ -1394,6 +1410,38 @@ export const all_persons: Person[] = [
         toYear: 543,
         toApprox: true,
         camps: ["Eastern Father", "Chalcedonian", "Monastic"],
+        mainCamp: "Chalcedonian"
+    },
+    {
+        pid: "eutychius_of_constantinople",
+        displayName: "Eutychius of Constantinople",
+        altNames: ["Eutychius of Theium"],
+        birthplace: "Theium, Phrygia, Eastern Roman Empire",
+        deathplace: "Constantinople, Thrace, Eastern Roman Empire",
+        lat: 41.0082,
+        lon: 28.9784,
+        imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/1/13/Eutychius_of_Constantinople.jpg',
+        fromYear: 512,
+        fromApprox: true,
+        toYear: 582,
+        toApprox: false,
+        camps: ["Eastern Father", "Chalcedonian"],
+        mainCamp: "Chalcedonian"
+    },
+    {
+        pid: "gregory_i_of_rome",
+        displayName: "Gregory I of Rome",
+        altNames: ["Gregory the Great", "Pope Gregory I", "Gregory the Dialogist"],
+        birthplace: "Rome, Italia, Byzantine Empire",
+        deathplace: "Rome, Italia, Byzantine Empire",
+        lat: 41.9028,
+        lon: 12.4964,
+        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7OTzRs2bKdaAJzSYqI2-UG1fCEiQ6b4iMDIoU746zR-NPG6Q06Tzk8y3b&s=10',
+        fromYear: 540,
+        fromApprox: true,
+        toYear: 604,
+        toApprox: false,
+        camps: ["Western Father", "Monastic", "Augustinian", "Chalcedonian"],
         mainCamp: "Chalcedonian"
     },
     {
