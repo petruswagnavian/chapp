@@ -637,6 +637,22 @@ export const all_persons: Person[] = [
         mainCamp: "Monastic"
     },
     {
+        pid: "pachomius_the_great",
+        displayName: "Pachomius the Great",
+        altNames: ["Pachomius of Tabennisi", "Pachomius the Elder"],
+        birthplace: "Latopolis, Thebaid, Roman Empire",
+        deathplace: "Pbow, Thebaid, Roman Empire",
+        lat: 26.0522,
+        lon: 32.2419,
+        imageUrl: 'https://images.weserv.nl/?url=https://www.antiochpatriarchate.org/images/Saints/6283b9d3acc6ab071571e4859f6f37e6.jpg',
+        fromYear: 292,
+        fromApprox: true,
+        toYear: 348,
+        toApprox: false,
+        camps: ["Eastern Father", "Nicene", "Monastic"],
+        mainCamp: "Monastic"
+    },
+    {
         pid: "athanasius_of_alexandria",
         displayName: "Athanasius of Alexandria",
         birthplace: "Alexandria, Egypt, Roman Empire",
@@ -663,6 +679,22 @@ export const all_persons: Person[] = [
         toYear: 383,
         toApprox: true,
         camps: ["Eastern Father"]
+    },
+    {
+        pid: "macarius_of_egypt",
+        displayName: "Macarius of Egypt",
+        altNames: ["Macarius the Great", "Macarius the Elder", "Macarius of Scetis"],
+        birthplace: "Ptinapor, Aegyptus, Roman Empire",
+        deathplace: "Scetis, Aegyptus, Roman Empire",
+        lat: 30.3400,
+        lon: 30.2800,
+        imageUrl: 'https://images.weserv.nl/?url=https://cdn.thecollector.com/wp-content/uploads/2023/01/icon-of-saint-macarius.jpg?width=622&quality=100&dpr=2',
+        fromYear: 300,
+        fromApprox: true,
+        toYear: 391,
+        toApprox: true,
+        camps: ["Eastern Father", "Nicene", "Monastic"],
+        mainCamp: "Monastic"
     },
     {
         pid: "ephrem_the_syrian",
@@ -1361,8 +1393,8 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 543,
         toApprox: true,
-        camps: ["Greek Father", "Chalcedonian", "Neo-Chalcedonian", "Cyrillian", "Anti-Miaphysite", "Anti-Nestorian", "Monastic"],
-        mainCamp: "Neo-Chalcedonian"
+        camps: ["Eastern Father", "Chalcedonian", "Monastic"],
+        mainCamp: "Chalcedonian"
     },
     {
         pid: "theodore_of_raithu",
