@@ -41,6 +41,10 @@ export const all_persons: Person[] = [
         authentic_works: [
             {text: "First Epistle of Peter", ital: true},
             {text: "Second Epistle of Peter", ital: true},
+        ],
+        pseudo_works: [
+            {text: "Acts of Peter", ital: true},
+            {text: "Revelation of Peter", ital: true},
         ]
     },
     {
@@ -163,7 +167,8 @@ export const all_persons: Person[] = [
         toApprox: true,
         camps: ["Apostle"],
         authentic_works: [
-            {text: "Gospel of Luke", ital: true}
+            {text: "Gospel of Luke", ital: true},
+            {text: "Acts of the Apostles", ital: true}
         ],
     },
     {
@@ -201,7 +206,7 @@ export const all_persons: Person[] = [
         pid: "clement_i_of_rome",
         displayName: "Clement I of Rome",
         birthplace: "Rome, Italia, Roman Empire",
-        deathplace: "Chersonesus, Crimea, Bosporan Kingdom, Roman Empire",
+        deathplace: "Chersonesus, Taurica, Bosporan Kingdom, Roman Empire",
         lat: 41.88,
         lon: 12.59,
         imageUrl: 'https://lonelypilgrim.com/wp-content/uploads/2014/05/clement-of-rome.jpg?w=214',
@@ -229,7 +234,26 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 116,
         toApprox: true,
-        camps: ["Apostolic Father"]
+        camps: ["Apostolic Father"],
+        authentic_works: [
+            {text: "Epistle to the Ephesians", ital: true},
+            {text: "Epistle to the Magnesians", ital: true},
+            {text: "Epistle to the Trallians", ital: true},
+            {text: "Epistle to the Romans", ital: true},
+            {text: "Epistle to the Philadelphians", ital: true},
+            {text: "Epistle to the Smyrnaeans", ital: true},
+            {text: "Epistle to Polycarp", ital: true},
+        ],
+        pseudo_works: [
+            {text: "Epistle to the Tarsians", ital: true},
+            {text: "Epistle to the Antiochians", ital: true},
+            {text: "Epistle to the Philippians", ital: true},
+            {text: "Epistle to Hero", ital: true},
+            {text: "Epistle to Mary of Cassobloa", ital: true},
+            {text: "Epistle to the Virgin Mary", ital: true},
+            {text: "First Epistle to John", ital: true},
+            {text: "Second Epistle to John", ital: true},
+        ]
     },
     {
         pid: "papias_of_hierapolis",

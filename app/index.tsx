@@ -73,6 +73,7 @@ export default function Index() {
     const [fontsLoaded] = useFonts({
         'ArnoPro-Regular': require('../assets/fonts/ArnoPro-Regular.otf'),
         'ArnoPro-Bold': require('../assets/fonts/ArnoPro-Bold.otf'),
+        'ArnoPro-Italic': require('../assets/fonts/ArnoPro-Italic.otf'),
     })
     if (!fontsLoaded) return null;
     const quoteHeight = layout.height / 8;
