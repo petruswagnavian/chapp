@@ -175,7 +175,7 @@ export const all_persons: Person[] = [
         pid: "judas_thaddaeus",
         displayName: "Judas Thaddaeus",
         birthplace: "Galilee, Judaea, Roman Empire",
-        deathplace: "",
+        deathplace: "Berytus, Phoenice, Roman Empire",
         lat: 32.69903106070133,
         lon: 35.303823054325235,
         imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/0/0d/Anthonis_van_Dyck%2C_Kunsthistorisches_Museum_Wien%2C_Gem%C3%A4ldegalerie_-_Apostel_Judas_Thadd%C3%A4us_-_GG_6809_-_Kunsthistorisches_Museum.jpg',
@@ -200,7 +200,10 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 65,
         toApprox: true,
-        camps: ["Gnostic"]
+        camps: ["Gnostic"],
+        pseudo_works: [
+            {text: "The Great Announcement", ital: true},
+        ]
     },
     {
         pid: "clement_i_of_rome",
@@ -216,10 +219,10 @@ export const all_persons: Person[] = [
         toApprox: true,
         camps: ["Apostolic Father"],
         authentic_works: [
-            {text: "First Epistle of Clement", ital: true}
+            {text: "First Epistle of Clement to the Corinthians", ital: true}
         ],
         disputed_works: [
-            {text: "Second Epistle of Clement", ital: true}
+            {text: "Second Epistle of Clement to the Corinthians", ital: true}
         ]
     },
     {
@@ -236,28 +239,30 @@ export const all_persons: Person[] = [
         toApprox: true,
         camps: ["Apostolic Father"],
         authentic_works: [
-            {text: "Epistle to the Ephesians", ital: true},
-            {text: "Epistle to the Magnesians", ital: true},
-            {text: "Epistle to the Trallians", ital: true},
-            {text: "Epistle to the Romans", ital: true},
-            {text: "Epistle to the Philadelphians", ital: true},
-            {text: "Epistle to the Smyrnaeans", ital: true},
-            {text: "Epistle to Polycarp", ital: true},
+            {text: "Epistle of Ignatius to the Ephesians", ital: true},
+            {text: "Epistle of Ignatius to the Magnesians", ital: true},
+            {text: "Epistle of Ignatius to the Trallians", ital: true},
+            {text: "Epistle of Ignatius to the Romans", ital: true},
+            {text: "Epistle of Ignatius to the Philadelphians", ital: true},
+            {text: "Epistle of Ignatius to the Smyrnaeans", ital: true},
+            {text: "Epistle of Ignatius to Polycarp", ital: true},
         ],
         pseudo_works: [
-            {text: "Epistle to the Tarsians", ital: true},
-            {text: "Epistle to the Antiochians", ital: true},
-            {text: "Epistle to the Philippians", ital: true},
-            {text: "Epistle to Hero", ital: true},
-            {text: "Epistle to Mary of Cassobloa", ital: true},
-            {text: "Epistle to the Virgin Mary", ital: true},
-            {text: "First Epistle to John", ital: true},
-            {text: "Second Epistle to John", ital: true},
+            {text: "Epistle of Ignatius to the Tarsians", ital: true},
+            {text: "Epistle of Ignatius to the Antiochians", ital: true},
+            {text: "Epistle of Ignatius to the Philippians", ital: true},
+            {text: "Epistle of Ignatius to Hero", ital: true},
+            {text: "Epistle of Ignatius to Mary of Cassobloa", ital: true},
+            {text: "Epistle of Ignatius to the Virgin Mary", ital: true},
+            {text: "First Epistle of Ignatius to John", ital: true},
+            {text: "Second Epistle of Ignatius to John", ital: true},
         ]
     },
     {
         pid: "papias_of_hierapolis",
         displayName: "Papias of Hierapolis",
+        birthplace: "Unknown, probably Hierapolis, Phrygia, Roman Empire",
+        deathplace: "Hierapolis, Phrygia, Roman Empire",
         lat: 37.91,
         lon: 29.11,
         imageUrl: 'https://pbcdn1.podbean.com/imglogo/ep-logo/pbblog17411067/papias.jpeg',
@@ -265,7 +270,10 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 130,
         toApprox: true,
-        camps: ["Apostolic Father"]
+        camps: ["Apostolic Father"],
+        authentic_works: [
+            {text: "Exposition of the Sayings of the Lord", ital: true},
+        ]
     },
     {
         pid: "polycarp_of_smyrna",
@@ -279,7 +287,10 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 155,
         toApprox: true,
-        camps: ["Apostolic Father"]
+        camps: ["Apostolic Father"],
+        authentic_works: [
+            {text: "Epistle of Polycarp to the Philippians", ital: true},
+        ]
     },
     {
         pid: "marcion_of_sinope",
@@ -293,7 +304,11 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 160,
         toApprox: true,
-        camps: ["Gnostic"]
+        camps: ["Gnostic"],
+        authentic_works: [
+            {text: "Antitheses", ital: true},
+            {text: "Gospel of Marcion", ital: true},
+        ]
     },
     {
         pid: "justin_martyr",
@@ -307,13 +322,23 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 165,
         toApprox: true,
-        camps: ["Eastern Father"]
+        camps: ["Eastern Father"],
+        authentic_works: [
+            {text: "First Apology", ital: true},
+            {text: "Second Apology", ital: true},
+            {text: "Dialogue with Trypho", ital: true},
+        ],
+        pseudo_works: [
+            {text: "Discourse to the Greeks", ital: true},
+            {text: "Exhortation to the Greeks", ital: true},
+            {text: "On the Monarchy of God", ital: true},
+        ]
     },
     {
         pid: "melito_of_sardis",
         displayName: "Melito of Sardis",
         altNames: ["Melito Sardianus", "Melito of Sardes", "Meliton Sardeon"],
-        birthplace: "Unknown, probably Roman Asia",
+        birthplace: "Sardis, Lydia, Roman Asia",
         deathplace: "Sardis, Lydia, Roman Asia",
         lat: 38.488300,
         lon: 28.040600,
@@ -323,10 +348,16 @@ export const all_persons: Person[] = [
         toYear: 180,
         toApprox: true,
         camps: ["Eastern Father"],
+        authentic_works: [
+            {text: "On the Pascha", ital: true},
+            {text: "Apology to Marcus Aurelius", ital: true},
+        ]
     },
     {
         pid: "valentinus_gnostic",
         displayName: "Valentinus",
+        birthplace: "Phrebonis, Aegyptus, Roman Empire",
+        deathplace: "Cyprus, Roman Empire",
         lat: 41.88,
         lon: 12.59,
         imageUrl: '',
@@ -334,14 +365,17 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 180,
         toApprox: true,
-        camps: ["Gnostic"]
+        camps: ["Gnostic"],
+        disputed_works: [
+            {text: "Gospel of Truth", ital: true},
+        ]
     },
     {
         pid: "tatian_the_assyrian",
         displayName: "Tatian the Assyrian",
         altNames: ["Tatian the Syrian", "Tatian of Adiabene"],
         birthplace: "Assyria, Mesopotamia, Parthian Empire",
-        deathplace: "Likely Syria or Mesopotamia",
+        deathplace: "Adiabene, Mesopotamia, Parthian Empire",
         lat: 35.453997,
         lon: 43.257500,
         imageUrl: "https://images.weserv.nl/?url=images.squarespace-cdn.com/content/59714ce0cd39c3d2d282cc58/1500693415502-KN0XEXF712GJ1QNXTBVQ/tatian.jpg?content-type=image%2Fjpeg",
@@ -349,13 +383,17 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 180,
         toApprox: true,
-        camps: ["Eastern Father", "Gnostic"]
+        camps: ["Eastern Father", "Gnostic"],
+        authentic_works: [
+            {text: "Address to the Greeks", ital: true},
+            {text: "Diatessaron", ital: true},
+        ]
     },
     {
         pid: "theophilus_of_antioch",
         displayName: "Theophilus of Antioch",
         altNames: ["Theophilus of Antiochenus"],
-        birthplace: "Near the Tigris and Euphrates rivers, Mesopotamia",
+        birthplace: "Adiabene, Mesopotamia, Parthian Empire",
         deathplace: "Antioch, Syria, Roman Empire",
         lat: 36.20655,
         lon: 36.15722,
@@ -365,10 +403,15 @@ export const all_persons: Person[] = [
         toYear: 183,
         toApprox: true,
         camps: ["Eastern Father"],
+        authentic_works: [
+            {text: "Apology to Autolycus", ital: true},
+        ]
     },
     {
         pid: "irenaeus_of_lyon",
         displayName: "Irenaeus of Lyon",
+        birthplace: "Smyrna, Asia Minor, Roman Empire",
+        deathplace: "Lugdunum, Gallia Lugdunensis, Roman Empire",
         lat: 45.76,
         lon: 4.84,
         imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/3/38/Saint_irenee_saint_irenee.jpg',
@@ -376,14 +419,18 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 202,
         toApprox: true,
-        camps: ["Western Father"]
+        camps: ["Western Father"],
+        authentic_works: [
+            {text: "Against Heresies", ital: true},
+            {text: "Demonstration of the Apostolic Preaching", ital: true},
+        ]
     },
     {
         pid: "athenagoras_of_athens",
         displayName: "Athenagoras of Athens",
         altNames: ["Athenagoras the Athenian"],
         birthplace: "Athens, Achaia, Roman Empire",
-        deathplace: "Unknown",
+        deathplace: "Athens, Achaia, Roman Empire",
         lat: 37.9838,
         lon: 23.7275,
         imageUrl: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/6/62/Greek_Icon_of_Saint_Athenagoras_of_Athens.jpg/960px-Greek_Icon_of_Saint_Athenagoras_of_Athens.jpg",
@@ -391,7 +438,13 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 190,
         toApprox: true,
-        camps: ["Eastern Father"]
+        camps: ["Eastern Father"],
+        authentic_works: [
+            {text: "A Plea for the Christians", ital: true},
+        ],
+        disputed_works: [
+            {text: "On the Resurrection of the Dead", ital: true},
+        ]
     },
     {
         pid: "clement_of_alexandria",
@@ -407,7 +460,16 @@ export const all_persons: Person[] = [
         toYear: 215,
         toApprox: true,
         camps: ["Eastern Father", "Alexandrian"],
-        mainCamp: "Eastern Father"
+        mainCamp: "Eastern Father",
+        authentic_works: [
+            {text: "Protrepticus", ital: true},
+            {text: "Paedagogus", ital: true},
+            {text: "Stromata", ital: true},
+            {text: "Who is the Rich Man who is Saved?", ital: true},
+        ],
+        disputed_works: [
+            {text: "Mar Saba letter", ital: false}
+        ]
     },
     {
         pid: "tertullian_of_carthage",
@@ -421,7 +483,34 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 220,
         toApprox: true,
-        camps: ["Western Father", "Montanist"]
+        camps: ["Western Father", "Montanist"],
+        authentic_works: [
+            {text: "Apology", ital: true},
+            {text: "Prescription Against Heretics", ital: true},
+            {text: "Against Marcion", ital: true},
+            {text: "Against the Valentinians", ital: true},
+            {text: "Against Praxeas", ital: true},
+            {text: "On the Soul", ital: true},
+            {text: "On the Flesh of Christ", ital: true},
+            {text: "On the Resurrection of the Flesh", ital: true},
+            {text: "On Baptism", ital: true},
+            {text: "On the Spectacles", ital: true},
+            {text: "On Idolatry", ital: true},
+            {text: "On the Dress of Women", ital: true},
+            {text: "On the Veiling of Virgins", ital: true},
+            {text: "On Flight in Persecution", ital: true},
+            {text: "On Patience", ital: true},
+            {text: "On Repentance", ital: true},
+            {text: "On Modesty", ital: true},
+            {text: "On Monogamy", ital: true},
+            {text: "On Exhortation to Chastity", ital: true},
+            {text: "On Fasting", ital: true},
+            {text: "On Prayer", ital: true},
+            {text: "Antidote for the Scorpion's Sting", ital: true},
+            {text: "To His Wife", ital: true},
+            {text: "To the Nations", ital: true},
+            {text: "To Scapula", ital: true},
+        ]
     },
     {
         pid: "hippolytus_of_rome",
@@ -435,11 +524,20 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 236,
         toApprox: true,
-        camps: ["Western Father"]
+        camps: ["Western Father"],
+        authentic_works: [
+            {text: "Refutation of All Heresies", ital: true},
+            {text: "Commentary on Daniel", ital: true},
+            {text: "On Christ and Antichrist", ital: true},
+        ],
+        disputed_works: [
+            {text: "The Apostolic Tradition", ital: true},
+        ]
     },
     {
         pid: "alexander_of_jerusalem",
         displayName: "Alexander of Jerusalem",
+        altNames: ["Alexander of Cappadocia"],
         birthplace: "Unknown (Likely Cappadocia)",
         deathplace: "Caesarea Maritima, Syria Palaestina, Roman Empire",
         lat: 31.782201629960873,
@@ -449,7 +547,14 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 251,
         toApprox: true,
-        camps: ["Eastern Father"]
+        camps: ["Eastern Father"],
+        authentic_works: [
+            {text: "Epistle of Alexander to the Antinoites", ital: true},
+            {text: "Epistle of Alexander to the Antiochenes", ital: true},
+            {text: "Epistle of Alexander to Origen", ital: true},
+            {text: "Epistle of Alexander to Demetrius", ital: true},
+
+        ]
     },
     {
         pid: "origen_of_alexandria",
@@ -464,7 +569,19 @@ export const all_persons: Person[] = [
         toYear: 253,
         toApprox: true,
         camps: ["Eastern Father", "Alexandrian", "Origenist"],
-        mainCamp: "Origenist"
+        mainCamp: "Origenist",
+        authentic_works: [
+            {text: "On the First Principles", ital: true},
+            {text: "Against Celsus", ital: true},
+            {text: "Hexapla", ital: true},
+            {text: "Commentary on Matthew", ital: true},
+            {text: "Commentary on John", ital: true},
+            {text: "Commentary on Romans", ital: true},
+            {text: "Commentary on Genesis", ital: true},
+            {text: "Commentary on Song of Songs", ital: true},
+            {text: "Commentary on Psalms", ital: true},
+            {text: "Many Homilies", ital: false},
+        ]
     },
     {
         pid: "cyprian_of_carthage",
@@ -478,7 +595,12 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 258,
         toApprox: true,
-        camps: ["Western Father"]
+        camps: ["Western Father"],
+        authentic_works: [
+            {text: "On the Unity of the Church", ital: true},
+            {text: "On the Lapsed", ital: true},
+            {text: "On the Dress of Virgins", ital: true},
+        ]
     },
     {
         pid: "paul_of_thebes",
@@ -498,8 +620,8 @@ export const all_persons: Person[] = [
     {
         pid: "lucius_lactantius",
         displayName: "Lucius Lactantius",
-        birthplace: "Unknown (Numidia)",
-        deathplace: "Unknown",
+        birthplace: "Cirta, Numidia, Roman Empire",
+        deathplace: "Augusta Treverorum, Gallia Belgica, Roman Empire",
         lat: 40.76770445285668,
         lon: 29.933262567556298,
         imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/5/5c/Lactantius.jpg',
@@ -507,7 +629,13 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 325,
         toApprox: true,
-        camps: ["Western Father"]
+        camps: ["Western Father"],
+        authentic_works: [
+            {text: "Divine Institutes", ital: true},
+            {text: "On the Deaths of the Persecutors", ital: true},
+            {text: "On the Workmanship of God", ital: true},
+            {text: "On the Wrath of God", ital: true},
+        ]
 
     },
     {
@@ -521,7 +649,10 @@ export const all_persons: Person[] = [
         fromYear: 251,
         toYear: 356,
         camps: ["Eastern Father", "Monastic"],
-        mainCamp: "Monastic"
+        mainCamp: "Monastic",
+        authentic_works: [
+            {text: "Letters of Saint Anthony", ital: true},
+        ]
     },
     {
         pid: "hosius_of_cordoba",
@@ -537,7 +668,10 @@ export const all_persons: Person[] = [
         toYear: 359,
         toApprox: true,
         camps: ["Western Father", "Nicene"],
-        mainCamp: "Nicene"
+        mainCamp: "Nicene",
+        authentic_works: [
+            {text: "Letter to Constantius II", ital: true},
+        ]
     },
     {
         pid: "arius_of_alexandria",
@@ -551,7 +685,12 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 336,
         camps: ["Eastern Father", "Arian", "Alexandrian"],
-        mainCamp: "Arian"
+        mainCamp: "Arian",
+        authentic_works: [
+            {text: "Thalia", ital: true},
+            {text: "Letter to Eusebius of Nicomedia", ital: true},
+            {text: "Letter to Alexander of Alexandria", ital: true},
+        ]
     },
     {
         pid: "gregory_the_illuminator",
@@ -566,7 +705,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 331,
         toApprox: true,
-        camps: ["Eastern Father"]
+        camps: ["Eastern Father"],
     },
     {
         pid: "alexander_i_of_alexandria",

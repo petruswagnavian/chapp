@@ -11,6 +11,31 @@ import TransferButton from "@/components/TransferButton";
 const screenWidth = Dimensions.get("window").width;
 const screenHeight = Dimensions.get("window").height;
 
+const WorkTitle = ({text, style, wrapStyle}: {text: string; style: any; wrapStyle: any}) => {
+    const [lines, setLines] = useState<string[] | null>(null);
+
+    if (!lines) {
+        return (
+            <Text
+                style={style}
+                onTextLayout={(e) => setLines(e.nativeEvent.lines.map(l => l.text))}
+            >
+                {text}
+            </Text>
+        );
+    }
+
+    return (
+        <View>
+            {lines.map((lineText, index) => (
+                <Text key={index} style={[style, index > 0 && wrapStyle]}>
+                    {lineText}
+                </Text>
+            ))}
+        </View>
+    );
+};
+
 const Identity = () => {
     const [layout, setLayout] = useState<{ width: number; height: number }>({
         width: screenWidth,
@@ -76,15 +101,15 @@ const Identity = () => {
         return (
             <View style={styles.workItems}>
                 {works.map((work, index) => (
-                    <Text
+                    <WorkTitle
                         key={`${work.text}-${index}`}
+                        text={work.text}
                         style={[
                             styles.workItem,
                             work.ital && styles.workItalic,
                         ]}
-                    >
-                        {work.text}
-                    </Text>
+                        wrapStyle={styles.workItemWrap}
+                    />
                 ))}
             </View>
         );
@@ -372,6 +397,9 @@ const styles = StyleSheet.create({
     },
     workItalic: {
         fontFamily: 'ArnoPro-Italic',
+    },
+    workItemWrap: {
+        paddingLeft: 20
     },
 })
 
