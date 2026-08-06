@@ -73,7 +73,7 @@ const Identity = () => {
     }
 
     const mainCamp = person.mainCamp ? person.mainCamp : person.camps[0];
-    const mainCampId = mainCamp.toLowerCase().replace(/\s+/g,"_");
+    const mainCampId = mainCamp.replace(/\*/g, "").toLowerCase().replace(/\s+/g,"_");
     const mainCampCaps = mainCamp.toUpperCase();
     const mainCampColor = colors.camp[mainCampId as keyof typeof colors.camp];
 
@@ -213,13 +213,17 @@ const Identity = () => {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     borderWidth: 1,
+                                    paddingHorizontal: 1
                                 }}
                                 functionName="camp"
                                 backgroundColor={mainCampColor}
                                 pressedColor={lighten(mainCampColor, 0.3)}
                                 showIcon={false}
                 >
-                    <Text numberOfLines={1} adjustsFontSizeToFit style={styles.mainCampButtonText}>{mainCampCaps}</Text>
+                    <Text
+                        numberOfLines={1}
+                        adjustsFontSizeToFit
+                        style={styles.mainCampButtonText}>{mainCampCaps}</Text>
                 </TransferButton>
             </View>
             <View style={{
@@ -365,7 +369,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         textAlignVertical: 'center', //android only ?
         fontFamily: 'ArnoPro-Bold',
-        fontSize: 25,
+        fontSize: 25
     },
     knownWritingsBox: {
         paddingTop: 8,

@@ -200,7 +200,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 65,
         toApprox: true,
-        camps: ["Gnostic"],
+        camps: ["Gnostic*"],
         pseudo_works: [
             {text: "The Great Announcement", ital: true},
         ]
@@ -383,7 +383,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 180,
         toApprox: true,
-        camps: ["Eastern Father", "Gnostic"],
+        camps: ["Eastern Father", "Gnostic*"],
         authentic_works: [
             {text: "Address to the Greeks", ital: true},
             {text: "Diatessaron", ital: true},
@@ -483,7 +483,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 220,
         toApprox: true,
-        camps: ["Western Father", "Montanist"],
+        camps: ["Western Father", "Montanist*"],
         authentic_works: [
             {text: "Apology", ital: true},
             {text: "Prescription Against Heretics", ital: true},
@@ -995,7 +995,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 394,
         toApprox: true,
-        camps: ["Eastern Father", "Nicene", "Cappadocian Father", "Origenist"],
+        camps: ["Eastern Father", "Nicene", "Cappadocian Father", "Origenist*"],
         mainCamp: "Cappadocian Father"
     },
     {
@@ -1085,20 +1085,6 @@ export const all_persons: Person[] = [
         mainCamp: "Antiochene",
     },
     {
-        pid: "augustine_of_hippo",
-        displayName: "Augustine of Hippo",
-        altNames: ["Aurelius Augustinus", "Austin"],
-        birthplace: "Thagaste, Numidia Cirtensis, Roman Empire",
-        deathplace: "Hippo Regius, Numidia Cirtensis, Western Roman Empire",
-        lat: 36.90,
-        lon: 7.75,
-        imageUrl: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/saint-augustine-of-hippo-philippe-de-champaigne-war-is-hell-store.jpg',
-        fromYear: 354,
-        toYear: 430,
-        camps: ["Western Father", "Nicene", "Augustinian", "Monastic"],
-        mainCamp: "Augustinian"
-    },
-    {
         pid: "pelagius_pelagian",
         displayName: "Pelagius",
         altNames: ["Pelagius the Monk", "Pelagius Brito"],
@@ -1113,6 +1099,20 @@ export const all_persons: Person[] = [
         toApprox: true,
         camps: ["Western Father", "Pelagian", "Monastic"],
         mainCamp: "Pelagian"
+    },
+    {
+        pid: "augustine_of_hippo",
+        displayName: "Augustine of Hippo",
+        altNames: ["Aurelius Augustinus", "Austin"],
+        birthplace: "Thagaste, Numidia Cirtensis, Roman Empire",
+        deathplace: "Hippo Regius, Numidia Cirtensis, Western Roman Empire",
+        lat: 36.90,
+        lon: 7.75,
+        imageUrl: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/saint-augustine-of-hippo-philippe-de-champaigne-war-is-hell-store.jpg',
+        fromYear: 354,
+        toYear: 430,
+        camps: ["Western Father", "Nicene", "Augustinian", "Monastic"],
+        mainCamp: "Augustinian"
     },
     {
         pid: "celestine_i_of_rome",
@@ -1207,8 +1207,8 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 454,
         toApprox: true,
-        camps: ["Eastern Father", "Alexandrian", "Miaphysite", "Eutychian"],
-        mainCamp: "Eutychian"
+        camps: ["Eastern Father", "Alexandrian", "Miaphysite", "Eutychian*"],
+        mainCamp: "Eutychian*"
     },
     {
         pid: "caelestius_pelagian",
@@ -1255,8 +1255,8 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 451,
         toApprox: true,
-        camps: ["Eastern Father", "Antiochene", "Nestorian"],
-        mainCamp: "Nestorian"
+        camps: ["Eastern Father", "Antiochene", "Nestorian*"],
+        mainCamp: "Nestorian*"
     },
     {
         pid: "julian_of_eclanum",
@@ -1351,8 +1351,8 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 449,
         toApprox: false,
-        camps: ["Eastern Father", "Chalcedonian"],
-        mainCamp: "Chalcedonian"
+        camps: ["Eastern Father", "Chalcedonian*"],
+        mainCamp: "Chalcedonian*"
     },
     {
         pid: "dioscorus_i_of_alexandria",
@@ -1432,6 +1432,21 @@ export const all_persons: Person[] = [
         mainCamp: "Massilian"
     },
     {
+        pid: "acacius_of_constantinople",
+        displayName: "Acacius of Constantinople",
+        birthplace: "Unknown",
+        deathplace: "Constantinople, Thrace, Eastern Roman Empire",
+        lat: 41.0082,
+        lon: 28.9784,
+        imageUrl: '',
+        fromYear: 420,
+        fromApprox: true,
+        toYear: 489,
+        toApprox: false,
+        camps: ["Eastern Father", "Chalcedonian*"],
+        mainCamp: "Chalcedonian*"
+    },
+    {
         pid: "peter_the_fuller",
         displayName: "Peter the Fuller",
         altNames: ["Peter Fullo", "Peter Cnapheus", "Peter II of Antioch"],
@@ -1446,6 +1461,22 @@ export const all_persons: Person[] = [
         toApprox: true,
         camps: ["Eastern Father", "Miaphysite", "Monastic"],
         mainCamp: "Miaphysite"
+    },
+    {
+        pid: "sabbas_the_sanctified",
+        displayName: "Sabbas the Sanctified",
+        altNames: ["Sabas the Sanctified", "Sabbas of Mar Saba", "Savvas the Sanctified"],
+        birthplace: "Mutalaska, Cappadocia, Eastern Roman Empire",
+        deathplace: "Mar Saba, Palaestina Prima, Byzantine Empire",
+        lat: 31.704472,
+        lon: 35.331583,
+        imageUrl: 'https://images.weserv.nl/?url=https://cdn11.bigcommerce.com/s-30c33/images/stencil/1280x1280/products/3815/6065/StSavatheSanctifiedNewScrollSmall__76981.1668020939.jpg?c=2',
+        fromYear: 439,
+        fromApprox: true,
+        toYear: 532,
+        toApprox: false,
+        camps: ["Eastern Father", "Chalcedonian", "Monastic"],
+        mainCamp: "Monastic"
     },
     {
         pid: "philoxenus_of_mabbug",
@@ -1524,8 +1555,8 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 527,
         toApprox: true,
-        camps: ["Eastern Father", "Miaphysite", "Eutychian"],
-        mainCamp: "Eutychian"
+        camps: ["Eastern Father", "Miaphysite", "Eutychian*"],
+        mainCamp: "Eutychian*"
     },
     {
         pid: "fulgentius_of_ruspe",
@@ -1576,11 +1607,27 @@ export const all_persons: Person[] = [
         mainCamp: "Chalcedonian"
     },
     {
+        pid: "jacob_baradaeus",
+        displayName: "Jacob Baradaeus",
+        altNames: ["Jacob bar Addai", "Jacob bar Theophilus", "Jacob Burdoyo"],
+        birthplace: "Tella, Osrhoene, Byzantine Empire",
+        deathplace: "Maiuma, Palaestina Prima, Byzantine Empire",
+        lat: 37.167403,
+        lon: 38.795514,
+        imageUrl: 'https://images.weserv.nl/?url=https://static.wikitide.net/orthodoxywiki/thumb/e/e2/Jacob_Baradaeus.jpg/300px-Jacob_Baradaeus.jpg',
+        fromYear: 500,
+        fromApprox: true,
+        toYear: 578,
+        toApprox: false,
+        camps: ["Eastern Father", "Miaphysite", "Monastic"],
+        mainCamp: "Miaphysite"
+    },
+    {
         pid: "eutychius_of_constantinople",
         displayName: "Eutychius of Constantinople",
         altNames: ["Eutychius of Theium"],
-        birthplace: "Theium, Phrygia, Eastern Roman Empire",
-        deathplace: "Constantinople, Thrace, Eastern Roman Empire",
+        birthplace: "Theium, Phrygia, Byzantine Empire",
+        deathplace: "Constantinople, Thrace, Byzantine Empire",
         lat: 41.0082,
         lon: 28.9784,
         imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/1/13/Eutychius_of_Constantinople.jpg',
@@ -1589,6 +1636,22 @@ export const all_persons: Person[] = [
         toYear: 582,
         toApprox: false,
         camps: ["Eastern Father", "Chalcedonian"],
+        mainCamp: "Chalcedonian"
+    },
+    {
+        pid: "john_iv_of_constantinople",
+        displayName: "John IV of Constantinople",
+        altNames: ["John the Faster", "John Nesteutes", "John the Abstainer"],
+        birthplace: "Constantinople, Thrace, Byzantine Empire",
+        deathplace: "Constantinople, Thrace, Byzantine Empire",
+        lat: 41.008583,
+        lon: 28.980175,
+        imageUrl: 'https://images.weserv.nl/?url=https://images.oca.org/icons/lg/september/0902johnfaster.jpg',
+        fromYear: 530,
+        fromApprox: true,
+        toYear: 595,
+        toApprox: false,
+        camps: ["Eastern Father", "Chalcedonian", "Monastic"],
         mainCamp: "Chalcedonian"
     },
     {
@@ -1604,14 +1667,14 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 604,
         toApprox: false,
-        camps: ["Western Father", "Monastic", "Augustinian", "Chalcedonian"],
+        camps: ["Western Father", "Augustinian", "Chalcedonian", "Monastic"],
         mainCamp: "Chalcedonian"
     },
     {
         pid: "theodore_of_raithu",
         displayName: "Theodore of Raithu",
         altNames: ["Theodore of Pharan"],
-        birthplace: "Unknown, perhaps Raithu, Sinai, Eastern Roman Empire",
+        birthplace: "Unknown, perhaps Raithu, Sinai, Byzantine Empire",
         deathplace: "Unknown, perhaps Raithu, Sinai, Byzantine Empire",
         lat: 28.2417,
         lon: 33.6222,

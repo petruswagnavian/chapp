@@ -106,7 +106,7 @@ const Mapper = () => {
     //atomic map commit state
     const [mapCommit, setMapCommit] = useState<Commit | null>(null);
 
-    const normalize = (s?: string) => (s ?? '').toLowerCase().replace(/\s+/g,"_");
+    const normalize = (s?: string) => (s ?? '').replace(/\*/g, '').toLowerCase().replace(/\s+/g,"_");
     const campColorOf = (camps: string[], mainCamp?: string) => {
         const table = (colors.camp ?? {}) as Record<string, string>;
         const key = mainCamp ?? camps?.[0];
