@@ -43,6 +43,9 @@ const colors = {
         eutychian: '#B516A8',
         chalcedonian: '#F0953E',
         miaphysite: '#CF3EC0',
+        neoplatonist: '#219C4C',
+        monothelite: '#CF3EA1',
+        dyothelite: '#F07C3E',
         iconodule: '#67CBB2',
         iconoclast: '#5E7015'
     },

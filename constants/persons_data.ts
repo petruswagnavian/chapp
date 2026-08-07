@@ -999,6 +999,22 @@ export const all_persons: Person[] = [
         mainCamp: "Cappadocian Father"
     },
     {
+        pid: "martin_of_tours",
+        displayName: "Martin of Tours",
+        altNames: ["Martin the Merciful", "Martinus Turonensis"],
+        birthplace: "Savaria, Pannonia Prima, Roman Empire",
+        deathplace: "Candes, Lugdunensis Tertia, Western Roman Empire",
+        lat: 47.393611,
+        lon: 0.682778,
+        imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/c/ce/Simone_Martini_040.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
+        fromYear: 336,
+        fromApprox: true,
+        toYear: 397,
+        toApprox: false,
+        camps: ["Western Father", "Nicene", "Monastic"],
+        mainCamp: "Monastic"
+    },
+    {
         pid: "ambrose_of_milan",
         displayName: "Ambrose of Milan",
         altNames: ["Aurelius Ambrosius"],
@@ -1591,6 +1607,22 @@ export const all_persons: Person[] = [
         mainCamp: "Augustinian",
     },
     {
+        pid: "boethius",
+        displayName: "Boethius",
+        altNames: ["Anicius Manlius Severinus Boethius"],
+        birthplace: "Rome, Latium et Campania, Kingdom of Odoacer",
+        deathplace: "Pavia, Liguria, Ostrogothic Kingdom",
+        lat: 45.192222,
+        lon: 9.154722,
+        imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/0/0b/Boethius.jpeg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
+        fromYear: 480,
+        fromApprox: true,
+        toYear: 524,
+        toApprox: true,
+        camps: ["Western Father", "Chalcedonian", "Neoplatonist", "Latin"],
+        mainCamp: "Neoplatonist"
+    },
+    {
         pid: "leontius_of_jerusalem",
         displayName: "Leontius of Jerusalem",
         altNames: ["Leontios of Jerusalem", "Leontius Hierosolymitanus"],
@@ -1605,6 +1637,22 @@ export const all_persons: Person[] = [
         toApprox: true,
         camps: ["Eastern Father", "Chalcedonian", "Monastic"],
         mainCamp: "Chalcedonian"
+    },
+    {
+        pid: "cassiodorus",
+        displayName: "Cassiodorus",
+        altNames: ["Flavius Magnus Aurelius Cassiodorus Senator"],
+        birthplace: "Scylletium, Lucania et Bruttii, Kingdom of Odoacer",
+        deathplace: "Vivarium, Lucania et Bruttii, Byzantine Empire",
+        lat: 38.767778,
+        lon: 16.569167,
+        imageUrl: 'https://images.weserv.nl/?url=https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyJOCUvhXsWbGTiTRhuLyDDA-HgNtf1hLWf6yNSVOIVAH9QTr9vqbaLEMonFxlb7ypclSplQSjZv3JQyhB8Eud2_QqgebW6DBXAWlm6LMMDt1N0IJYS2Ccxos5VdY3xIySIADMb0QNScU/s1600/Cassiodorus.jpg',
+        fromYear: 485,
+        fromApprox: true,
+        toYear: 583,
+        toApprox: true,
+        camps: ["Western Father", "Chalcedonian", "Monastic"],
+        mainCamp: "Monastic"
     },
     {
         pid: "jacob_baradaeus",
