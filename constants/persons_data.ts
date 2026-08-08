@@ -1246,8 +1246,8 @@ export const all_persons: Person[] = [
         pid: "proclus_of_constantinople",
         displayName: "Proclus of Constantinople",
         altNames: ["Proclus Constantinopolitanus"],
-        birthplace: "Constantinople, Europa, Eastern Roman Empire",
-        deathplace: "Constantinople, Europa, Eastern Roman Empire",
+        birthplace: "Constantinople, Thrace, Eastern Roman Empire",
+        deathplace: "Constantinople, Thrace, Eastern Roman Empire",
         lat: 41.008200,
         lon: 28.978400,
         imageUrl: 'https://images.weserv.nl/?url=media.pravoslavie.ru/279191.p.jpg?mtime=1512039708',
@@ -1351,7 +1351,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 458,
         toApprox: true,
-        camps: ["Eastern Father", "Antiochene", "Chalcedonian"],
+        camps: ["Eastern Father", "Antiochene", "Chalcedonian*"],
         mainCamp: "Antiochene",
     },
     {
@@ -1619,7 +1619,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 524,
         toApprox: true,
-        camps: ["Western Father", "Chalcedonian", "Neoplatonist", "Latin"],
+        camps: ["Western Father", "Chalcedonian", "Neoplatonist"],
         mainCamp: "Neoplatonist"
     },
     {
@@ -1653,6 +1653,22 @@ export const all_persons: Person[] = [
         toApprox: true,
         camps: ["Western Father", "Chalcedonian", "Monastic"],
         mainCamp: "Monastic"
+    },
+    {
+        pid: "romanos_the_melodist",
+        displayName: "Romanos the Melodist",
+        altNames: ["Romanus the Melodist", "Roman the Melodist", "Romanos Melodos"],
+        birthplace: "Emesa, Phoenice Libanensis, Eastern Roman Empire",
+        deathplace: "Constantinople, Thrace, Eastern Roman Empire",
+        lat: 41.0082,
+        lon: 28.9784,
+        imageUrl: 'https://images.weserv.nl/?url=https://www.saintromanos.org/images/IMG_2858.jpg',
+        fromYear: 490,
+        fromApprox: true,
+        toYear: 556,
+        toApprox: true,
+        camps: ["Eastern Father", "Chalcedonian"],
+        mainCamp: "Chalcedonian"
     },
     {
         pid: "jacob_baradaeus",
@@ -1719,6 +1735,22 @@ export const all_persons: Person[] = [
         mainCamp: "Chalcedonian"
     },
     {
+        pid: "sophronius_i_of_jerusalem",
+        displayName: "Sophronius I of Jerusalem",
+        altNames: ["Sophronius the Sophist", "Sophronius the Wise"],
+        birthplace: "Damascus, Phoenice Libanensis, Byzantine Empire",
+        deathplace: "Jerusalem, Palaestina Prima, Rashidun Caliphate",
+        lat: 31.778472,
+        lon: 35.229611,
+        imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/e/e7/Athonite_Fresco_Icon_of_Saint_Sophronios_of_Jerusalem.jpg',
+        fromYear: 560,
+        fromApprox: true,
+        toYear: 638,
+        toApprox: false,
+        camps: ["Eastern Father", "Chalcedonian", "Dyothelite", "Monastic"],
+        mainCamp: "Dyothelite"
+    },
+    {
         pid: "theodore_of_raithu",
         displayName: "Theodore of Raithu",
         altNames: ["Theodore of Pharan"],
@@ -1733,5 +1765,52 @@ export const all_persons: Person[] = [
         toApprox: true,
         camps: ["Eastern Father", "Chalcedonian", "Monastic"],
         mainCamp: "Chalcedonian"
+    },
+    {
+        pid: "sergius_i_of_constantinople",
+        displayName: "Sergius I of Constantinople",
+        birthplace: "Unknown, Syria, Eastern Roman Empire",
+        deathplace: "Constantinople, Thrace, Eastern Roman Empire",
+        lat: 41.0082,
+        lon: 28.9784,
+        imageUrl: '',
+        fromYear: 575,
+        fromApprox: true,
+        toYear: 638,
+        toApprox: false,
+        camps: ["Eastern Father", "Monothelite"],
+        mainCamp: "Monothelite"
+    },
+    {
+        pid: "maximus_the_confessor",
+        displayName: "Maximus the Confessor",
+        altNames: ["Maximus of Constantinople", "Maximus the Theologian"],
+        birthplace: "Constantinople, Thrace, Byzantine Empire",
+        deathplace: "Schemaris, Lazica, Byzantine Empire",
+        lat: 41.025556,
+        lon: 29.015278,
+        imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/d/d0/Athonite_Fresco_Icon_of_Saint_Maximos_the_Confessor_2.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled',
+        fromYear: 580,
+        fromApprox: true,
+        toYear: 662,
+        toApprox: false,
+        camps: ["Eastern Father", "Chalcedonian", "Dyothelite", "Neoplatonist", "Monastic"],
+        mainCamp: "Dyothelite"
+    },
+    {
+        pid: "martin_i_of_rome",
+        displayName: "Martin I of Rome",
+        altNames: ["Pope Martin I", "Martin the Confessor"],
+        birthplace: "Todi, Umbria, Byzantine Empire",
+        deathplace: "Cherson, Crimea, Byzantine Empire",
+        lat: 41.885833,
+        lon: 12.505833,
+        imageUrl: 'https://images.weserv.nl/?url=https://thestationofthecross.com/wp-content/uploads/station-of-the-cross-saints-and-seasons-pope-saint-martin-i-the-first-scaled.jpg',
+        fromYear: 590,
+        fromApprox: true,
+        toYear: 655,
+        toApprox: false,
+        camps: ["Western Father", "Chalcedonian", "Dyothelite"],
+        mainCamp: "Dyothelite"
     },
 ]
