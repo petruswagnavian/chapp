@@ -37,7 +37,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 65,
         toApprox: true,
-        camps: ["Apostle"],
+        camps: ["Apostle", "Greek"],
         authentic_works: [
             {text: "First Epistle of Peter", ital: true},
             {text: "Second Epistle of Peter", ital: true},
@@ -59,7 +59,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 68,
         toApprox: true,
-        camps: ["Apostle"],
+        camps: ["Apostle", "Greek"],
         authentic_works: [
             {text: "Gospel of Matthew", ital: true}
         ]
@@ -76,7 +76,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 62,
         toApprox: true,
-        camps: ["Apostle"],
+        camps: ["Apostle", "Greek"],
         authentic_works: [
             {text: "Epistle of James", ital: true}
         ],
@@ -93,7 +93,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 65,
         toApprox: true,
-        camps: ["Apostle"],
+        camps: ["Apostle", "Greek"],
         authentic_works: [
             {text: "Epistle to the Romans", ital: true},
             {text: "First Epistle to the Corinthians", ital: true},
@@ -125,7 +125,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 100,
         toApprox: true,
-        camps: ["Apostle"],
+        camps: ["Apostle", "Greek"],
         authentic_works: [
             {text: "Gospel of John", ital: true}
         ],
@@ -148,7 +148,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 68,
         toApprox: true,
-        camps: ["Apostle"],
+        camps: ["Apostle", "Greek"],
         authentic_works: [
             {text: "Gospel of Mark", ital: true}
         ],
@@ -165,7 +165,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 94,
         toApprox: true,
-        camps: ["Apostle"],
+        camps: ["Apostle", "Greek"],
         authentic_works: [
             {text: "Gospel of Luke", ital: true},
             {text: "Acts of the Apostles", ital: true}
@@ -183,7 +183,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 65,
         toApprox: true,
-        camps: ["Apostle"],
+        camps: ["Apostle", "Greek"],
         authentic_works: [
             {text: "Epistle of Jude", ital: true}
         ],
@@ -200,7 +200,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 65,
         toApprox: true,
-        camps: ["Gnostic*"],
+        camps: ["Gnostic*", "Greek"],
         pseudo_works: [
             {text: "The Great Announcement", ital: true},
         ]
@@ -217,7 +217,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 101,
         toApprox: true,
-        camps: ["Apostolic Father"],
+        camps: ["Apostolic Father", "Greek"],
         authentic_works: [
             {text: "First Epistle of Clement to the Corinthians", ital: true}
         ],
@@ -237,7 +237,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 116,
         toApprox: true,
-        camps: ["Apostolic Father"],
+        camps: ["Apostolic Father", "Greek"],
         authentic_works: [
             {text: "Epistle of Ignatius to the Ephesians", ital: true},
             {text: "Epistle of Ignatius to the Magnesians", ital: true},
@@ -270,7 +270,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 130,
         toApprox: true,
-        camps: ["Apostolic Father"],
+        camps: ["Apostolic Father", "Greek"],
         authentic_works: [
             {text: "Exposition of the Sayings of the Lord", ital: true},
         ]
@@ -287,7 +287,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 155,
         toApprox: true,
-        camps: ["Apostolic Father"],
+        camps: ["Apostolic Father", "Greek"],
         authentic_works: [
             {text: "Epistle of Polycarp to the Philippians", ital: true},
         ]
@@ -304,7 +304,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 160,
         toApprox: true,
-        camps: ["Gnostic"],
+        camps: ["Gnostic", "Greek"],
         authentic_works: [
             {text: "Antitheses", ital: true},
             {text: "Gospel of Marcion", ital: true},
@@ -322,7 +322,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 165,
         toApprox: true,
-        camps: ["Eastern Father"],
+        camps: ["Eastern Father", "Greek"],
         authentic_works: [
             {text: "First Apology", ital: true},
             {text: "Second Apology", ital: true},
@@ -347,7 +347,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 180,
         toApprox: true,
-        camps: ["Eastern Father"],
+        camps: ["Eastern Father", "Greek"],
         authentic_works: [
             {text: "On the Pascha", ital: true},
             {text: "Apology to Marcus Aurelius", ital: true},
@@ -365,7 +365,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 180,
         toApprox: true,
-        camps: ["Gnostic"],
+        camps: ["Gnostic", "Greek", "Coptic*"],
         disputed_works: [
             {text: "Gospel of Truth", ital: true},
         ]
@@ -383,7 +383,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 180,
         toApprox: true,
-        camps: ["Eastern Father", "Gnostic*"],
+        camps: ["Eastern Father", "Gnostic*", "Syriac", "Greek"],
         authentic_works: [
             {text: "Address to the Greeks", ital: true},
             {text: "Diatessaron", ital: true},
@@ -402,7 +402,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 183,
         toApprox: true,
-        camps: ["Eastern Father"],
+        camps: ["Eastern Father", "Greek"],
         authentic_works: [
             {text: "Apology to Autolycus", ital: true},
         ]
@@ -419,7 +419,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 202,
         toApprox: true,
-        camps: ["Western Father"],
+        camps: ["Western Father", "Greek", "Latin*"],
         authentic_works: [
             {text: "Against Heresies", ital: true},
             {text: "Demonstration of the Apostolic Preaching", ital: true},
@@ -438,7 +438,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 190,
         toApprox: true,
-        camps: ["Eastern Father"],
+        camps: ["Eastern Father", "Greek"],
         authentic_works: [
             {text: "A Plea for the Christians", ital: true},
         ],
@@ -459,7 +459,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 215,
         toApprox: true,
-        camps: ["Eastern Father", "Alexandrian"],
+        camps: ["Eastern Father", "Greek", "Alexandrian"],
         mainCamp: "Eastern Father",
         authentic_works: [
             {text: "Protrepticus", ital: true},
@@ -483,7 +483,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 220,
         toApprox: true,
-        camps: ["Western Father", "Montanist*"],
+        camps: ["Western Father", "Latin", "Greek", "Montanist*"],
         authentic_works: [
             {text: "Apology", ital: true},
             {text: "Prescription Against Heretics", ital: true},
@@ -524,7 +524,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 236,
         toApprox: true,
-        camps: ["Western Father"],
+        camps: ["Western Father", "Greek"],
         authentic_works: [
             {text: "Refutation of All Heresies", ital: true},
             {text: "Commentary on Daniel", ital: true},
@@ -547,7 +547,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 251,
         toApprox: true,
-        camps: ["Eastern Father"],
+        camps: ["Eastern Father", "Greek"],
         authentic_works: [
             {text: "Epistle of Alexander to the Antinoites", ital: true},
             {text: "Epistle of Alexander to the Antiochenes", ital: true},
@@ -568,7 +568,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 253,
         toApprox: true,
-        camps: ["Eastern Father", "Alexandrian", "Origenist"],
+        camps: ["Eastern Father", "Greek", "Latin*", "Alexandrian", "Origenist"],
         mainCamp: "Origenist",
         authentic_works: [
             {text: "On the First Principles", ital: true},
@@ -595,7 +595,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 258,
         toApprox: true,
-        camps: ["Western Father"],
+        camps: ["Western Father", "Latin"],
         authentic_works: [
             {text: "On the Unity of the Church", ital: true},
             {text: "On the Lapsed", ital: true},
@@ -614,7 +614,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 341,
         toApprox: true,
-        camps: ["Eastern Father", "Monastic"],
+        camps: ["Eastern Father", "Coptic", "Monastic"],
         mainCamp: "Monastic"
     },
     {
@@ -629,7 +629,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 325,
         toApprox: true,
-        camps: ["Western Father"],
+        camps: ["Western Father", "Latin"],
         authentic_works: [
             {text: "Divine Institutes", ital: true},
             {text: "On the Deaths of the Persecutors", ital: true},
@@ -648,7 +648,7 @@ export const all_persons: Person[] = [
         imageUrl: 'https://images.weserv.nl/?url=https://images.oca.org/icons/sm/january/0117anthony.jpg',
         fromYear: 251,
         toYear: 356,
-        camps: ["Eastern Father", "Monastic"],
+        camps: ["Eastern Father", "Coptic", "Greek*", "Monastic"],
         mainCamp: "Monastic",
         authentic_works: [
             {text: "Letters of Saint Anthony", ital: true},
@@ -667,7 +667,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 359,
         toApprox: true,
-        camps: ["Western Father", "Nicene"],
+        camps: ["Western Father", "Latin", "Nicene"],
         mainCamp: "Nicene",
         authentic_works: [
             {text: "Letter to Constantius II", ital: true},
@@ -684,7 +684,7 @@ export const all_persons: Person[] = [
         fromYear: 256,
         fromApprox: true,
         toYear: 336,
-        camps: ["Eastern Father", "Arian", "Alexandrian"],
+        camps: ["Eastern Father", "Greek", "Arian", "Alexandrian"],
         mainCamp: "Arian",
         authentic_works: [
             {text: "Thalia", ital: true},
@@ -705,7 +705,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 331,
         toApprox: true,
-        camps: ["Eastern Father"],
+        camps: ["Eastern Father", "Greek"],
     },
     {
         pid: "alexander_i_of_alexandria",
@@ -719,7 +719,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 328,
         toApprox: true,
-        camps: ["Eastern Father", "Nicene", "Alexandrian"],
+        camps: ["Eastern Father", "Greek", "Nicene", "Alexandrian"],
         mainCamp: "Nicene"
     },
     {
@@ -735,7 +735,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 338,
         toApprox: true,
-        camps: ["Eastern Father", "Nicene", "Monastic"],
+        camps: ["Eastern Father", "Syriac", "Nicene", "Monastic"],
         mainCamp: "Monastic"
     },
     {
@@ -750,7 +750,7 @@ export const all_persons: Person[] = [
         fromYear: 260,
         fromApprox: true,
         toYear: 339,
-        camps: ["Eastern Father", "Origenist"],
+        camps: ["Eastern Father", "Greek", "Origenist"],
         mainCamp: "Origenist"
     },
     {
@@ -766,7 +766,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 337,
         toApprox: true,
-        camps: ["Eastern Father", "Antiochene", "Nicene"],
+        camps: ["Eastern Father", "Greek", "Antiochene", "Nicene"],
         mainCamp: "Nicene"
     },
     {
@@ -780,7 +780,7 @@ export const all_persons: Person[] = [
         fromYear: 280,
         fromApprox: true,
         toYear: 341,
-        camps: ["Eastern Father", "Arian"],
+        camps: ["Eastern Father", "Greek", "Arian"],
         mainCamp: "Arian"
     },
     {
@@ -796,7 +796,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 371,
         toApprox: true,
-        camps: ["Eastern Father", "Monastic"],
+        camps: ["Eastern Father", "Greek", "Monastic"],
         mainCamp: "Monastic"
     },
     {
@@ -812,7 +812,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 348,
         toApprox: false,
-        camps: ["Eastern Father", "Nicene", "Monastic"],
+        camps: ["Eastern Father", "Coptic", "Latin*", "Nicene", "Monastic"],
         mainCamp: "Monastic"
     },
     {
@@ -822,11 +822,11 @@ export const all_persons: Person[] = [
         deathplace: "Alexandria, Egypt, Roman Empire",
         lat: 31.20025863903445,
         lon: 29.91846236548454,
-        imageUrl: 'https://images.weserv.nl/?url=https://www.sscyrilmethodius.org/wp-prod/wp-content/uploads/2020/04/st-athanasius-icon-702.jpg',
+        imageUrl: 'https://images.weserv.nl/?url=https://stjohngoc.org/wp-content/uploads/2018/06/athanasius-the-great.jpg',
         fromYear: 296,
         fromApprox: true,
         toYear: 373,
-        camps: ["Eastern Father", "Nicene", "Alexandrian"],
+        camps: ["Eastern Father", "Greek", "Nicene", "Alexandrian"],
         mainCamp: "Nicene"
     },
     {
@@ -841,7 +841,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 383,
         toApprox: true,
-        camps: ["Eastern Father"]
+        camps: ["Eastern Father", "Greek"]
     },
     {
         pid: "macarius_of_egypt",
@@ -856,7 +856,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 391,
         toApprox: true,
-        camps: ["Eastern Father", "Nicene", "Monastic"],
+        camps: ["Eastern Father", "Coptic", "Greek*", "Nicene", "Monastic"],
         mainCamp: "Monastic"
     },
     {
@@ -872,7 +872,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 373,
         toApprox: false,
-        camps: ["Eastern Father", "Nicene", "Monastic"],
+        camps: ["Eastern Father", "Syriac", "Nicene", "Monastic"],
         mainCamp: "Nicene"
     },
     {
@@ -887,7 +887,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 367,
         toApprox: true,
-        camps: ["Western Father", "Nicene"],
+        camps: ["Western Father", "Latin", "Nicene"],
         mainCamp: "Nicene"
     },
     {
@@ -902,7 +902,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 398,
         toApprox: true,
-        camps: ["Eastern Father", "Alexandrian", "Origenist", "Nicene"],
+        camps: ["Eastern Father", "Greek", "Alexandrian", "Origenist", "Nicene"],
         mainCamp: "Origenist"
     },
     {
@@ -918,7 +918,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 386,
         toApprox: true,
-        camps: ["Eastern Father", "Nicene"],
+        camps: ["Eastern Father", "Greek", "Nicene"],
         mainCamp: "Nicene"
     },
     {
@@ -932,7 +932,7 @@ export const all_persons: Person[] = [
         fromYear: 315,
         fromApprox: true,
         toYear: 403,
-        camps: ["Eastern Father", "Nicene"],
+        camps: ["Eastern Father", "Greek", "Nicene"],
         mainCamp: "Nicene"
     },
     {
@@ -948,7 +948,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 390,
         toApprox: true,
-        camps: ["Eastern Father", "Nicene", "Cappadocian Father"],
+        camps: ["Eastern Father", "Greek", "Nicene", "Cappadocian Father"],
         mainCamp: "Cappadocian Father"
     },
     {
@@ -963,7 +963,7 @@ export const all_persons: Person[] = [
         fromYear: 330,
         fromApprox: true,
         toYear: 379,
-        camps: ["Eastern Father", "Nicene", "Cappadocian Father", "Monastic"],
+        camps: ["Eastern Father", "Greek", "Nicene", "Cappadocian Father", "Monastic"],
         mainCamp: "Cappadocian Father"
     },
     {
@@ -971,7 +971,7 @@ export const all_persons: Person[] = [
         displayName: "Diodore of Tarsus",
         altNames: ["Diodorus of Tarsus", "Diodorus Tarsensis"],
         birthplace: "Antioch, Coele Syria, Roman Empire",
-        deathplace: "Tarsus, Cilicia Prima, Eastern Roman Empire",
+        deathplace: "Tarsus, Cilicia Prima, Roman Empire",
         lat: 36.917700,
         lon: 34.892800,
         imageUrl: '',
@@ -979,7 +979,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 394,
         toApprox: true,
-        camps: ["Eastern Father", "Nicene", "Antiochene", "Monastic"],
+        camps: ["Eastern Father", "Greek", "Syriac*", "Nicene", "Antiochene", "Monastic"],
         mainCamp: "Nicene",
     },
     {
@@ -995,7 +995,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 394,
         toApprox: true,
-        camps: ["Eastern Father", "Nicene", "Cappadocian Father", "Origenist*"],
+        camps: ["Eastern Father", "Greek", "Nicene", "Cappadocian Father", "Origenist*"],
         mainCamp: "Cappadocian Father"
     },
     {
@@ -1011,36 +1011,36 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 397,
         toApprox: false,
-        camps: ["Western Father", "Nicene", "Monastic"],
+        camps: ["Western Father", "Latin", "Nicene", "Monastic"],
         mainCamp: "Monastic"
     },
     {
         pid: "ambrose_of_milan",
         displayName: "Ambrose of Milan",
         altNames: ["Aurelius Ambrosius"],
-        birthplace: "Augusta Treverorum, Gallia Belgica, Roman Empire",
-        deathplace: "Mediolanum, Italia, Western Roman Empire",
+        birthplace: "Augusta Treverorum, Belgica Prima, Roman Empire",
+        deathplace: "Mediolanum, Liguria, Western Roman Empire",
         lat: 45.46509212922207,
         lon: 9.18057778962911,
         imageUrl: 'https://images.weserv.nl/?url=i.pinimg.com/736x/9d/63/52/9d6352be8f5cecf4f982ea7a014c31ee.jpg',
         fromYear: 339,
         fromApprox: true,
         toYear: 397,
-        camps: ["Western Father", "Nicene"],
+        camps: ["Western Father", "Latin", "Nicene"],
         mainCamp: "Nicene"
     },
     {
         pid: "jerome_of_stridon",
         displayName: "Jerome of Stridon",
         birthplace: "Stridon, Dalmatia, Roman Empire",
-        deathplace: "Bethlehem, Palaestina, Byzantine Empire",
+        deathplace: "Bethlehem, Palaestina, Eastern Roman Empire",
         lat: 44.2,
         lon: 17.7,
         imageUrl: 'https://images.weserv.nl/?url=cdn.britannica.com/06/234006-050-DA86F56B/Saint-Jerome-by-Jose-de-Ribera-c1638-1640.jpg',
         fromYear: 342,
         fromApprox: true,
         toYear: 420,
-        camps: ["Western Father", "Eastern Father", "Nicene", "Monastic"],
+        camps: ["Western Father", "Eastern Father", "Latin", "Greek", "Nicene", "Monastic"],
         mainCamp: "Nicene"
     },
     {
@@ -1053,14 +1053,14 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 411,
         toApprox: true,
-        camps: ["Western Father", "Origenist"],
+        camps: ["Western Father", "Latin", "Greek", "Origenist"],
         mainCamp: "Origenist"
     },
     {
         pid: "evagrius_ponticus",
         displayName: "Evagrius Ponticus",
         altNames: ["Evagrius of Pontus", "Evagrius the Solitary", "Euagrios Pontikos"],
-        birthplace: "Ibora, Helenopontus, Eastern Roman Empire",
+        birthplace: "Ibora, Helenopontus, Roman Empire",
         deathplace: "Kellia, Aegyptus, Eastern Roman Empire",
         lat: 30.776003,
         lon: 30.368868,
@@ -1068,7 +1068,7 @@ export const all_persons: Person[] = [
         fromYear: 345,
         fromApprox: true,
         toYear: 399,
-        camps: ["Eastern Father", "Nicene", "Origenist", "Monastic"],
+        camps: ["Eastern Father", "Greek", "Syriac*", "Nicene", "Origenist", "Monastic"],
         mainCamp: "Origenist",
     },
     {
@@ -1081,7 +1081,7 @@ export const all_persons: Person[] = [
         fromYear: 349,
         fromApprox: true,
         toYear: 407,
-        camps: ["Eastern Father", "Nicene", "Antiochene"],
+        camps: ["Eastern Father", "Greek", "Nicene", "Antiochene"],
         mainCamp: "Nicene"
     },
     {
@@ -1097,7 +1097,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 428,
         toApprox: true,
-        camps: ["Eastern Father", "Nicene", "Antiochene", "Monastic"],
+        camps: ["Eastern Father", "Greek", "Syriac*", "Nicene", "Antiochene", "Monastic"],
         mainCamp: "Antiochene",
     },
     {
@@ -1113,7 +1113,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 418,
         toApprox: true,
-        camps: ["Western Father", "Pelagian", "Monastic"],
+        camps: ["Western Father", "Latin", "Pelagian", "Monastic"],
         mainCamp: "Pelagian"
     },
     {
@@ -1127,15 +1127,15 @@ export const all_persons: Person[] = [
         imageUrl: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/saint-augustine-of-hippo-philippe-de-champaigne-war-is-hell-store.jpg',
         fromYear: 354,
         toYear: 430,
-        camps: ["Western Father", "Nicene", "Augustinian", "Monastic"],
+        camps: ["Western Father", "Latin", "Nicene", "Augustinian", "Monastic"],
         mainCamp: "Augustinian"
     },
     {
         pid: "celestine_i_of_rome",
         displayName: "Celestine I of Rome",
         altNames: ["Pope Celestine I", "Celestinus I"],
-        birthplace: "Campania, Italia, Western Roman Empire",
-        deathplace: "Rome, Italia, Western Roman Empire",
+        birthplace: "Unknown, Campania, Roman Empire",
+        deathplace: "Rome, Campania, Western Roman Empire",
         lat: 41.9028,
         lon: 12.4964,
         imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/1/12/Dundalk_Saint_Patrick%27s_Pro-Cathedral_West_Aisle_Window_06_Lower_Lights_2013_09_23%28cropped%29.jpg',
@@ -1143,7 +1143,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 432,
         toApprox: false,
-        camps: ["Western Father", "Nicene", "Alexandrian", "Augustinian"],
+        camps: ["Western Father", "Latin", "Nicene", "Alexandrian", "Augustinian"],
         mainCamp: "Nicene"
     },
     {
@@ -1159,14 +1159,14 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 435,
         toApprox: true,
-        camps: ["Western Father", "Eastern Father", "Nicene", "Massilian", "Monastic"],
+        camps: ["Western Father", "Eastern Father", "Latin", "Greek", "Nicene", "Massilian", "Monastic"],
         mainCamp: "Massilian"
     },
     {
         pid: "isidore_of_pelusium",
         displayName: "Isidore of Pelusium",
         altNames: ["Isidore Pelusiota", "Isidorus Pelusiota"],
-        birthplace: "Alexandria, Aegyptus, Eastern Roman Empire",
+        birthplace: "Alexandria, Aegyptus, Roman Empire",
         deathplace: "Pelusium, Augustamnica Prima, Eastern Roman Empire",
         lat: 31.041900,
         lon: 32.545300,
@@ -1175,7 +1175,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 449,
         toApprox: true,
-        camps: ["Eastern Father", "Nicene", "Monastic"],
+        camps: ["Eastern Father", "Greek", "Nicene", "Monastic"],
         mainCamp: "Monastic",
     },
     {
@@ -1191,14 +1191,14 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 441,
         toApprox: true,
-        camps: ["Eastern Father", "Antiochene"],
+        camps: ["Eastern Father", "Greek", "Antiochene"],
         mainCamp: "Antiochene",
     },
     {
         pid: "cyril_of_alexandria",
         displayName: "Cyril of Alexandria",
         altNames: ["Cyrillus Alexandrinus"],
-        birthplace: "Didouseya, Aegyptus, Eastern Roman Empire",
+        birthplace: "Didouseya, Aegyptus, Roman Empire",
         deathplace: "Alexandria, Aegyptus, Eastern Roman Empire",
         lat: 31.200100,
         lon: 29.918700,
@@ -1207,14 +1207,14 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 444,
         toApprox: false,
-        camps: ["Eastern Father", "Nicene", "Alexandrian"],
+        camps: ["Eastern Father", "Greek", "Nicene", "Alexandrian"],
         mainCamp: "Alexandrian",
     },
     {
         pid: "eutyches_of_constantinople",
         displayName: "Eutyches of Constantinople",
         altNames: ["Archimandrite Eutyches"],
-        birthplace: "Constantinople, Thrace, Eastern Roman Empire",
+        birthplace: "Constantinople, Thrace, Roman Empire",
         deathplace: "Exile, Eastern Roman Empire",
         lat: 41.0082,
         lon: 28.9784,
@@ -1223,7 +1223,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 454,
         toApprox: true,
-        camps: ["Eastern Father", "Alexandrian", "Miaphysite", "Eutychian*"],
+        camps: ["Eastern Father", "Greek", "Alexandrian", "Miaphysite", "Eutychian*"],
         mainCamp: "Eutychian*"
     },
     {
@@ -1239,14 +1239,14 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 430,
         toApprox: true,
-        camps: ["Western Father", "Pelagian"],
+        camps: ["Western Father", "Latin", "Pelagian"],
         mainCamp: "Pelagian"
     },
     {
         pid: "proclus_of_constantinople",
         displayName: "Proclus of Constantinople",
         altNames: ["Proclus Constantinopolitanus"],
-        birthplace: "Constantinople, Thrace, Eastern Roman Empire",
+        birthplace: "Constantinople, Thrace, Roman Empire",
         deathplace: "Constantinople, Thrace, Eastern Roman Empire",
         lat: 41.008200,
         lon: 28.978400,
@@ -1255,14 +1255,14 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 446,
         toApprox: false,
-        camps: ["Eastern Father", "Alexandrian"],
+        camps: ["Eastern Father", "Greek", "Alexandrian"],
         mainCamp: "Alexandrian",
     },
     {
         pid: "nestorius_of_constantinople",
         displayName: "Nestorius of Constantinople",
         altNames: ["Nestorios"],
-        birthplace: "Germanicia, Syria Euphratensis, Eastern Roman Empire",
+        birthplace: "Germanicia, Syria Euphratensis, Roman Empire",
         deathplace: "Thebaid, Aegyptus, Eastern Roman Empire",
         lat: 41.0082,
         lon: 28.9784,
@@ -1271,15 +1271,15 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 451,
         toApprox: true,
-        camps: ["Eastern Father", "Antiochene", "Nestorian*"],
+        camps: ["Eastern Father", "Greek", "Syriac*", "Antiochene", "Nestorian*"],
         mainCamp: "Nestorian*"
     },
     {
         pid: "julian_of_eclanum",
         displayName: "Julian of Eclanum",
         altNames: ["Julianus Eclanensis"],
-        birthplace: "Apulia, Italia, Western Roman Empire",
-        deathplace: "Sicily, Italia, Western Roman Empire",
+        birthplace: "Unknown, Apulia et Calabria, Roman Empire",
+        deathplace: "Unknown, Sicilia, Western Roman Empire",
         lat: 41.0262,
         lon: 15.0637,
         imageUrl: '',
@@ -1287,24 +1287,8 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 455,
         toApprox: true,
-        camps: ["Western Father", "Pelagian"],
+        camps: ["Western Father", "Latin", "Pelagian"],
         mainCamp: "Pelagian"
-    },
-    {
-        pid: "prosper_of_aquitaine",
-        displayName: "Prosper of Aquitaine",
-        altNames: ["Prosper Aquitanus", "Prosper Tiro"],
-        birthplace: "Gallia Aquitania, Roman Empire",
-        deathplace: "Rome, Italia, Western Roman Empire",
-        lat: 43.29846758926648,
-        lon: 5.372771118291032,
-        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/0/0f/Aquit%C3%A1niai_Szent_Prosper.jpg',
-        fromYear: 390,
-        fromApprox: true,
-        toYear: 455,
-        toApprox: true,
-        camps: ["Western Father", "Nicene", "Augustinian"],
-        mainCamp: "Augustinian"
     },
     {
         pid: "vincent_of_lerins",
@@ -1319,15 +1303,59 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 445,
         toApprox: true,
-        camps: ["Western Father", "Nicene", "Massilian"],
+        camps: ["Western Father", "Latin", "Nicene", "Massilian"],
         mainCamp: "Massilian"
+    },
+    {
+        pid: "prosper_of_aquitaine",
+        displayName: "Prosper of Aquitaine",
+        altNames: ["Prosper Aquitanus", "Prosper Tiro"],
+        birthplace: "Gallia Aquitania, Roman Empire",
+        deathplace: "Rome, Campania, Western Roman Empire",
+        lat: 43.29846758926648,
+        lon: 5.372771118291032,
+        imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/0/0f/Aquit%C3%A1niai_Szent_Prosper.jpg',
+        fromYear: 390,
+        fromApprox: true,
+        toYear: 455,
+        toApprox: true,
+        camps: ["Western Father", "Latin", "Nicene", "Augustinian"],
+        mainCamp: "Augustinian"
+    },
+    {
+        pid: "patrick_of_armagh",
+        displayName: "Patrick of Armagh",
+        altNames: ["Saint Patrick", "Patricius", "Pátraic"],
+        birthplace: "Banna Venta Berniae, Britannia, Roman Empire",
+        deathplace: "Saul, Ulster, Ireland",
+        lat: 54.350278,
+        lon: -6.652778,
+        imageUrl: 'https://images.weserv.nl/?url=https://images.oca.org/icons/lg/march/0317patrick-ireland.jpg',
+        fromYear: 390,
+        fromApprox: true,
+        toYear: 461,
+        toApprox: true,
+        camps: ["Western Father", "Latin", "Nicene", "Insular"],
+        mainCamp: "Insular",
+        authentic_works: [
+            {text: "Confession", ital: true},
+            {text: "Letter to the Soldiers of Coroticus", ital: true},
+        ],
+        disputed_works: [
+            {text: "Sayings of Patrick", ital: true},
+        ],
+        pseudo_works: [
+            {text: "Breastplate of Saint Patrick", ital: true},
+            {text: "First Synod of Saint Patrick", ital: true},
+            {text: "Book of the Angel", ital: true},
+        ]
     },
     {
         pid: "leo_i_of_rome",
         displayName: "Leo I of Rome",
         altNames: ["Pope Leo I", "Leo the Great"],
-        birthplace: "Tuscany, Italia, Western Roman Empire",
-        deathplace: "Rome, Italia, Western Roman Empire",
+        birthplace: "Unknown, Tuscia et Umbria, Roman Empire",
+        deathplace: "Rome, Campania, Western Roman Empire",
         lat: 41.9028,
         lon: 12.4964,
         imageUrl: 'https://images.weserv.nl/?url=https://cdn.britannica.com/77/274177-050-4FECDDA0/Pope-Leo-I-the-Great-Saint-Leo-I.jpg',
@@ -1335,14 +1363,14 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 461,
         toApprox: false,
-        camps: ["Western Father", "Chalcedonian"],
+        camps: ["Western Father", "Latin", "Chalcedonian"],
         mainCamp: "Chalcedonian"
     },
     {
         pid: "theodoret_of_cyrrhus",
         displayName: "Theodoret of Cyrrhus",
         altNames: ["Theodoret of Cyrus", "Theodoretus Cyrrhensis"],
-        birthplace: "Antioch, Coele Syria, Eastern Roman Empire",
+        birthplace: "Antioch, Coele Syria, Roman Empire",
         deathplace: "Cyrrhus, Syria Prima, Eastern Roman Empire",
         lat: 36.744300,
         lon: 36.956600,
@@ -1351,7 +1379,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 458,
         toApprox: true,
-        camps: ["Eastern Father", "Antiochene", "Chalcedonian*"],
+        camps: ["Eastern Father", "Greek", "Syriac", "Antiochene", "Chalcedonian*"],
         mainCamp: "Antiochene",
     },
     {
@@ -1367,7 +1395,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 449,
         toApprox: false,
-        camps: ["Eastern Father", "Chalcedonian*"],
+        camps: ["Eastern Father", "Greek", "Chalcedonian*"],
         mainCamp: "Chalcedonian*"
     },
     {
@@ -1383,7 +1411,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 454,
         toApprox: false,
-        camps: ["Eastern Father", "Alexandrian", "Miaphysite"],
+        camps: ["Eastern Father", "Greek", "Alexandrian", "Miaphysite"],
         mainCamp: "Miaphysite"
     },
     {
@@ -1398,7 +1426,7 @@ export const all_persons: Person[] = [
         fromYear: 400,
         fromApprox: true,
         toYear: 457,
-        camps: ["Eastern Father", "Antiochene", "Chalcedonian"],
+        camps: ["Eastern Father", "Syriac", "Greek", "Antiochene", "Chalcedonian"],
         mainCamp: "Antiochene",
     },
     {
@@ -1413,7 +1441,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 471,
         toApprox: false,
-        camps: ["Eastern Father", "Antiochene", "Chalcedonian"],
+        camps: ["Eastern Father", "Greek", "Antiochene", "Chalcedonian"],
         mainCamp: "Chalcedonian"
     },
     {
@@ -1429,14 +1457,14 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 477,
         toApprox: false,
-        camps: ["Eastern Father", "Alexandrian", "Miaphysite"],
+        camps: ["Eastern Father", "Greek", "Syriac*", "Alexandrian", "Miaphysite"],
         mainCamp: "Miaphysite"
     },
     {
         pid: "faustus_of_riez",
         displayName: "Faustus of Riez",
-        birthplace: "Brittania, Western Roman Empire",
-        deathplace: "Reii, Gallia Narbonensis, Western Roman Empire",
+        birthplace: "Britannia, Western Roman Empire",
+        deathplace: "Reii, Gallia Narbonensis, Visigothic Kingdom",
         lat: 43.817388471307396,
         lon: 6.093818670359029,
         imageUrl: 'https://images.weserv.nl/?url=blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQQOsEMlTr9eSzkGbPfg3SqWwrevYas3O2Ir7ui-RG5vYjWVteiPK1v6khWqzVbQgp-mv5x-uEAGefSUXJmsCmqvlpZrOS8b4wKBq9R_L0yYHz_FPqZ1xfzOmZ8e9PZl7SF2BskyrcFsc/s1600/Fauste+de+Riez-Ic%25C3%25B4ne.jpg',
@@ -1444,14 +1472,14 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 490,
         toApprox: true,
-        camps: ["Western Father", "Nicene", "Massilian"],
+        camps: ["Western Father", "Latin", "Nicene", "Massilian"],
         mainCamp: "Massilian"
     },
     {
         pid: "acacius_of_constantinople",
         displayName: "Acacius of Constantinople",
         birthplace: "Unknown",
-        deathplace: "Constantinople, Thrace, Eastern Roman Empire",
+        deathplace: "Constantinople, Thrace, Byzantine Empire",
         lat: 41.0082,
         lon: 28.9784,
         imageUrl: '',
@@ -1459,7 +1487,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 489,
         toApprox: false,
-        camps: ["Eastern Father", "Chalcedonian*"],
+        camps: ["Eastern Father", "Greek", "Chalcedonian*"],
         mainCamp: "Chalcedonian*"
     },
     {
@@ -1475,7 +1503,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 488,
         toApprox: true,
-        camps: ["Eastern Father", "Miaphysite", "Monastic"],
+        camps: ["Eastern Father", "Greek", "Miaphysite", "Monastic"],
         mainCamp: "Miaphysite"
     },
     {
@@ -1491,7 +1519,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 532,
         toApprox: false,
-        camps: ["Eastern Father", "Chalcedonian", "Monastic"],
+        camps: ["Eastern Father", "Greek", "Chalcedonian", "Monastic"],
         mainCamp: "Monastic"
     },
     {
@@ -1507,7 +1535,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 523,
         toApprox: false,
-        camps: ["Eastern Father", "Miaphysite"],
+        camps: ["Eastern Father", "Syriac", "Greek", "Miaphysite"],
         mainCamp: "Miaphysite"
     },
     {
@@ -1515,7 +1543,7 @@ export const all_persons: Person[] = [
         displayName: "Avitus of Vienne",
         altNames: ["Alcimus Ecdicius Avitus"],
         birthplace: "Vienne, Viennensis, Western Roman Empire",
-        deathplace: "Vienne, Burgundian Kingdom",
+        deathplace: "Vienne, Viennensis, Burgundian Kingdom",
         lat: 45.5256,
         lon: 4.8743,
         imageUrl: "https://images.weserv.nl/?url=https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUL1AfXVqwbKofzZwGL0zvV0TbfFICfwcH1QuyMXDDS-StArEi-y8oiubbRX4EKQebVJy9AulOI2bGz9YVq76LsloF65cIF8PjoyOg79IF532eULIiGMahFTLyOcPwU3X3jTvks1IFRIFJ/s1600/avitus.jpg",
@@ -1523,7 +1551,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 519,
         toApprox: true,
-        camps: ["Western Father", "Nicene", "Augustinian"],
+        camps: ["Western Father", "Latin", "Nicene", "Augustinian"],
         mainCamp: "Augustinian"
     },
     {
@@ -1539,7 +1567,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 521,
         toApprox: false,
-        camps: ["Eastern Father", "Miaphysite"],
+        camps: ["Eastern Father", "Syriac", "Miaphysite"],
         mainCamp: "Miaphysite"
     },
     {
@@ -1555,7 +1583,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 538,
         toApprox: false,
-        camps: ["Eastern Father", "Miaphysite", "Monastic"],
+        camps: ["Eastern Father", "Greek", "Syriac*", "Miaphysite", "Monastic"],
         mainCamp: "Miaphysite"
     },
     {
@@ -1571,7 +1599,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 527,
         toApprox: true,
-        camps: ["Eastern Father", "Miaphysite", "Eutychian*"],
+        camps: ["Eastern Father", "Greek", "Syriac*", "Miaphysite", "Eutychian*"],
         mainCamp: "Eutychian*"
     },
     {
@@ -1587,7 +1615,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 533,
         toApprox: true,
-        camps: ["Western Father", "Nicene", "Augustinian", "Monastic"],
+        camps: ["Western Father", "Latin", "Nicene", "Augustinian", "Monastic"],
         mainCamp: "Augustinian"
     },
     {
@@ -1603,14 +1631,14 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 543,
         toApprox: true,
-        camps: ["Western Father", "Nicene", "Augustinian", "Monastic"],
+        camps: ["Western Father", "Latin", "Nicene", "Augustinian", "Monastic"],
         mainCamp: "Augustinian",
     },
     {
         pid: "boethius",
         displayName: "Boethius",
         altNames: ["Anicius Manlius Severinus Boethius"],
-        birthplace: "Rome, Latium et Campania, Kingdom of Odoacer",
+        birthplace: "Rome, Campania, Kingdom of Odoacer",
         deathplace: "Pavia, Liguria, Ostrogothic Kingdom",
         lat: 45.192222,
         lon: 9.154722,
@@ -1619,8 +1647,29 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 524,
         toApprox: true,
-        camps: ["Western Father", "Chalcedonian", "Neoplatonist"],
+        camps: ["Western Father", "Latin", "Greek", "Chalcedonian", "Neoplatonist"],
         mainCamp: "Neoplatonist"
+    },
+    {
+        pid: "brendan_of_clonfert",
+        displayName: "Brendan of Clonfert",
+        altNames: ["Brendan the Navigator", "Brénainn moccu Altai", "Brendan the Voyager"],
+        birthplace: "Tralee, Munster, Ireland",
+        deathplace: "Annaghdown, Connacht, Ireland",
+        lat: 53.241111,
+        lon: -8.043611,
+        imageUrl: 'https://images.weserv.nl/?url=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIj_RM7OOncavzFG8Tf8--4l1NHHn9xt_1kRFT5RpYIN0q-PvEw0d_R-0&s=10',
+        fromYear: 484,
+        fromApprox: true,
+        toYear: 577,
+        toApprox: true,
+        camps: ["Western Father", "Latin", "Chalcedonian", "Monastic", "Insular"],
+        mainCamp: "Insular",
+        pseudo_works: [
+            {text: "The Voyage of Saint Brendan the Abbot", ital: true},
+            {text: "Rule of Saint Brendan", ital: true},
+            {text: "Life of Saint Brendan", ital: true},
+        ]
     },
     {
         pid: "leontius_of_jerusalem",
@@ -1635,7 +1684,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 543,
         toApprox: true,
-        camps: ["Eastern Father", "Chalcedonian", "Monastic"],
+        camps: ["Eastern Father", "Greek", "Chalcedonian", "Monastic"],
         mainCamp: "Chalcedonian"
     },
     {
@@ -1651,15 +1700,15 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 583,
         toApprox: true,
-        camps: ["Western Father", "Chalcedonian", "Monastic"],
+        camps: ["Western Father", "Latin", "Chalcedonian", "Monastic"],
         mainCamp: "Monastic"
     },
     {
         pid: "romanos_the_melodist",
         displayName: "Romanos the Melodist",
         altNames: ["Romanus the Melodist", "Roman the Melodist", "Romanos Melodos"],
-        birthplace: "Emesa, Phoenice Libanensis, Eastern Roman Empire",
-        deathplace: "Constantinople, Thrace, Eastern Roman Empire",
+        birthplace: "Emesa, Phoenice Libanensis, Byzantine Empire",
+        deathplace: "Constantinople, Thrace, Byzantine Empire",
         lat: 41.0082,
         lon: 28.9784,
         imageUrl: 'https://images.weserv.nl/?url=https://www.saintromanos.org/images/IMG_2858.jpg',
@@ -1667,7 +1716,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 556,
         toApprox: true,
-        camps: ["Eastern Father", "Chalcedonian"],
+        camps: ["Eastern Father", "Greek", "Syriac", "Chalcedonian"],
         mainCamp: "Chalcedonian"
     },
     {
@@ -1683,7 +1732,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 578,
         toApprox: false,
-        camps: ["Eastern Father", "Miaphysite", "Monastic"],
+        camps: ["Eastern Father", "Syriac", "Miaphysite", "Monastic"],
         mainCamp: "Miaphysite"
     },
     {
@@ -1699,7 +1748,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 582,
         toApprox: false,
-        camps: ["Eastern Father", "Chalcedonian"],
+        camps: ["Eastern Father", "Greek", "Chalcedonian"],
         mainCamp: "Chalcedonian"
     },
     {
@@ -1715,15 +1764,15 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 595,
         toApprox: false,
-        camps: ["Eastern Father", "Chalcedonian", "Monastic"],
+        camps: ["Eastern Father", "Greek", "Chalcedonian", "Monastic"],
         mainCamp: "Chalcedonian"
     },
     {
         pid: "gregory_i_of_rome",
         displayName: "Gregory I of Rome",
         altNames: ["Gregory the Great", "Pope Gregory I", "Gregory the Dialogist"],
-        birthplace: "Rome, Italia, Byzantine Empire",
-        deathplace: "Rome, Italia, Byzantine Empire",
+        birthplace: "Rome, Campania, Byzantine Empire",
+        deathplace: "Rome, Campania, Byzantine Empire",
         lat: 41.9028,
         lon: 12.4964,
         imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7OTzRs2bKdaAJzSYqI2-UG1fCEiQ6b4iMDIoU746zR-NPG6Q06Tzk8y3b&s=10',
@@ -1731,7 +1780,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 604,
         toApprox: false,
-        camps: ["Western Father", "Augustinian", "Chalcedonian", "Monastic"],
+        camps: ["Western Father", "Latin", "Augustinian", "Chalcedonian", "Monastic"],
         mainCamp: "Chalcedonian"
     },
     {
@@ -1747,7 +1796,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 638,
         toApprox: false,
-        camps: ["Eastern Father", "Chalcedonian", "Dyothelite", "Monastic"],
+        camps: ["Eastern Father", "Greek", "Chalcedonian", "Dyothelite", "Monastic"],
         mainCamp: "Dyothelite"
     },
     {
@@ -1763,14 +1812,14 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 625,
         toApprox: true,
-        camps: ["Eastern Father", "Chalcedonian", "Monastic"],
+        camps: ["Eastern Father", "Greek", "Chalcedonian", "Monastic"],
         mainCamp: "Chalcedonian"
     },
     {
         pid: "sergius_i_of_constantinople",
         displayName: "Sergius I of Constantinople",
-        birthplace: "Unknown, Syria, Eastern Roman Empire",
-        deathplace: "Constantinople, Thrace, Eastern Roman Empire",
+        birthplace: "Unknown, Syria, Byzantine Empire",
+        deathplace: "Constantinople, Thrace, Byzantine Empire",
         lat: 41.0082,
         lon: 28.9784,
         imageUrl: '',
@@ -1778,8 +1827,28 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 638,
         toApprox: false,
-        camps: ["Eastern Father", "Monothelite"],
+        camps: ["Eastern Father", "Greek", "Monothelite"],
         mainCamp: "Monothelite"
+    },
+    {
+        pid: "john_climacus",
+        displayName: "John Climacus",
+        altNames: ["John of the Ladder", "John of Sinai", "John the Sinaite", "John Scholasticus"],
+        birthplace: "Unknown, possibly Syria",
+        deathplace: "Mount Sinai, Misr, Rashidun Caliphate",
+        lat: 28.555556,
+        lon: 33.976111,
+        imageUrl: 'https://cdn11.bigcommerce.com/s-30c33/images/stencil/500x659/products/4023/6646/John_of_the_Ladder3Small__10636.1709759143.jpg?c=2',
+        fromYear: 579,
+        fromApprox: true,
+        toYear: 649,
+        toApprox: true,
+        camps: ["Eastern Father", "Greek", "Chalcedonian", "Monastic"],
+        mainCamp: "Monastic",
+        authentic_works: [
+            {text: "The Ladder of Divine Ascent", ital: true},
+            {text: "To the Shepherd", ital: true},
+        ]
     },
     {
         pid: "maximus_the_confessor",
@@ -1789,12 +1858,12 @@ export const all_persons: Person[] = [
         deathplace: "Schemaris, Lazica, Byzantine Empire",
         lat: 41.025556,
         lon: 29.015278,
-        imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/d/d0/Athonite_Fresco_Icon_of_Saint_Maximos_the_Confessor_2.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled',
+        imageUrl: 'https://images.weserv.nl/?url=https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPdT-8fNKOGmr6SIC6tqMbwkww_yNJ9hdLxmDO36P0pW-m3GtMNT5FFH2bfMXYFMkm1UopvM8EVNfheujxYBmCLxFMAxRGHH_871CopJ_XxMyn01ROZUZjjKTsgqr-yxFUKovtQgl6xBjp/s1600/maximus2.jpg',
         fromYear: 580,
         fromApprox: true,
         toYear: 662,
         toApprox: false,
-        camps: ["Eastern Father", "Chalcedonian", "Dyothelite", "Neoplatonist", "Monastic"],
+        camps: ["Eastern Father", "Greek", "Chalcedonian", "Dyothelite", "Neoplatonist", "Monastic"],
         mainCamp: "Dyothelite"
     },
     {
@@ -1810,7 +1879,23 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 655,
         toApprox: false,
-        camps: ["Western Father", "Chalcedonian", "Dyothelite"],
+        camps: ["Western Father", "Latin", "Chalcedonian", "Dyothelite"],
         mainCamp: "Dyothelite"
+    },
+    {
+        pid: "jacob_of_edessa",
+        displayName: "Jacob of Edessa",
+        altNames: ["James of Edessa", "Jacob of Urhoy"],
+        birthplace: "Aindaba, Syria, Rashidun Caliphate",
+        deathplace: "Tell Ada, Syria, Umayyad Caliphate",
+        lat: 37.167403,
+        lon: 38.795514,
+        imageUrl: 'https://images.weserv.nl/?url=https://dss-syriacpatriarchate.org/wp-content/uploads/2025/07/%D9%8A%D8%B9%D9%82%D9%88%D8%A8-%D8%A7%D9%84%D8%B1%D9%87%D8%A7%D9%88%D9%8A-1.jpg',
+        fromYear: 640,
+        fromApprox: true,
+        toYear: 708,
+        toApprox: false,
+        camps: ["Eastern Father", "Syriac", "Greek", "Miaphysite", "Monastic"],
+        mainCamp: "Miaphysite"
     },
 ]

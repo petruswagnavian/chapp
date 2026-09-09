@@ -3,7 +3,7 @@ import {Text, View, Dimensions, ColorValue, StyleSheet, Image} from "react-nativ
 import {LinearGradient} from "expo-linear-gradient";
 import {useFonts} from 'expo-font';
 import {useFocusEffect} from "expo-router";
-import * as NavigationBar from 'expo-navigation-bar';
+import { NavigationBar } from 'expo-navigation-bar';
 import {lighten, darken} from "@/utils/colorUtils";
 import {getRandomTitleScreenPersons} from "@/utils/randomPersons";
 import colors from "@/constants/colors";
@@ -58,7 +58,7 @@ function TitlePortrait({person, personWidth, mainHeight}: {
 
 export default function Index() {
     useEffect(() => {
-        NavigationBar.setVisibilityAsync('hidden');
+        NavigationBar.setHidden(true);
     }, []);
     const [layout, setLayout] = useState<{width: number; height: number}>({
         width: screenWidth,
