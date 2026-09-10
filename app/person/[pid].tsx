@@ -11,27 +11,49 @@ import TransferButton from "@/components/TransferButton";
 const screenWidth = Dimensions.get("window").width;
 const screenHeight = Dimensions.get("window").height;
 
-const WorkTitle = ({text, style, wrapStyle}: {text: string; style: any; wrapStyle: any}) => {
+// Hanging indent applied to every line after the first. Wrapped lines are that
+// much narrower than the first, so measure at the narrow width and render at the
+// wide one -- otherwise a line broken at full width re-wraps once indented, and
+// that inner wrap gets no indent.
+const WORK_INDENT = 20;
+
+const WorkTitle = ({text, time, style, wrapStyle, timeStyle}: {text: string; time?: string; style: any; wrapStyle: any; timeStyle?: any}) => {
     const [lines, setLines] = useState<string[] | null>(null);
+    // Non-breaking spaces keep the parenthesised date atomic. Left breakable it
+    // splits across rows ("... to Hero (4th" / "cent. AD)"), which both reads
+    // badly and defeats the tail match below. The space before it stays normal,
+    // so the date can still move to a line of its own as one unit.
+    const date = time ? `(${time.replace(/ /g, '\u00A0')})` : '';
 
     if (!lines) {
         return (
-            <Text
-                style={style}
-                onTextLayout={(e) => setLines(e.nativeEvent.lines.map(l => l.text))}
-            >
-                {text}
-            </Text>
+            <View style={{paddingRight: WORK_INDENT}}>
+                <Text
+                    style={style}
+                    onTextLayout={(e) => setLines(e.nativeEvent.lines.map(l => l.text))}
+                >
+                    {date ? `${text} ${date}` : text}
+                </Text>
+            </View>
         );
     }
 
     return (
         <View>
-            {lines.map((lineText, index) => (
-                <Text key={index} style={[style, index > 0 && wrapStyle]}>
-                    {lineText}
-                </Text>
-            ))}
+            {lines.map((lineText, index) => {
+                // Match on the parenthesised date alone, not on the leading space:
+                // when the break falls at that space it is consumed as the line
+                // break, leaving the date at the very start of the last line.
+                const cut = date ? lineText.lastIndexOf(date) : -1;
+                const dated = index === lines.length - 1 && cut >= 0
+                    && cut + date.length >= lineText.trimEnd().length;
+                return (
+                    <Text key={index} style={[style, index > 0 && wrapStyle]}>
+                        {dated ? lineText.slice(0, cut) : lineText}
+                        {dated && <Text style={timeStyle}>{lineText.slice(cut)}</Text>}
+                    </Text>
+                );
+            })}
         </View>
     );
 };
@@ -104,11 +126,13 @@ const Identity = () => {
                     <WorkTitle
                         key={`${work.text}-${index}`}
                         text={work.text}
+                        time={work.time}
                         style={[
                             styles.workItem,
                             work.ital && styles.workItalic,
                         ]}
                         wrapStyle={styles.workItemWrap}
+                        timeStyle={styles.workTime}
                     />
                 ))}
             </View>
@@ -323,6 +347,14 @@ const Identity = () => {
                             </View>
                         </View>
                     )}
+                    {!!person.works_about?.length && (
+                        <View style={styles.knownWritingsBox}>
+                            <Text style={styles.knownWritingsHeader}>{`Works about ${person.displayName}:`}</Text>
+                            <View style={styles.knownWritingsRows}>
+                                {renderWorkList(person.works_about)}
+                            </View>
+                        </View>
+                    )}
 
                 </ScrollView>
             </View>
@@ -402,8 +434,11 @@ const styles = StyleSheet.create({
     workItalic: {
         fontFamily: 'ArnoPro-Italic',
     },
+    workTime: {
+        fontFamily: 'ArnoPro-Regular',
+    },
     workItemWrap: {
-        paddingLeft: 20
+        paddingLeft: WORK_INDENT
     },
 })
 
