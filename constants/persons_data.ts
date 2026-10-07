@@ -11,6 +11,7 @@ export type Person = {
     pid: string;
     displayName: string;
     altNames?: string[];
+    titles?: string[];
     birthplace?: string;
     deathplace?: string;
     lat: number;
@@ -34,7 +35,8 @@ export const all_persons: Person[] = [
     {
         pid: "peter_the_apostle",
         displayName: "Peter the Apostle",
-        altNames: ["Simon Peter", "Cephas"],
+        altNames: ["Simon Peter bar Jonah", "Cephas"],
+        titles: ["Prince of the Apostles"],
         birthplace: "Bethsaida, Galilee, Roman Empire",
         deathplace: "Rome, Italia, Roman Empire",
         lat: 32.91089391890956,
@@ -76,6 +78,7 @@ export const all_persons: Person[] = [
     {
         pid: "james_the_just",
         displayName: "James the Just",
+        titles: ["Brother of the Lord"],
         birthplace: "Nazareth, Galilee, Roman Empire",
         deathplace: "Jerusalem, Judaea, Roman Empire",
         lat: 32.70234804256465,
@@ -93,6 +96,7 @@ export const all_persons: Person[] = [
     {
         pid: "paul_of_tarsus",
         displayName: "Paul of Tarsus",
+        titles: ["Apostle to the Gentiles"],
         birthplace: "Tarsus, Cilicia, Roman Empire",
         deathplace: "Rome, Italia, Roman Empire",
         lat: 36.92,
@@ -125,6 +129,7 @@ export const all_persons: Person[] = [
     {
         pid: "john_the_apostle",
         displayName: "John the Apostle",
+        titles: ["Beloved Disciple"],
         birthplace: "Bethsaida, Galilee, Roman Empire",
         deathplace: "Ephesus, Asia, Roman Empire",
         lat: 32.91089391890956,
@@ -165,6 +170,7 @@ export const all_persons: Person[] = [
     {
         pid: "luke_the_evangelist",
         displayName: "Luke the Evangelist",
+        titles: ["Beloved Physician"],
         birthplace: "Antioch, Syria, Roman Empire",
         deathplace: "Thebes, Achaia, Roman Empire",
         lat: 36.20405931892094,
@@ -237,6 +243,7 @@ export const all_persons: Person[] = [
     {
         pid: "ignatius_of_antioch",
         displayName: "Ignatius of Antioch",
+        titles: ["God-bearer"],
         birthplace: "Unknown, Syria, Roman Empire",
         deathplace: "Rome, Italia, Roman Empire",
         lat: 36.204930647486165,
@@ -290,6 +297,7 @@ export const all_persons: Person[] = [
     {
         pid: "polycarp_of_smyrna",
         displayName: "Polycarp of Smyrna",
+        titles: ["Teacher of Asia"],
         birthplace: "Smyrna, Asia, Roman Empire",
         deathplace: "Smyrna, Asia, Roman Empire",
         lat: 38.42270378420375,
@@ -325,6 +333,7 @@ export const all_persons: Person[] = [
     {
         pid: "justin_martyr",
         displayName: "Justin Martyr",
+        titles: ["The Philosopher"],
         birthplace: "Flavius Neapolis, Judaea, Roman Empire",
         deathplace: "Rome, Italia, Roman Empire",
         lat: 32.22230610198572,
@@ -422,6 +431,7 @@ export const all_persons: Person[] = [
     {
         pid: "irenaeus_of_lyon",
         displayName: "Irenaeus of Lyon",
+        titles: ["Doctor of Unity"],
         birthplace: "Smyrna, Asia, Roman Empire",
         deathplace: "Lugdunum, Gallia Lugdunensis, Roman Empire",
         lat: 45.76,
@@ -471,7 +481,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 215,
         toApprox: true,
-        camps: ["Eastern Father", "Greek", "Alexandrian"],
+        camps: ["Eastern Father", "Greek", "Hymnographer"],
         mainCamp: "Eastern Father",
         authentic_works: [
             {text: "Protrepticus", ital: true},
@@ -486,6 +496,7 @@ export const all_persons: Person[] = [
     {
         pid: "tertullian_of_carthage",
         displayName: "Tertullian of Carthage",
+        titles: ["Father of Latin Christianity"],
         birthplace: "Carthage, Africa, Roman Empire",
         deathplace: "Carthage, Africa, Roman Empire",
         lat: 36.863945752812484,
@@ -571,6 +582,8 @@ export const all_persons: Person[] = [
     {
         pid: "origen_of_alexandria",
         displayName: "Origen of Alexandria",
+        altNames: ["Origen Adamantius"],
+        titles: [""],
         birthplace: "Alexandria, Aegyptus, Roman Empire",
         deathplace: "Tyre, Phoenice, Roman Empire",
         lat: 31.20025863903445,
@@ -580,7 +593,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 253,
         toApprox: true,
-        camps: ["Eastern Father", "Greek", "Latin*", "Alexandrian", "Origenist"],
+        camps: ["Eastern Father", "Greek", "Latin*", "Origenist"],
         mainCamp: "Origenist",
         authentic_works: [
             {text: "On the First Principles", ital: true},
@@ -592,7 +605,7 @@ export const all_persons: Person[] = [
             {text: "Commentary on Genesis", ital: true},
             {text: "Commentary on Song of Songs", ital: true},
             {text: "Commentary on Psalms", ital: true},
-            {text: "Many Homilies", ital: false},
+            {text: "Many homilies", ital: false},
         ]
     },
     {
@@ -617,6 +630,7 @@ export const all_persons: Person[] = [
     {
         pid: "paul_of_thebes",
         displayName: "Paul of Thebes",
+        titles: ["First Hermit"],
         birthplace: "Unknown, Aegyptus, Roman Empire",
         deathplace: "Thebes, Aegyptus, Roman Empire",
         lat: 25.713133070514296,
@@ -632,8 +646,9 @@ export const all_persons: Person[] = [
     {
         pid: "lucius_lactantius",
         displayName: "Lucius Lactantius",
+        titles: ["Christian Cicero"],
         birthplace: "Cirta, Numidia, Roman Empire",
-        deathplace: "Augusta Treverorum, Gallia Belgica, Roman Empire",
+        deathplace: "Augusta Treverorum, Belgica Prima, Roman Empire",
         lat: 40.76770445285668,
         lon: 29.933262567556298,
         imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/5/5c/Lactantius.jpg',
@@ -653,6 +668,7 @@ export const all_persons: Person[] = [
     {
         pid: "anthony_the_great",
         displayName: "Anthony the Great",
+        titles: ["Father of Monasticism"],
         birthplace: "Koma, Aegyptus, Roman Empire",
         deathplace: "Mount Colzim, Aegyptus, Roman Empire",
         lat: 29.299916177194383,
@@ -670,8 +686,8 @@ export const all_persons: Person[] = [
         pid: "hosius_of_cordoba",
         displayName: "Hosius of Cordoba",
         altNames: ["Hosius the Confessor", "Osius", "Ossius"],
-        birthplace: "Cordoba, Hispania, Roman Empire",
-        deathplace: "Cordoba, Hispania, Roman Empire",
+        birthplace: "Corduba, Baetica, Roman Empire",
+        deathplace: "Corduba, Baetica, Roman Empire",
         lat: 37.88923549620351,
         lon: -4.779505534652193,
         imageUrl: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/0/05/Hosius_of_Cordoba.jpg/250px-Hosius_of_Cordoba.jpg",
@@ -696,7 +712,7 @@ export const all_persons: Person[] = [
         fromYear: 256,
         fromApprox: true,
         toYear: 336,
-        camps: ["Eastern Father", "Greek", "Arian", "Alexandrian"],
+        camps: ["Eastern Father", "Greek", "Arian"],
         mainCamp: "Arian",
         authentic_works: [
             {text: "Thalia", ital: true},
@@ -708,6 +724,7 @@ export const all_persons: Person[] = [
         pid: "gregory_the_illuminator",
         displayName: "Gregory the Illuminator",
         altNames: ["Gregory the Enlightener", "Grigor Lusavorich", "Gregory I of Armenia"],
+        titles: ["Apostle of Armenia"],
         birthplace: "Vagharshapat, Ayrarat, Kingdom of Armenia",
         deathplace: "Mount Sepuh, Daranali, Kingdom of Armenia",
         lat: 39.8786,
@@ -731,13 +748,14 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 328,
         toApprox: true,
-        camps: ["Eastern Father", "Greek", "Nicene", "Alexandrian"],
+        camps: ["Eastern Father", "Greek", "Nicene"],
         mainCamp: "Nicene"
     },
     {
         pid: "jacob_of_nisibis",
         displayName: "Jacob of Nisibis",
         altNames: ["James of Nisibis", "Jacob the Great", "James the Great", "Jacob of Mygdonia"],
+        titles: ["Moses of Mesopotamia"],
         birthplace: "Nisibis, Mesopotamia, Roman Empire",
         deathplace: "Nisibis, Mesopotamia, Roman Empire",
         lat: 37.0750,
@@ -754,6 +772,7 @@ export const all_persons: Person[] = [
         pid: "eusebius_of_caesarea",
         displayName: "Eusebius of Caesarea",
         altNames: ["Eusebius Pamphilius"],
+        titles: ["Father of Church History"],
         birthplace: "Caesarea Maritima, Syria Palaestina, Roman Empire",
         deathplace: "Caesarea Maritima, Syria Palaestina, Roman Empire",
         lat: 32.51667524676977,
@@ -778,7 +797,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 337,
         toApprox: true,
-        camps: ["Eastern Father", "Greek", "Antiochene", "Nicene"],
+        camps: ["Eastern Father", "Greek", "Nicene"],
         mainCamp: "Nicene"
     },
     {
@@ -815,6 +834,7 @@ export const all_persons: Person[] = [
         pid: "pachomius_the_great",
         displayName: "Pachomius the Great",
         altNames: ["Pachomius of Tabennisi", "Pachomius the Elder"],
+        titles: ["Father of Cenobitic Monasticism"],
         birthplace: "Latopolis, Thebaid, Roman Empire",
         deathplace: "Pbow, Thebaid, Roman Empire",
         lat: 26.0522,
@@ -824,26 +844,29 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 348,
         toApprox: false,
-        camps: ["Eastern Father", "Coptic", "Latin*", "Nicene", "Monastic"],
+        camps: ["Eastern Father", "Coptic", "Latin*", "Monastic"],
         mainCamp: "Monastic"
     },
     {
-        pid: "athanasius_of_alexandria",
-        displayName: "Athanasius of Alexandria",
+        pid: "athanasius_i_of_alexandria",
+        displayName: "Athanasius I of Alexandria",
+        altNames: ["Athanasius the Great", "Athanasius the Confessor", "Athanasius the Apostolic"],
+        titles: ["Contra Mundum", "Father of Orthodoxy"],
         birthplace: "Alexandria, Aegyptus, Roman Empire",
         deathplace: "Alexandria, Aegyptus, Roman Empire",
         lat: 31.20025863903445,
         lon: 29.91846236548454,
-        imageUrl: 'https://images.weserv.nl/?url=https://stjohngoc.org/wp-content/uploads/2018/06/athanasius-the-great.jpg',
+        imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/1/1a/Fethiye_Camii,_parekklesion,_diakonikon,_mosaics,_Istanbul,_Turkey_-_South_wall,_St._Athanasius,_detail_of_upper_half_-_MSBZ004_BF_T_F_027_B_-_Dumbarton_Oaks.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
         fromYear: 296,
         fromApprox: true,
         toYear: 373,
-        camps: ["Eastern Father", "Greek", "Nicene", "Alexandrian"],
+        camps: ["Eastern Father", "Greek", "Nicene"],
         mainCamp: "Nicene"
     },
     {
         pid: "frumentius_of_axum",
         displayName: "Frumentius of Axum",
+        titles: ["Abba Salama", "Revealer of Light"],
         birthplace: "Tyre, Phoenicia, Roman Empire",
         deathplace: "Aksum, Kingdom of Aksum",
         lat: 14.1211,
@@ -875,6 +898,7 @@ export const all_persons: Person[] = [
         pid: "ephrem_the_syrian",
         displayName: "Ephrem the Syrian",
         altNames: ["Ephrem of Nisibis", "Ephrem of Edessa", "Ephraem the Syrian", "Ephraim the Syrian"],
+        titles: ["Harp of the Holy Spirit"],
         birthplace: "Nisibis, Mesopotamia, Roman Empire",
         deathplace: "Edessa, Osrhoene, Roman Empire",
         lat: 37.1591,
@@ -884,14 +908,15 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 373,
         toApprox: false,
-        camps: ["Eastern Father", "Syriac", "Nicene", "Monastic"],
-        mainCamp: "Nicene"
+        camps: ["Eastern Father", "Syriac", "Nicene", "Monastic", "Hymnographer"],
+        mainCamp: "Hymnographer"
     },
     {
         pid: "hilary_of_poitiers",
         displayName: "Hilary of Poitiers",
-        birthplace: "Pictavium, Gallia Aquitania, Roman Empire",
-        deathplace: "Pictavium, Septem Provinciae, Roman Empire",
+        titles: ["Hammer of the Arians", "Athanasius of the West"],
+        birthplace: "Pictavium, Aquitania Secunda, Roman Empire",
+        deathplace: "Pictavium, Aquitania Secunda, Roman Empire",
         lat: 46.579841096591224,
         lon: 0.3416894346137863,
         imageUrl: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjC7F2D82FrhL_0Sd2jA2xR3kQc3HgT-HMpdWMW9puaOAepVQtwemTYOBaL4RCN518M2S1yoIWK2-FOG94LZGtXtSwxPz3VqBjXM_McSba6_FUYdjIxPkyMoaY6zG2yOuNA_9QieZNlZTI/s512/hilary.jpg',
@@ -899,8 +924,31 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 367,
         toApprox: true,
-        camps: ["Western Father", "Latin", "Nicene"],
+        camps: ["Western Father", "Latin", "Nicene", "Hymnographer"],
         mainCamp: "Nicene"
+    },
+    {
+        pid: "ulfila",
+        displayName: "Ulfila",
+        altNames: ["Wulfila", "Ulfilas", "Wulfilas", "Ulphilas"],
+        titles: ["Apostle of the Goths", "Moses of Our Time"],
+        birthplace: "Unknown, Gothia",
+        deathplace: "Constantinople, Thrace, Roman Empire",
+        lat: 43.2172,
+        lon: 25.6111,
+        imageUrl: 'https://images.weserv.nl/?url=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoWG2v-3eIATI5sFk9qqFxtfINPix9521cjx2Wjm4NPQ&s=10',
+        fromYear: 311,
+        fromApprox: true,
+        toYear: 383,
+        camps: ["Eastern Father", "Gothic", "Greek", "Latin", "Arian"],
+        mainCamp: "Arian",
+        authentic_works: [
+            {text: "Gothic Bible", ital: false},
+            {text: "Confession of Faith", ital: true},
+        ],
+        works_about: [
+            {text: "Letter of Auxentius", ital: true, time: "4th cent. AD"},
+        ]
     },
     {
         pid: "didymus_the_blind",
@@ -914,7 +962,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 398,
         toApprox: true,
-        camps: ["Eastern Father", "Greek", "Alexandrian", "Origenist", "Nicene"],
+        camps: ["Eastern Father", "Greek", "Origenist", "Nicene"],
         mainCamp: "Origenist"
     },
     {
@@ -930,8 +978,8 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 386,
         toApprox: true,
-        camps: ["Eastern Father", "Greek", "Nicene"],
-        mainCamp: "Nicene"
+        camps: ["Eastern Father", "Greek", "Nicene*"],
+        mainCamp: "Nicene*"
     },
     {
         pid: "epiphanius_of_salamis",
@@ -951,6 +999,7 @@ export const all_persons: Person[] = [
         pid: "gregory_of_nazianzus",
         displayName: "Gregory of Nazianzus",
         altNames: ["Gregory Nazianzen"],
+        titles: ["The Theologian"],
         birthplace: "Arianzus, Cappadocia, Roman Empire",
         deathplace: "Arianzus, Cappadocia, Roman Empire",
         lat: 38.26143964360644,
@@ -960,7 +1009,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 390,
         toApprox: true,
-        camps: ["Eastern Father", "Greek", "Nicene", "Cappadocian Father"],
+        camps: ["Eastern Father", "Greek", "Nicene", "Cappadocian Father", "Hymnographer"],
         mainCamp: "Cappadocian Father"
     },
     {
@@ -998,6 +1047,7 @@ export const all_persons: Person[] = [
         pid: "gregory_of_nyssa",
         displayName: "Gregory of Nyssa",
         altNames: ["Gregory Nyssen"],
+        titles: ["Father of Fathers"],
         birthplace: "Neocaesarea, Cappadocia, Roman Empire",
         deathplace: "Nyssa, Cappadocia, Roman Empire",
         lat: 38.93386362845272,
@@ -1015,7 +1065,7 @@ export const all_persons: Person[] = [
         displayName: "Martin of Tours",
         altNames: ["Martin the Merciful", "Martinus Turonensis"],
         birthplace: "Savaria, Pannonia Prima, Roman Empire",
-        deathplace: "Candes, Lugdunensis Tertia, Western Roman Empire",
+        deathplace: "Condate, Lugdunensis Tertia, Western Roman Empire",
         lat: 47.393611,
         lon: 0.682778,
         imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/c/ce/Simone_Martini_040.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
@@ -1038,7 +1088,7 @@ export const all_persons: Person[] = [
         fromYear: 339,
         fromApprox: true,
         toYear: 397,
-        camps: ["Western Father", "Latin", "Nicene"],
+        camps: ["Western Father", "Latin", "Nicene", "Hymnographer"],
         mainCamp: "Nicene"
     },
     {
@@ -1089,6 +1139,7 @@ export const all_persons: Person[] = [
         pid: "john_chrysostom",
         displayName: "John Chrysostom",
         altNames: ["John of Antioch", "John of Constantinople"],
+        titles: ["Golden-mouthed"],
         birthplace: "Antioch, Coele Syria, Roman Empire",
         deathplace: "Comana Pontica, Helenopontus, Eastern Roman Empire",
         lat: 41.00817513927148,
@@ -1097,13 +1148,14 @@ export const all_persons: Person[] = [
         fromYear: 349,
         fromApprox: true,
         toYear: 407,
-        camps: ["Eastern Father", "Greek", "Nicene", "Antiochene"],
+        camps: ["Eastern Father", "Greek", "Nicene"],
         mainCamp: "Nicene"
     },
     {
         pid: "theodore_ii_of_mopsuestia",
         displayName: "Theodore II of Mopsuestia",
         altNames: ["Theodore of Antioch", "Theodore of Mopsuestia", "Theodorus Mopsuestenus"],
+        titles: ["The Interpreter"],
         birthplace: "Antioch, Coele Syria, Roman Empire",
         deathplace: "Mopsuestia, Cilicia Secunda, Eastern Roman Empire",
         lat: 36.96049355024225,
@@ -1136,6 +1188,7 @@ export const all_persons: Person[] = [
         pid: "augustine_of_hippo",
         displayName: "Augustine of Hippo",
         altNames: ["Aurelius Augustinus", "Austin"],
+        titles: ["Doctor of Grace"],
         birthplace: "Thagaste, Numidia Cirtensis, Roman Empire",
         deathplace: "Hippo Regius, Numidia Cirtensis, Western Roman Empire",
         lat: 36.90,
@@ -1159,15 +1212,15 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 432,
         toApprox: false,
-        camps: ["Western Father", "Latin", "Nicene", "Alexandrian", "Augustinian"],
-        mainCamp: "Nicene"
+        camps: ["Western Father", "Latin", "Augustinian"],
+        mainCamp: "Augustinian"
     },
     {
         pid: "john_cassian",
         displayName: "John Cassian",
         altNames: ["John the Ascetic", "John Cassian the Roman"],
         birthplace: "Unknown, Scythia Minor, Roman Empire",
-        deathplace: "Massalia, Gallia Narbonensis, Western Roman Empire",
+        deathplace: "Massilia, Viennensis, Western Roman Empire",
         lat: 43.30270514648704,
         lon: 5.36823823706311,
         imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/a/a0/John_Cassian.jpeg/960px-John_Cassian.jpeg',
@@ -1175,7 +1228,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 435,
         toApprox: true,
-        camps: ["Western Father", "Eastern Father", "Latin", "Greek", "Nicene", "Massilian", "Monastic"],
+        camps: ["Western Father", "Eastern Father", "Latin", "Greek", "Massilian", "Monastic"],
         mainCamp: "Massilian"
     },
     {
@@ -1214,6 +1267,7 @@ export const all_persons: Person[] = [
         pid: "cyril_of_alexandria",
         displayName: "Cyril of Alexandria",
         altNames: ["Cyrillus Alexandrinus"],
+        titles: ["Pillar of Faith", "Seal of all the Fathers"],
         birthplace: "Didouseya, Aegyptus, Roman Empire",
         deathplace: "Alexandria, Aegyptus, Eastern Roman Empire",
         lat: 31.200100,
@@ -1223,8 +1277,8 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 444,
         toApprox: false,
-        camps: ["Eastern Father", "Greek", "Nicene", "Alexandrian"],
-        mainCamp: "Alexandrian",
+        camps: ["Eastern Father", "Greek", "Nicene", "Alexandrine"],
+        mainCamp: "Alexandrine",
     },
     {
         pid: "eutyches_of_constantinople",
@@ -1239,7 +1293,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 454,
         toApprox: true,
-        camps: ["Eastern Father", "Greek", "Alexandrian", "Miaphysite", "Eutychian*"],
+        camps: ["Eastern Father", "Greek", "Alexandrine", "Miaphysite", "Eutychian*"],
         mainCamp: "Eutychian*"
     },
     {
@@ -1271,8 +1325,8 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 446,
         toApprox: false,
-        camps: ["Eastern Father", "Greek", "Alexandrian"],
-        mainCamp: "Alexandrian",
+        camps: ["Eastern Father", "Greek", "Alexandrine"],
+        mainCamp: "Alexandrine",
     },
     {
         pid: "nestorius_of_constantinople",
@@ -1310,8 +1364,8 @@ export const all_persons: Person[] = [
         pid: "vincent_of_lerins",
         displayName: "Vincent of Lérins",
         altNames: ["Vincentius Lerinensis"],
-        birthplace: "Toulouse, Gallia Narbonensis, Roman Empire",
-        deathplace: "Lerina, Insulae Lero et Lerina, Western Roman Empire",
+        birthplace: "Tolosa, Narbonensis Prima, Roman Empire",
+        deathplace: "Lerina, Narbonensis Secunda, Western Roman Empire",
         lat: 43.50653899905318,
         lon: 7.047321380485845,
         imageUrl: 'https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/2/21/Icon_of_St_Vincent_of_Lerins_by_Bojan_Teodosijevi%C4%87.jpg/960px-Icon_of_St_Vincent_of_Lerins_by_Bojan_Teodosijevi%C4%87.jpg',
@@ -1326,7 +1380,7 @@ export const all_persons: Person[] = [
         pid: "prosper_of_aquitaine",
         displayName: "Prosper of Aquitaine",
         altNames: ["Prosper Aquitanus", "Prosper Tiro"],
-        birthplace: "Unknown, Gallia Aquitania, Roman Empire",
+        birthplace: "Unknown, Aquitania, Roman Empire",
         deathplace: "Rome, Campania, Western Roman Empire",
         lat: 43.29846758926648,
         lon: 5.372771118291032,
@@ -1335,13 +1389,14 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 455,
         toApprox: true,
-        camps: ["Western Father", "Latin", "Nicene", "Augustinian"],
+        camps: ["Western Father", "Latin", "Chalcedonian", "Augustinian"],
         mainCamp: "Augustinian"
     },
     {
         pid: "patrick_of_armagh",
         displayName: "Patrick of Armagh",
         altNames: ["Saint Patrick", "Patricius", "Pátraic"],
+        titles: ["Apostle of Ireland"],
         birthplace: "Banna Venta Berniae, Britannia, Roman Empire",
         deathplace: "Saul, Ulaid, Ireland",
         lat: 54.350278,
@@ -1401,6 +1456,32 @@ export const all_persons: Person[] = [
         mainCamp: "Antiochene",
     },
     {
+        pid: "narsai_of_nisibis",
+        displayName: "Narsai of Nisibis",
+        altNames: ["Mar Narsai", "Narsai of Edessa", "Narses"],
+        titles: ["Tongue of the East", "Harp of the Holy Spirit"],
+        birthplace: "Ayn Dulba, Beth Nuhadra, Sasanian Empire",
+        deathplace: "Nisibis, Beth Arabaye, Sasanian Empire",
+        lat: 37.0750,
+        lon: 41.2189,
+        imageUrl: 'https://images.weserv.nl/?url=https://artbymarynisan.com/cdn/shop/files/IMG_7865.jpg',
+        fromYear: 399,
+        fromApprox: true,
+        toYear: 502,
+        toApprox: true,
+        camps: ["Eastern Father", "Syriac", "Antiochene", "Church of the East", "Monastic", "Hymnographer"],
+        mainCamp: "Church of the East",
+        authentic_works: [
+            {text: "On the Three Doctors", ital: true},
+            {text: "Exposition of the Mysteries", ital: true},
+            {text: "Many homilies", ital: false},
+        ],
+        works_about: [
+            {text: "Statutes of the School of Nisibis", ital: true, time: "~6th cent. AD"},
+            {text: "Cause of the Foundation of the Schools", ital: true, time: "~6th cent. AD"},
+        ]
+    },
+    {
         pid: "flavian_i_of_constantinople",
         displayName: "Flavian I of Constantinople",
         altNames: ["Flavian the Confessor", "Flavian the Martyr"],
@@ -1408,7 +1489,7 @@ export const all_persons: Person[] = [
         deathplace: "Hypaepa, Lydia, Eastern Roman Empire",
         lat: 41.0082,
         lon: 28.9784,
-        imageUrl: 'https://images.weserv.nl/?url=https://handmadeiconsgreece.myshopify.com/cdn/shop/products/saint-flavian-patriarch-of-constantinople-icon.jpg?v=1681031588',
+        imageUrl: 'https://images.weserv.nl/?url=https://handmadeiconsgreece.myshopify.com/cdn/shop/products/saint-flavian-patriarch-of-constantinople-icon.jpg',
         fromYear: 400,
         fromApprox: true,
         toYear: 449,
@@ -1429,7 +1510,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 454,
         toApprox: false,
-        camps: ["Eastern Father", "Greek", "Alexandrian", "Miaphysite"],
+        camps: ["Eastern Father", "Greek", "Alexandrine", "Miaphysite"],
         mainCamp: "Miaphysite"
     },
     {
@@ -1475,14 +1556,14 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 477,
         toApprox: false,
-        camps: ["Eastern Father", "Greek", "Syriac*", "Alexandrian", "Miaphysite"],
+        camps: ["Eastern Father", "Greek", "Syriac*", "Alexandrine", "Miaphysite"],
         mainCamp: "Miaphysite"
     },
     {
         pid: "faustus_of_riez",
         displayName: "Faustus of Riez",
         birthplace: "Britannia, Western Roman Empire",
-        deathplace: "Reii, Gallia Narbonensis, Visigothic Kingdom",
+        deathplace: "Reii, Narbonensis Secunda, Visigothic Kingdom",
         lat: 43.817388471307396,
         lon: 6.093818670359029,
         imageUrl: 'https://images.weserv.nl/?url=blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQQOsEMlTr9eSzkGbPfg3SqWwrevYas3O2Ir7ui-RG5vYjWVteiPK1v6khWqzVbQgp-mv5x-uEAGefSUXJmsCmqvlpZrOS8b4wKBq9R_L0yYHz_FPqZ1xfzOmZ8e9PZl7SF2BskyrcFsc/s1600/Fauste+de+Riez-Ic%25C3%25B4ne.jpg',
@@ -1560,8 +1641,8 @@ export const all_persons: Person[] = [
         pid: "avitus_of_vienne",
         displayName: "Avitus of Vienne",
         altNames: ["Alcimus Ecdicius Avitus"],
-        birthplace: "Vienne, Viennensis, Western Roman Empire",
-        deathplace: "Vienne, Viennensis, Burgundian Kingdom",
+        birthplace: "Vienna, Viennensis, Western Roman Empire",
+        deathplace: "Vienna, Viennensis, Burgundian Kingdom",
         lat: 45.5256,
         lon: 4.8743,
         imageUrl: 'https://images.weserv.nl/?url=https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUL1AfXVqwbKofzZwGL0zvV0TbfFICfwcH1QuyMXDDS-StArEi-y8oiubbRX4EKQebVJy9AulOI2bGz9YVq76LsloF65cIF8PjoyOg79IF532eULIiGMahFTLyOcPwU3X3jTvks1IFRIFJ/s1600/avitus.jpg',
@@ -1569,13 +1650,14 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 519,
         toApprox: true,
-        camps: ["Western Father", "Latin", "Nicene", "Augustinian"],
+        camps: ["Western Father", "Latin", "Nicene", "Chalcedonian", "Augustinian"],
         mainCamp: "Augustinian"
     },
     {
         pid: "jacob_of_sarug",
         displayName: "Jacob of Sarug",
         altNames: ["Jacob of Serugh", "Jacob of Serug", "Jacob of Batnae"],
+        titles: ["Flute of the Holy Spirit"],
         birthplace: "Kurtam, Osrhoene, Eastern Roman Empire",
         deathplace: "Batnan da-Srug, Osrhoene, Byzantine Empire",
         lat: 36.9761,
@@ -1585,13 +1667,14 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 521,
         toApprox: false,
-        camps: ["Eastern Father", "Syriac", "Miaphysite"],
-        mainCamp: "Miaphysite"
+        camps: ["Eastern Father", "Syriac", "Miaphysite", "Hymnographer"],
+        mainCamp: "Hymnographer"
     },
     {
         pid: "severus_of_antioch",
         displayName: "Severus of Antioch",
         altNames: ["Severus the Great", "Severus of Gaza"],
+        titles: ["Crown of the Syrians"],
         birthplace: "Sozopolis, Pisidia, Eastern Roman Empire",
         deathplace: "Sakha, Aegyptus, Byzantine Empire",
         lat: 36.2021,
@@ -1601,7 +1684,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 538,
         toApprox: false,
-        camps: ["Eastern Father", "Greek", "Syriac*", "Miaphysite", "Monastic"],
+        camps: ["Eastern Father", "Greek", "Syriac*", "Miaphysite", "Monastic", "Hymnographer"],
         mainCamp: "Miaphysite"
     },
     {
@@ -1640,8 +1723,8 @@ export const all_persons: Person[] = [
         pid: "caesarius_of_arles",
         displayName: "Caesarius of Arles",
         altNames: ["Caesarius Arelatensis", "Caesarius of Chalon"],
-        birthplace: "Chalon-sur-Saône, Lugdunensis Prima, Western Roman Empire",
-        deathplace: "Arles, Viennensis, Francia",
+        birthplace: "Cabillonum, Lugdunensis Prima, Western Roman Empire",
+        deathplace: "Arelate, Viennensis, Francia",
         lat: 43.676701,
         lon: 4.627800,
         imageUrl: 'https://images.weserv.nl/?url=i.pinimg.com/736x/5f/60/17/5f6017acda25823d2d962cb80cdcb16c.jpg',
@@ -1653,9 +1736,37 @@ export const all_persons: Person[] = [
         mainCamp: "Augustinian",
     },
     {
+        pid: "dionysius_exiguus",
+        displayName: "Dionysius Exiguus",
+        altNames: ["Dionysius the Humble", "Dionysius the Little"],
+        birthplace: "Unknown, Scythia, Eastern Roman Empire",
+        deathplace: "Rome, Campania, Byzantine Empire",
+        lat: 41.9028,
+        lon: 12.4964,
+        imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/5/5f/Dionysius_Exiguus.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
+        fromYear: 470,
+        fromApprox: true,
+        toYear: 544,
+        toApprox: true,
+        camps: ["Western Father", "Latin", "Greek", "Chalcedonian", "Monastic"],
+        mainCamp: "Chalcedonian",
+        authentic_works: [
+            {text: "Book on Easter", ital: true, time: "525 AD"},
+            {text: "Letter to Petronius", ital: true, time: "525 AD"},
+            {text: "Letter to Boniface and Bonus", ital: true, time: "526 AD"},
+            {text: "Collection of Canons", ital: true},
+            {text: "Collection of Decretals", ital: true},
+            {text: "Several translations from Greek", ital: false},
+        ],
+        disputed_works: [
+            {text: "Paschal Arguments", ital: true},
+        ],
+    },
+    {
         pid: "finnian_of_clonard",
         displayName: "Finnian of Clonard",
         altNames: ["Finnian mac Findloga", "Finnén of Clonard", "Vinnian"],
+        titles: ["Tutor of the Saints of Ireland"],
         birthplace: "Myshall, Laigin, Ireland",
         deathplace: "Clonard, Mide, Ireland",
         lat: 53.455,
@@ -1665,7 +1776,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 549,
         toApprox: true,
-        camps: ["Western Father", "Latin", "Chalcedonian", "Monastic", "Insular"],
+        camps: ["Western Father", "Latin", "Monastic", "Insular"],
         mainCamp: "Monastic",
         disputed_works: [
             {text: "Penitential of Finnian", ital: true},
@@ -1678,8 +1789,9 @@ export const all_persons: Person[] = [
         pid: "boethius",
         displayName: "Boethius",
         altNames: ["Anicius Manlius Severinus Boethius"],
+        titles: ["Last of the Romans"],
         birthplace: "Rome, Campania, Kingdom of Odoacer",
-        deathplace: "Pavia, Liguria, Ostrogothic Kingdom",
+        deathplace: "Ticinum, Liguria, Ostrogothic Kingdom",
         lat: 45.192222,
         lon: 9.154722,
         imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/0/0b/Boethius.jpeg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
@@ -1691,9 +1803,33 @@ export const all_persons: Person[] = [
         mainCamp: "Neoplatonist"
     },
     {
+        pid: "benedict_of_nursia",
+        displayName: "Benedict of Nursia",
+        altNames: ["Benedictus de Nursia", "Benedict of Norcia"],
+        titles: ["Father of Western Monasticism", "Patron of Europe"],
+        birthplace: "Nursia, Valeria, Kingdom of Odoacer",
+        deathplace: "Casinum, Campania, Ostrogothic Kingdom",
+        lat: 41.490278,
+        lon: 13.813889,
+        imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/1/16/Memling,_Trittico_di_Benedetto_Portinari,_San_Benedetto.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original',
+        fromYear: 480,
+        fromApprox: true,
+        toYear: 547,
+        toApprox: true,
+        camps: ["Western Father", "Latin", "Monastic"],
+        mainCamp: "Monastic",
+        authentic_works: [
+            {text: "Rule of Saint Benedict", ital: true},
+        ],
+        works_about: [
+            {text: "Life of Benedict", ital: true, time: "6th cent. AD"},
+            {text: "Miracles of Saint Benedict", ital: true, time: "9th cent. AD"},
+        ]
+    },
+    {
         pid: "brendan_of_clonfert",
         displayName: "Brendan of Clonfert",
-        altNames: ["Brendan the Navigator", "Brénainn moccu Altai", "Brendan the Voyager"],
+        altNames: ["Brendan the Navigator", "Brendan the Voyager", "Brendan the Anchorite", "Brendan the Bold"],
         birthplace: "Tralee, Mumu, Ireland",
         deathplace: "Annaghdown, Connachta, Ireland",
         lat: 53.241111,
@@ -1703,7 +1839,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 577,
         toApprox: true,
-        camps: ["Western Father", "Latin", "Chalcedonian", "Monastic", "Insular"],
+        camps: ["Western Father", "Latin", "Monastic", "Insular"],
         mainCamp: "Insular",
         pseudo_works: [
             {text: "Rule of Saint Brendan", ital: true},
@@ -1758,8 +1894,8 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 556,
         toApprox: true,
-        camps: ["Eastern Father", "Greek", "Syriac", "Chalcedonian"],
-        mainCamp: "Chalcedonian"
+        camps: ["Eastern Father", "Greek", "Syriac", "Chalcedonian", "Hymnographer"],
+        mainCamp: "Hymnographer"
     },
     {
         pid: "jacob_baradaeus",
@@ -1774,8 +1910,8 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 578,
         toApprox: false,
-        camps: ["Eastern Father", "Syriac", "Miaphysite", "Monastic"],
-        mainCamp: "Miaphysite"
+        camps: ["Eastern Father", "Oriental Orthodox", "Syriac", "Miaphysite", "Monastic"],
+        mainCamp: "Oriental Orthodox"
     },
     {
         pid: "eutychius_of_constantinople",
@@ -1794,6 +1930,25 @@ export const all_persons: Person[] = [
         mainCamp: "Chalcedonian"
     },
     {
+        pid: "ciaran_of_clonmacnoise",
+        displayName: "Ciarán of Clonmacnoise",
+        altNames: ["Ciarán mac an tSaeir", "Ciarán the Younger", "Kieran of Clonmacnoise"],
+        birthplace: "Unknown, Connachta, Ireland",
+        deathplace: "Clonmacnoise, Mide, Ireland",
+        lat: 53.3263,
+        lon: -7.9867,
+        imageUrl: '',
+        fromYear: 516,
+        fromApprox: true,
+        toYear: 544,
+        toApprox: true,
+        camps: ["Western Father", "Latin", "Monastic", "Insular"],
+        mainCamp: "Monastic",
+        works_about: [
+            {text: "Life of Ciarán", ital: true, time: "~11th cent. AD"},
+        ]
+    },
+    {
         pid: "john_iv_of_constantinople",
         displayName: "John IV of Constantinople",
         altNames: ["John the Faster", "John Nesteutes", "John the Abstainer"],
@@ -1806,24 +1961,151 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 595,
         toApprox: false,
-        camps: ["Eastern Father", "Greek", "Chalcedonian", "Monastic"],
-        mainCamp: "Chalcedonian"
+        camps: ["Eastern Father", "Greek", "Monastic"],
+        mainCamp: "Monastic"
+    },
+    {
+        pid: "venantius_fortunatus",
+        displayName: "Venantius Fortunatus",
+        altNames: ["Venantius Honorius Clementianus Fortunatus", "Fortunatus of Poitiers"],
+        birthplace: "Valdobbiadene, Venetia et Histria, Ostrogothic Kingdom",
+        deathplace: "Pictavium, Aquitania Secunda, Francia",
+        lat: 46.580224,
+        lon: 0.340375,
+        imageUrl: 'https://images.weserv.nl/?url=https://thumb.wikimedia.org/wikipedia/en/thumb/5/52/Poitiers%2C_M%C3%A9diath%C3%A8que_Fran%C3%A7ois_Mitterrand%2C_MS_250_%28136%29%2C_fol._21v.jpg/960px-Poitiers%2C_M%C3%A9diath%C3%A8que_Fran%C3%A7ois_Mitterrand%2C_MS_250_%28136%29%2C_fol._21v.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail',
+        fromYear: 530,
+        fromApprox: true,
+        toYear: 600,
+        toApprox: true,
+        camps: ["Western Father", "Latin", "Hymnographer"],
+        mainCamp: "Hymnographer",
+        authentic_works: [
+            {text: "Banners of the King", ital: true, time: "569 AD"},
+            {text: "Sing, My Tongue, the Glorious Battle", ital: true, time: "569 AD"},
+            {text: "Epithalamium for Sigibert and Brunhild", ital: true, time: "566 AD"},
+            {text: "Hail, Festal Day", ital: true},
+            {text: "On the Fall of Thuringia", ital: true},
+            {text: "Life of Saint Martin", ital: true},
+            {text: "Life of Radegund", ital: true},
+            {text: "Life of Germanus of Paris", ital: true},
+            {text: "Life of Hilary of Poitiers", ital: true},
+            {text: "Life of Albinus of Angers", ital: true},
+            {text: "Life of Paternus of Avranches", ital: true},
+            {text: "Life of Marcellus of Paris", ital: true},
+            {text: "Exposition of the Creed", ital: true},
+            {text: "Exposition of the Lord's Prayer", ital: true},
+            {text: "Many occasional poems", ital: false},
+        ],
+        disputed_works: [
+            {text: "Whom Earth, Sea and Sky", ital: true},
+            {text: "Life of Medard", ital: true},
+            {text: "Life of Remigius", ital: true},
+            {text: "Life of Severinus of Bordeaux", ital: true},
+        ],
+        pseudo_works: [
+            {text: "Hail, Star of the Sea", ital: true, time: "~9th cent. AD"},
+        ],
+        works_about: [
+            {text: "Epitaph of Venantius Fortunatus", ital: true, time: "8th cent. AD"},
+        ]
+    },
+    {
+        pid: "augustine_of_canterbury",
+        displayName: "Augustine of Canterbury",
+        altNames: ["Augustinus Cantuariensis", "Austin of Canterbury"],
+        titles: ["Apostle to the English"],
+        birthplace: "Unknown",
+        deathplace: "Durovernum, Kent",
+        lat: 51.278,
+        lon: 1.087,
+        imageUrl: 'https://images.weserv.nl/?url=https://www.fatherlawrence.com/Portals/1/EasyDNNNews/2844/images/St.-Augustine-of-Canterbury-600-600-p-L-97.jpg',
+        fromYear: 534,
+        fromApprox: true,
+        toYear: 604,
+        toApprox: true,
+        camps: ["Western Father", "Latin", "Monastic"],
+        mainCamp: "Monastic",
+        disputed_works: [
+            {text: "Questions to Gregory", ital: true},
+        ],
+        works_about: [
+            {text: "Life of Augustine", ital: true, time: "11th cent. AD"},
+            {text: "Miracles of Augustine", ital: true, time: "11th cent. AD"},
+        ]
+    },
+    {
+        pid: "gregory_of_tours",
+        displayName: "Gregory of Tours",
+        altNames: ["Georgius Florentius Gregorius", "Gregorius Turonensis"],
+        titles: ["Father of French History"],
+        birthplace: "Arverna, Aquitania Prima, Francia",
+        deathplace: "Turonum, Lugdunensis Tertia, Francia",
+        lat: 47.395833,
+        lon: 0.694722,
+        imageUrl: 'https://images.weserv.nl/?url=https://upload.wikimedia.org/wikipedia/commons/7/75/Gregory_of_Tours_cour_Napoleon_Louvre.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
+        fromYear: 538,
+        fromApprox: true,
+        toYear: 594,
+        toApprox: true,
+        camps: ["Western Father", "Latin", "Nicene"],
+        mainCamp: "Nicene",
+        authentic_works: [
+            {text: "History of the Franks", ital: true},
+            {text: "Glory of the Martyrs", ital: true},
+            {text: "Glory of the Confessors", ital: true},
+            {text: "Miracles of Saint Julian", ital: true},
+            {text: "Miracles of Saint Martin", ital: true},
+            {text: "Life of the Fathers", ital: true},
+            {text: "Passion of the Seven Sleepers of Ephesus", ital: true},
+            {text: "On the Course of the Stars", ital: true},
+            {text: "Commentary on the Psalms", ital: true},
+        ],
+        disputed_works: [
+            {text: "Miracles of the Apostle Andrew", ital: true},
+        ],
+        works_about: [
+            {text: "Life of Gregory of Tours", ital: true, time: "10th cent. AD"},
+            {text: "To the Citizens of Tours on Bishop Gregory", ital: true, time: "6th cent. AD"},
+        ]
     },
     {
         pid: "gregory_i_of_rome",
         displayName: "Gregory I of Rome",
         altNames: ["Gregory the Great", "Pope Gregory I", "Gregory the Dialogist"],
+        titles: ["Father of Christian Worship"],
         birthplace: "Rome, Campania, Byzantine Empire",
         deathplace: "Rome, Campania, Byzantine Empire",
         lat: 41.9028,
         lon: 12.4964,
-        imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7OTzRs2bKdaAJzSYqI2-UG1fCEiQ6b4iMDIoU746zR-NPG6Q06Tzk8y3b&s=10',
+        imageUrl: 'https://images.weserv.nl/?url=https://historymedieval.com/wp-content/uploads/2023/12/Miniature-of-Gregory-the-Great-writing-in-a-12th-century-copy-of-his-Dialogues-British-Library-London.jpg.webp',
         fromYear: 540,
         fromApprox: true,
         toYear: 604,
         toApprox: false,
         camps: ["Western Father", "Latin", "Augustinian", "Chalcedonian", "Monastic"],
         mainCamp: "Chalcedonian"
+    },
+    {
+        pid: "babai_the_great",
+        displayName: "Babai the Great",
+        altNames: ["Babai of Mount Izla", "Bawai the Great"],
+        birthplace: "Beth Ainata, Beth Zabdai, Sasanian Empire",
+        deathplace: "Mount Izla, Beth Arabaye, Sasanian Empire",
+        lat: 37.25,
+        lon: 41.35,
+        imageUrl: '',
+        fromYear: 551,
+        fromApprox: true,
+        toYear: 628,
+        camps: ["Eastern Father", "Church of the East", "Syriac", "Monastic"],
+        mainCamp: "Church of the East",
+        authentic_works: [
+            {text: "Book of the Union", ital: true},
+            {text: "Commentary on the Centuries of Evagrius Ponticus", ital: true},
+            {text: "On the Life of Excellency", ital: true},
+            {text: "Life of George", ital: true},
+            {text: "Life of Christina", ital: true},
+        ]
     },
     {
         pid: "sophronius_i_of_jerusalem",
@@ -1838,7 +2120,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 638,
         toApprox: false,
-        camps: ["Eastern Father", "Greek", "Chalcedonian", "Dyothelite", "Monastic"],
+        camps: ["Eastern Father", "Greek", "Chalcedonian", "Dyothelite", "Monastic", "Hymnographer"],
         mainCamp: "Dyothelite"
     },
     {
@@ -1885,7 +2167,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 649,
         toApprox: true,
-        camps: ["Eastern Father", "Greek", "Chalcedonian", "Monastic"],
+        camps: ["Eastern Father", "Greek", "Monastic"],
         mainCamp: "Monastic",
         authentic_works: [
             {text: "The Ladder of Divine Ascent", ital: true},
@@ -1912,8 +2194,8 @@ export const all_persons: Person[] = [
         pid: "martin_i_of_rome",
         displayName: "Martin I of Rome",
         altNames: ["Pope Martin I", "Martin the Confessor"],
-        birthplace: "Todi, Umbria, Byzantine Empire",
-        deathplace: "Cherson, Crimea, Byzantine Empire",
+        birthplace: "Tuder, Tuscia et Umbria, Byzantine Empire",
+        deathplace: "Cherson, Taurica, Byzantine Empire",
         lat: 41.885833,
         lon: 12.505833,
         imageUrl: 'https://images.weserv.nl/?url=https://thestationofthecross.com/wp-content/uploads/station-of-the-cross-saints-and-seasons-pope-saint-martin-i-the-first-scaled.jpg',
@@ -1937,7 +2219,7 @@ export const all_persons: Person[] = [
         fromApprox: true,
         toYear: 708,
         toApprox: false,
-        camps: ["Eastern Father", "Syriac", "Greek", "Miaphysite", "Monastic"],
-        mainCamp: "Miaphysite"
+        camps: ["Eastern Father", "Oriental Orthodox", "Syriac", "Greek", "Miaphysite", "Monastic"],
+        mainCamp: "Oriental Orthodox"
     },
 ]
